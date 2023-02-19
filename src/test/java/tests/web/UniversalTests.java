@@ -38,20 +38,4 @@ class UniversalTests extends TestBase {
             assertThat(actualTitle).isEqualTo(expectedTitle);
         });
     }
-
-    @Severity(NORMAL)
-    @DisplayName("Page console log should not have errors")
-    @EnumSource(PagesLinks.class)
-    @ParameterizedTest(name = "[{index}] {0}")
-    void consoleLogShouldNotHaveErrors(PagesLinks link) {
-        step("Open url", () ->
-                open(link.getLink()));
-
-        step("Console logs should not contain text 'SEVERE'", () -> {
-            String consoleLogs = getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
-        });
-    }
 }

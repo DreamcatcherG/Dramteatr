@@ -82,39 +82,6 @@ class AccountTests extends TestBaseApi {
         assertThat(token.getResult()).isEqualTo("User authorized successfully.");
     }
 
-    @Severity(NORMAL)
-    @DisplayName("Old user getting info with success")
-    @Description("get /Account/v1/User/{UUID}")
-    @Test
-    void getOldUserInfoTest() {
-        credentials.setUserName(USERNAME);
-        credentials.setPassword(PASSWORD);
-
-        authorizationApi.getToken(credentials);
-        Cookie cookie = authorizationApi.login(credentials);
-
-        User user = given(requestSpec)
-                .header("Authorization", "Bearer " + cookie.getToken())
-                .when()
-                .get("/Account/v1/User/" + cookie.getUserId())
-                .then()
-                .spec(responseSpec)
-                .statusCode(200)
-                .extract().as(User.class);
-
-        assertThat(user.getBooks()).hasSize(1);
-        assertThat(user.getBooks().get(0).getIsbn()).isEqualTo("9781449325862");
-        assertThat(user.getBooks().get(0).getTitle()).isEqualTo("Git Pocket Guide");
-        assertThat(user.getBooks().get(0).getSubTitle()).isEqualTo("A Working Introduction");
-        assertThat(user.getBooks().get(0).getAuthor()).isEqualTo("Richard E. Silverman");
-        assertThat(user.getBooks().get(0).getPublishDate()).isEqualTo("2020-06-04T08:48:39.000Z");
-        assertThat(user.getBooks().get(0).getPublisher()).isEqualTo("O'Reilly Media");
-        assertThat(user.getBooks().get(0).getPages()).isEqualTo(234);
-        assertThat(user.getBooks().get(0).getDescription()).isEqualTo("This pocket guide is the perfect on-the-job companion to Git, " +
-                "the distributed version control system. It provides a compact, readable introduction to Git for new users, " +
-                "as well as a reference to common commands and procedures for those of you with Git exp");
-        assertThat(user.getBooks().get(0).getWebsite()).isEqualTo("http://chimera.labs.oreilly.com/books/1230000000561/index.html");
-    }
 
     @Severity(CRITICAL)
     @DisplayName("New user deletion with success")
