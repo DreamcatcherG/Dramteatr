@@ -1,0 +1,42 @@
+stages:
+  - test
+  - upload
+
+run_test:
+  stage: test
+  script:
+    - gradle clean tag -Dremote_driver_url=http://52.77.124.169/wd/hub/
+  after_script:
+    - REPORT_OUTPUT=$(allurectl upload build/allure-results)
+    - echo $REPORT_OUTPUT
+    - REPORT_LINK=$(echo "$REPORT_OUTPUT" | awk '/Report link:/ { print $NF }' | head -n 1 )
+    - echo $REPORT_LINK
+    - export DATE=$(date +%Y-%m-%d)
+    - export REPORT_PATH="test-api/$DEPLOY_ENV/$DATE/$CI_PIPELINE_ID/"
+    - allure generate build/allure-results --clean -o build/allure-report
+    - allure serve build/allure-results -p 0 & sleep 10 && kill $!
+    - aws s3 sync build/allure-report s3://qa-pipeline-test-results-s3/$REPORT_PATH > /tmp/aws-sync.log 2>&1 && grep -c 'upload:' /tmp/aws-sync.log && echo " files uploaded successfully" || echo "Error during AWS S3 sync operation"
+    - echo $REPORT_LINK > report_link.txt
+    - echo $REPORT_PATH > report_path.txt
+  artifacts:
+    paths:
+      - build/
+      - report_link.txt
+      - report_path.txt
+    when: always
+  tags:
+    - gitlab-runner-api-test
+
+upload_failed_results:
+  stage: upload
+  script:
+    - REPORT_LINK=$(cat report_link.txt)
+    - REPORT_PATH=$(cat report_path.txt)
+    - echo "Uploading failed results..."
+    - python3 set-variables.py $REPORT_LINK $REPORT_PATH fail
+    - java "-DconfigFile=notifications/fail/config.json" -jar notifications/fail/allure-notifications.jar
+  when: on_failure
+  rules:
+      - if: '($CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "api") && $RUN_TERRAFORM == "false"'
+  tags:
+    - gitlab-runner-api-test
