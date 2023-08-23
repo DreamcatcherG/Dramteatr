@@ -39,7 +39,7 @@ class MakeOrderCash extends TestBase {
             $(byTestId("selectLocation")).click();
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
             $(byTestId("crossIcon")).click();
-            $(byName("address")).sendKeys("57F3+C2 Khasooma");
+            $(byName("address")).sendKeys("57F3+C2, Khasooma ");
             $(byTestId("addressPrediction")).shouldHave(text("57F3+C2 Khasooma")).click();
             $(byName("address")).shouldHave(value("57F3+C2, 57F3+C2, Khasooma"));
             $(byTestId("crossIcon")).click();
@@ -108,19 +108,20 @@ class MakeOrderCash extends TestBase {
 
         });
 
-            step("Order cancellation", ()-> {
+        step("Order cancellation", ()-> {
 
-                $(byTestId("cancelOrderButton")).click();
-                $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
-                ElementsCollection elements = $$(byTestId("checkboxCancellationReason"));
-                elements.get(0).shouldBe(visible).click();
-                elements.get(1).shouldBe(visible).click();
-                elements.get(3).shouldBe(visible).click();
-                $(byTestId("cancelOrderDone")).click();
-                $(byTestId("feedbackConfirm")).shouldBe(visible).click();
+            $(byTestId("cancelOrderButton")).click();
+            $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
+            ElementsCollection elements = $$(byTestId("checkboxCancellationReason"));
+            elements.get(0).shouldBe(visible).click();
+            elements.get(1).shouldBe(visible).click();
+            elements.get(3).shouldBe(visible).click();
+            $(byTestId("cancelOrderDone")).click();
+            $(byTestId("feedbackConfirm")).shouldBe(visible).click();
 
-            });
+        });
 
     }
 }
+
 

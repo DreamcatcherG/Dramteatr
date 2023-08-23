@@ -20,7 +20,7 @@ import static snoonu.helpers.DriverHelper.byTestId;
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")
-@Tag("delLocal")
+@Tag("delLoc")
 class DelLocViaAcMenu extends TestBase {
 
     @Test

@@ -81,9 +81,9 @@ task addlocal(type: Test) {
     }
     systemProperty 'platform', 'web'
 }
-task delLocal(type: Test) {
+task delLoc(type: Test) {
     useJUnitPlatform {
-        includeTags 'delLocal'
+        includeTags 'delLoc'
     }
     systemProperty 'platform', 'web'
 }
