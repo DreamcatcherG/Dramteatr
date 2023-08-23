@@ -108,19 +108,20 @@ class MakeOrderCash extends TestBase {
 
         });
 
-            step("Order cancellation", ()-> {
+        step("Order cancellation", ()-> {
 
-                $(byTestId("cancelOrderButton")).click();
-                $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
-                ElementsCollection elements = $$(byTestId("checkboxCancellationReason"));
-                elements.get(0).shouldBe(visible).click();
-                elements.get(1).shouldBe(visible).click();
-                elements.get(3).shouldBe(visible).click();
-                $(byTestId("cancelOrderDone")).click();
-                $(byTestId("feedbackConfirm")).shouldBe(visible).click();
+            $(byTestId("cancelOrderButton")).click();
+            $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
+            ElementsCollection elements = $$(byTestId("checkboxCancellationReason"));
+            elements.get(0).shouldBe(visible).click();
+            elements.get(1).shouldBe(visible).click();
+            elements.get(3).shouldBe(visible).click();
+            $(byTestId("cancelOrderDone")).click();
+            $(byTestId("feedbackConfirm")).shouldBe(visible).click();
 
-            });
+        });
 
     }
 }
+
 

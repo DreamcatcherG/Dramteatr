@@ -32,7 +32,7 @@ public class Auth {
 
     public static void fillFormOth() {
         $(byTestId("loginButton")).shouldBe(visible).click();
-        $(byName("phoneNumber")).sendKeys("21343286");
+        $(byName("phoneNumber")).sendKeys("21343285");
         $(byTestId("loginContinue")).click();
         SelenideElement pinInput = $(byName("pin"));
 
