@@ -6,11 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.DataGenerator;
-import snoonu.utils_generate.DataParams;
+import snoonu.utils_generate.Auth;
+import snoonu.utils_generate.DataParamsDev;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -19,9 +18,9 @@ import static snoonu.helpers.DriverHelper.byTestId;
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")
-@Tag("login")
+@Tag("delLocal")
 
-class DeleteAlocationViaPencil extends TestBase {
+public class DelLocViaMainPage extends TestBase {
 
     @Test
     @DisplayName("Add a location")
@@ -29,34 +28,33 @@ class DeleteAlocationViaPencil extends TestBase {
 
         step("Go to login page", ()-> {
 
-            open(DataParams.urlDev);
+            open("http://snoonu.com");
 
         });
 
         step("Fill the authorization form", ()-> {
 
-            $(byTestId("loginButton")).shouldBe(visible).click();
-            $(byName("phoneNumber")).sendKeys("21343286");
-            $(byTestId("loginContinue")).click();
-            $("input[name='pin']").shouldBe(appear).sendKeys(DataGenerator.otp);
+            Auth.fillFormOrders();
+
         });
 
         step("Confirm the last selected location", ()-> {
 
             $(byTestId("deleteConfirmYes")).click();
+
         });
 
         step("Go to location button on the main page", ()-> {
 //            Should add an Id for MAIN of location selection button
-            $(byXpath("/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[3]/div[1]/div[1]")).shouldBe(visible).click();
+            $(byTestId("locationSelector")).click();
 
 
         });
 
         step("Go to a pencil button on the first address", ()-> {
 
-//            Should add an Id for editing (pencil)  of main location selection button
-            $(byXpath("/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/span[1]/span[1]/img[1]")).shouldBe(visible).click();
+
+            $(byTestId("addressEdit")).click();
         });
 
         step("Go to delete button / Go to Confirm deleting", ()-> {

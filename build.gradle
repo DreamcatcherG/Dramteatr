@@ -24,18 +24,10 @@ repositories {
     mavenCentral()
 }
 
-allure {
-    version = "${allureVersion}"
-    autoconfigure = true
-    aspectjweaver = true
-    useJUnit5 {
-        version = "${allureVersion}"
-    }
-}
-
 dependencies {
     implementation 'junit:junit:4.13.1'
-    testImplementation (
+    testImplementation(
+            "io.github.bonigarcia:webdrivermanager:5.5.0",
             "org.aspectj:aspectjweaver:1.9.5",
             "com.codeborne:selenide:${selenideVersion}",
             "io.qameta.allure:allure-selenide:${allureVersion}",
@@ -44,7 +36,6 @@ dependencies {
             "com.fasterxml.jackson.core:jackson-annotations:2.10.3",
             "io.appium:java-client:7.3.0",
             "ch.qos.logback:logback-classic:1.2.3",
-            "io.qameta.allure:allure-junit-platform:2.22.2",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
@@ -77,9 +68,28 @@ test {
     useJUnitPlatform()
 }
 
+
 task web(type: Test) {
     useJUnitPlatform {
         includeTags 'web'
+    }
+    systemProperty 'platform', 'web'
+}
+task addlocal(type: Test) {
+    useJUnitPlatform {
+        includeTags 'addlocal'
+    }
+    systemProperty 'platform', 'web'
+}
+task delLocal(type: Test) {
+    useJUnitPlatform {
+        includeTags 'delLocal'
+    }
+    systemProperty 'platform', 'web'
+}
+task order(type: Test) {
+    useJUnitPlatform {
+        includeTags 'order'
     }
     systemProperty 'platform', 'web'
 }

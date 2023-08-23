@@ -19,9 +19,10 @@ import static snoonu.helpers.EnvironmentHelper.*;
 public class DriverHelper {
 
     public static void configureSelenide() {
-        addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+                addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
         if (isWeb) {
+            Configuration.browser = CustomWebDriver.class.getName();
             Configuration.browser = CustomWebDriver.class.getName();
             Configuration.baseUrl = webUrl;
             Configuration.startMaximized = true;
