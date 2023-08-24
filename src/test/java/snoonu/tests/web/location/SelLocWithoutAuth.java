@@ -24,7 +24,7 @@ public class SelLocWithoutAuth extends TestBase {
 
 
     @Test
-    void SelLocWithoutAuth() {
+    void selLocWithoutAuth() {
 
 
         step("Open Web Page", () -> {
@@ -86,7 +86,6 @@ public class SelLocWithoutAuth extends TestBase {
         step("Save the location", () -> {
 
             $(byTestId("saveAddress")).shouldBe(visible).click();
-            sleep(5000);
 
         });
 
