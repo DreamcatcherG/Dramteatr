@@ -11,9 +11,10 @@ import static snoonu.helpers.DriverHelper.byTestId;
 
 public class Auth {
 
-    public static void fillFormOrders() {
+    public static void fillFormOrders() {  // Auth.fillFormOrders();
+
         $(byTestId("loginButton")).shouldBe(visible).click();
-        $(byName("phoneNumber")).sendKeys("21343286");
+        $(byName("phoneNumber")).sendKeys("21343285");
         $(byTestId("loginContinue")).click();
         SelenideElement pinInput = $(byName("pin"));
 
@@ -30,7 +31,7 @@ public class Auth {
         }
     }
 
-    public static void fillFormOth() {
+    public static void fillFormOth() { //  Auth.fillFormOth();
         $(byTestId("loginButton")).shouldBe(visible).click();
         $(byName("phoneNumber")).sendKeys("21343285");
         $(byTestId("loginContinue")).click();

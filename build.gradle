@@ -86,13 +86,18 @@ tasks.withType(Test) {
 
 test {
     useJUnitPlatform()
-//    systemProperty "allure.results.directory", "${buildDir}/allure-results"
 }
 
 
 task web(type: Test) {
     useJUnitPlatform {
         includeTags 'web'
+    }
+    systemProperty 'platform', 'web'
+}
+task smoke(type: Test) {
+    useJUnitPlatform {
+        includeTags 'smoke'
     }
     systemProperty 'platform', 'web'
 }

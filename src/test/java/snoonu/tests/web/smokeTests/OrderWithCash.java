@@ -1,10 +1,12 @@
-package snoonu.tests.web.ordering;
+package snoonu.tests.web.smokeTests;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.*;
+import snoonu.utils_generate.awtRobot;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -14,17 +16,12 @@ import static snoonu.helpers.DriverHelper.byTestId;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
-@Tag("order")
-@Tag("Web")
-class MakeOrderCash extends TestBase {
+@Tag("smoke")
+class OrderWithCash extends TestBase {
 
 
     @Test
-    @AllureId("4345")
-    @DisplayName("Place an order with CASH (AutoTests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
-    void makeOrderCash() {
+       void orderWithCash() {
 
 
         step("Go to login page", () -> {

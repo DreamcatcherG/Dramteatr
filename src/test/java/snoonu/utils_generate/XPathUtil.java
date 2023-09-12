@@ -10,10 +10,20 @@ import static snoonu.helpers.DriverHelper.byTestId;
 public class XPathUtil {
 
 
-
     public static void checkBtnTxt() {
 //          Waiting the loading of Checkout button in the cart
         $(byXpath("//h5[text()='Checkout']")).shouldHave(text("Checkout"));
+
+    }
+
+public static void CredСardField() {
+//          Field for Credit cards in saved cards window
+        $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")).shouldHave(text("•••• 1111"));
+
+    }
+    public static void CredСardDelBut() {
+//          Delete button for Credit cards in saved cards window
+        $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
 
     }
 

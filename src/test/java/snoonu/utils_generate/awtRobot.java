@@ -9,20 +9,20 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class awtRobot {
 
-    public static void entOtp() {
+    public static void entOtp() { // awtRobot.entOtp();
 
-            // Найти элемент для ввода пин-кода
+
             SelenideElement pinInput = $(byName("pin"));
 
-// Текст пин-кода, который нужно ввести
+
             String pinCode = DataGenerator.otp;
 
-// Медленный ввод текста с задержкой в 100 миллисекунд между символами
+
             try {
                 Robot robot = new Robot();
                 for (char c : pinCode.toCharArray()) {
                     pinInput.sendKeys(Character.toString(c));
-                    robot.delay(100); // Задержка в 100 миллисекунд
+                    robot.delay(100);
                 }
             } catch (AWTException e) {
                 e.printStackTrace();

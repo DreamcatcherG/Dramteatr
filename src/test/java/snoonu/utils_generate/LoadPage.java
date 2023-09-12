@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.Wait;
 
 public class LoadPage {
 
-    public static void pageInit() {
+    public static void pageInit() { // LoadPage.pageInit();
 
         Wait().until(webDriver -> ((JavascriptExecutor) webDriver)
                 .executeScript("return document.readyState").equals("complete"));

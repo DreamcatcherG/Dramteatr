@@ -1,30 +1,26 @@
-package snoonu.tests.web.location;
+package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.*;
+import snoonu.utils_generate.Auth;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
-@Tag("web")
-@Tag("addLocal")
+@Tag("smoke")
 
-public class AddNewLoc extends TestBase {
+public class AddLocation extends TestBase {
 
     @Test
-    @AllureId("4267")
-    @DisplayName("Adding new address (Autotests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
     void addLocation() {
 
         step("Open Web Page", () -> {
