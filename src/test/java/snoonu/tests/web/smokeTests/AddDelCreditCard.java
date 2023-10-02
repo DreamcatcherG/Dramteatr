@@ -5,15 +5,14 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.DataParamsDev;
 import snoonu.utils_generate.LoadPage;
+import snoonu.utils_generate.XPathUtil;
 import snoonu.utils_generate.awtRobot;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -22,8 +21,7 @@ import static snoonu.helpers.DriverHelper.byTestId;
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
-
-class AddCreditCard extends TestBase {
+class AddDelCreditCard extends TestBase {
 
     @Test
     void addCreditCard() {
@@ -44,7 +42,7 @@ class AddCreditCard extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            $(byName("phoneNumber")).sendKeys("21343333");
+            $(byName("phoneNumber")).sendKeys("21343336");
 //            $(byName("phoneNumber")).sendKeys("21343230");
             LoadPage.pageInit();
             $(byTestId("loginContinue")).click();
@@ -70,22 +68,25 @@ class AddCreditCard extends TestBase {
             $(byTestId("savedCards")).shouldBe(appear).click();
             LoadPage.pageInit();
             $(byTestId("addNewCard")).click();
+//            $(byName("number")).setValue("4242 4242 4242 4242");
             $(byName("number")).setValue("4111 1111 1111 1111");
             $(byName("date")).setValue("0155");
             $(byName("code")).setValue("111");
             $(byTestId("saveCard")).click();
-            LoadPage.pageInit();
+            $(byTestId("saveCard")).should(disappear);
 
         });
 
-            step("Confirm adding", () -> {
+        step("Confirm adding", () -> {
 
+            switchTo().frame($(byId("challengeFrame")));
+            $("#acssubmit").click();
+            $("h2").shouldHave(text("Successfully Added Credit/Debit Card"));
+            switchTo().defaultContent();
+            $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click(); // Close btn on the 3ds page
+            XPathUtil.СardDelBut(); // Delete btn on the adding cards window
+            $(byTestId("yes")).shouldBe(visible).click();
 
-                $("#acssubmit").click();
-            sleep(9000);
-//            $(byText("Successfully Added Credit/Debit Card ")).shouldBe(appear);
-//            $(By.xpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
-//            sleep(9000);
 
         });
 
