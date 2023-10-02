@@ -1,4 +1,4 @@
-package snoonu.tests.web.smokeTests;
+package snoonu.tests.web;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,7 +20,7 @@ import static snoonu.helpers.DriverHelper.byTestId;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
-@Tag("smoke")
+@Tag("")
 
 class DelCreditCard extends TestBase {
 
@@ -67,8 +67,8 @@ class DelCreditCard extends TestBase {
 
             $(byTestId("savedCards")).click();
             LoadPage.pageInit();
-            XPathUtil.CredСardField();
-            XPathUtil.CredСardDelBut();
+            XPathUtil.PayСardField();
+            XPathUtil.СardDelBut();
             $(byTestId("yes")).shouldBe(appear).click();
             LoadPage.pageInit();
 
