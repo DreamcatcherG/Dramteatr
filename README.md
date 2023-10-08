@@ -92,10 +92,9 @@ gradle clean test
 
 
 
-
 ## <a name="RunInJenkins">Запуск в Jenkins</a>
 
-1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/TestDemoQA/">проект;</a>
+1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/Students/job/TestDemoQA/">проект;</a>
 
 Главная страница сборки:
 <p align="center">
