@@ -43,7 +43,7 @@ class DelCreditCard extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            $(byName("phoneNumber")).sendKeys("21343333");
+            $(byName("phoneNumber")).sendKeys("21343336");
 //            $(byName("phoneNumber")).sendKeys("21343230");
             $(byTestId("loginContinue")).click();
             LoadPage.pageInit();
