@@ -22,7 +22,7 @@ public class RandomUtils {
         return result.toString();
     }
 
-    public static String getRandomMessage(int min, int max) { // либо Int либо string
+    public static String RandomName(int min, int max) { // либо Int либо string
         String[] words = {"Tester", "QA", "tester", "Checking",
                 "red", "white", "Jane", "John", "Bobby",
                 "man", "woman", "fish", "elephant", "unicorn",

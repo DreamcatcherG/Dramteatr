@@ -2,17 +2,12 @@ package snoonu.utils_generate;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.awt.*;
-
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.helpers.DriverHelper.byTestId;
 
-public class awtRobot {
+public class AwtRobot {
 
     public static void entOtp() throws InterruptedException { // awtRobot.entOtp();
 
@@ -30,8 +25,8 @@ public class awtRobot {
             e.printStackTrace();
         }
 
-        Thread.sleep(3000);
-        if ($(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/p[1]")).exists()) { //Wrong code
+        Thread.sleep(2000);
+        if ($(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/p[1]")).exists()) { // Wrong code
 
             $(("#modal-root > div > div > div > div > span.Icon_icon__DoDXU.Modal_back__rc_xF > span > img")).click();
             $(byTestId("loginContinue")).click();
@@ -50,6 +45,22 @@ public class awtRobot {
             }
         } else {
             // Не выполнять шаг, если status равен false
+        }
+    }
+
+    public static void entLoc() throws InterruptedException { //awtRobot.entLoc();
+        SelenideElement addressInput = $(byName("address"));
+        String addressName = TextGenerator.getRandomLoc(16, 17);
+
+        try {
+            Robot robot = new Robot();
+            for (char c : addressName.toCharArray()) {
+                String character = Character.toString(c);
+                addressInput.sendKeys(character);
+                robot.delay(20);
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
         }
     }
 }

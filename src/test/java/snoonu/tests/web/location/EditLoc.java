@@ -20,13 +20,12 @@ import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")
-@Tag("delLoc")
-
-class DelLocViaAcMenu extends TestBase {
+@Tag("smoke")
+class EditLoc extends TestBase {
 
     @Test
-    @DisplayName("Delete a location via AcMenu")
-    void delLocViaAcMenu() {
+    @DisplayName("Edit a location")
+    void editLoc() {
 
         step("Go to login page", () -> {
 
@@ -54,13 +53,16 @@ class DelLocViaAcMenu extends TestBase {
 
         });
 
-        step("Confirm the last selected location", () -> {
+        step("No Confirm the last selected location if available", () -> {
 
             if ($(byTestId("deleteConfirmYes")).exists()) {
 
                 $(byTestId("deleteConfirmYes")).click();
 
             } else {
+
+                $(byTestId("locationSelector")).shouldBe(visible).click();
+                $(byTestId("deleteConfirmYes")).click();
 
             }
 
@@ -73,7 +75,7 @@ class DelLocViaAcMenu extends TestBase {
 
         step("Go to my addresses", () -> {
 
-            $(byTestId("myAddresses")).shouldBe(appear).click();
+            $(byTestId("myAddresses")).shouldBe(visible).click();
 
         });
 
@@ -108,27 +110,52 @@ class DelLocViaAcMenu extends TestBase {
 
                 }
 
-                $(byTestId("saveAddress")).shouldBe(visible).click();
-                $(byTestId("saveAddress")).shouldBe(disappear);
+                $(byTestId("saveAddress")).click();
+                $(byTestId("addNewAddress")).shouldBe(visible);
 
             } else {
-
-                $(byTestId("addNewAddress")).shouldBe(appear);
 
             }
 
         });
 
-        step("Go to delete button / Go to Confirm deleting", () -> {
+        step("Editing the location", () -> {
 
-            $(byTestId("addressEdit")).click();
-            $(byTestId("deleteAddress")).shouldBe(visible).click();
-            $(byTestId("deleteConfirmYes")).click();
-            $(byTestId("deleteConfirmYes")).shouldBe(disappear);
-            $(byTestId("addAddress")).shouldBe(visible);
+            $(byTestId("cardAddress")).hover();
+            $(byTestId("addressEdit")).shouldBe(appear).click();
+            $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+            AwtRobot.entLoc();
+            $(byTestId("addressPrediction")).shouldBe(appear).click();
+            sleep(1000);
+            $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+
+            String randomText = TextGenerator.getRandomFlatName(1, 10);
+            $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            $(byName("apartment")).setValue(randomText);
+            String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+            $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            $(byName("notes")).setValue(randomNotes);
+
+            String[] testIds = {"custom", "work", "home"};
+
+            $(byTestId(getRandomID(testIds))).click();
+
+            if ($(byName("customName")).exists()) {
+
+                $(byName("customName")).setValue(randomText);
+
+            } else {
+
+            }
 
         });
 
-    }
+        step("Saving the location", () -> {
 
+            $(byTestId("saveAddress")).shouldBe(visible).click();
+            $(byTestId("addNewAddress")).shouldBe(visible);
+
+        });
+    }
 }

@@ -1,17 +1,19 @@
 package snoonu.tests.web.location;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.*;
+
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -21,10 +23,6 @@ import static snoonu.helpers.DriverHelper.byTestId;
 public class AddNewLoc extends TestBase {
 
     @Test
-    @AllureId("4267")
-    @DisplayName("Adding new address (Autotests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
     void addLocation() {
 
         step("Open Web Page", () -> {
@@ -33,50 +31,84 @@ public class AddNewLoc extends TestBase {
 
         });
 
+        step("Select A Location", () -> {
+
+            $(byTestId("selectLocation")).click();
+            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+            $(byTestId("crossIcon")).shouldBe(visible).click();
+            AwtRobot.entLoc();
+            $(byTestId("addressPrediction")).shouldBe(visible);
+            $(byTestId("addressPrediction")).click();
+            sleep(1000);
+            $(byTestId("loginContinue")).shouldBe(visible).click();
+            LoadPage.pageInit();
+
+        });
+
         step("Fill the authorization form", () -> {
 
-            Auth.fillFormOth();
+            Auth.fillform285();
 
         });
 
-        step("No Confirm the last selected location", () -> {
+        step("No Confirm and add new location", () -> {
 
-            $(byTestId("deleteConfirmNo")).click();
+            if (!$(byTestId("deleteConfirmYes")).exists()) {
 
-        });
+                $(byTestId("locationSelector")).click();
 
-        step("Add a New Location", () -> {
+            } else {
 
-            $(byTestId("addNewAddress")).click();
+            }
+
+            $(byTestId("deleteConfirmNo")).shouldBe(visible).click();
+            if ($(byTestId("addNewAddress")).exists()) {
+
+                $(byTestId("addNewAddress")).click();
+
+            } else {
+
+            }
+
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-            $(byTestId("crossIcon")).click();
-            $(byName("address")).sendKeys("532M+GG, 532M+GG, Al Ruwais ");
-            $(byTestId("addressPrediction")).shouldHave(text("532M+GG Al Ruwais")).click();
-            $(byName("address")).shouldHave(value("532M+GG, 532M+GG, Al Ruwais"));
-
-        });
-
-        step("Confirm the location", () -> {
-
+            $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            AwtRobot.entLoc();
+            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+            $(byTestId("addressPrediction")).click();
+            sleep(1000);
             $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
 
         });
 
-        step("Fill in the address form", () -> {
 
-            $(byName("apartment")).sendKeys("Al Ruwais");
-            $(byTestId("home")).click();
-            $(byName("notes")).sendKeys("Here should be notes for Drivers");
+        step("Filling the address forms with random values", () -> {
+
+            String randomText = TextGenerator.getRandomFlatName(1, 10);
+            $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            $(byName("apartment")).setValue(randomText);
+            String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+            $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            $(byName("notes")).setValue(randomNotes);
+
+            String[] testIds = {"custom", "work", "home"};
+            $(byTestId(getRandomID(testIds))).click();
+
+            if ($(byName("customName")).exists()) {
+
+                $(byName("customName")).setValue(randomText);
+            } else {
+
+            }
 
         });
 
         step("Save the location", () -> {
 
             $(byTestId("saveAddress")).shouldBe(visible).click();
+            $(byTestId("saveAddress")).shouldBe(disappear);
 
         });
     }
-
 
 }
 

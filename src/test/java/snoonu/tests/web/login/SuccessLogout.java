@@ -1,16 +1,14 @@
 package snoonu.tests.web.login;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
-import snoonu.utils_generate.awtRobot;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
@@ -34,7 +32,7 @@ public class SuccessLogout extends TestBase {
         step("Pre-login", () -> {
 
             open("http://snoonu.com");
-            Auth.fillFormOth();
+            Auth.fillForm230();
 
         });
 
@@ -53,6 +51,7 @@ public class SuccessLogout extends TestBase {
         step("Confirm Logout", () -> {
 
             $(byTestId("yes")).click();
+            $(byTestId("yes")).shouldBe(disappear);
 
         });
 

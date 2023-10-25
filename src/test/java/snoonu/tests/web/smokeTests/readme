@@ -5,3 +5,85 @@
 4467 should think about message to email (should create an email
 Should add more cases from MVP 1 and from smoke test
 
+Numbers
++974 21343285
++974 21343286
++974 21343276
++974 21343272
++974 21343230
+
+Команда для наведения курсора
+$(byTestId("saveAddress")).hover();
+
+IDs:
+
+Add to cart button in a product card window
+<h5 class="Typography_h5__P3NMz">Add to Cart</h5>
+
+Loader in the  Checkout button in the cart
+<div class="Loader_loader__NJ7HG"></div>
+
+Checkout button in the cart should add IDs for Price and text checkout
+<h5 class="Typography_h5__P3NMz">1 QR</h5> (amount)
+<h5 class="Typography_h5__P3NMz">Checkout</h5> (text "checkout")
+
+Checkout page (Your order section) price for a product
+<h5 class="Typography_h5__P3NMz CartProduct_price___NDOo">1 QR</h5>
+
+In (Pay with) window on the checkout page:
+
+Product price
+<p class="Typography_p6__jQ8_g">1 QR</p>
+Delivery fee
+<p class="Typography_p6__jQ8_g">1 QR</p>
+Total
+Old price (with voucher)
+<p class="Typography_p8__gvA_C OrderInfo_oldPrice__ftTzd Typography_striked__IOy4_">2 QR</p>
+Current amount
+<h3 class="Typography_h3__odKq_">1 QR</h3>
+
+Field for saved Payment cards in saved cards window (via account menu -> Saved cards)
+<div class="CreditCard_info__qDDI_"><div class="CreditCard_numberWrapper__B_HsW"><span class="Icon_icon__DoDXU" style="width: 32px; height: 32px;"><span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img alt="icon" sizes="100vw" srcset="/_next/static/media/visa.df939ff4.svg 640w, /_next/static/media/visa.df939ff4.svg 750w, /_next/static/media/visa.df939ff4.svg 828w, /_next/static/media/visa.df939ff4.svg 1080w, /_next/static/media/visa.df939ff4.svg 1200w, /_next/static/media/visa.df939ff4.svg 1920w, /_next/static/media/visa.df939ff4.svg 2048w, /_next/static/media/visa.df939ff4.svg 3840w" src="/_next/static/media/visa.df939ff4.svg" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"></span></span><p class="Typography_p3__lZUUt CreditCard_number__T2lpU">•••• 1111</p></div></div>
+
+Cart number in saved cards window
+<p class="Typography_p3__lZUUt CreditCard_number__T2lpU">•••• 1111</p>
+
+Delete button for Payment cards in saved cards window (via account menu -> Saved cards)$(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
+<span class="Icon_icon__DoDXU CreditCard_deleteIcon___9fMA"><span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img alt="icon" src="/_next/static/media/trash_grey.17ba4fde.svg" decoding="async" data-nimg="fill" sizes="100vw" srcset="/_next/static/media/trash_grey.17ba4fde.svg 640w, /_next/static/media/trash_grey.17ba4fde.svg 750w, /_next/static/media/trash_grey.17ba4fde.svg 828w, /_next/static/media/trash_grey.17ba4fde.svg 1080w, /_next/static/media/trash_grey.17ba4fde.svg 1200w, /_next/static/media/trash_grey.17ba4fde.svg 1920w, /_next/static/media/trash_grey.17ba4fde.svg 2048w, /_next/static/media/trash_grey.17ba4fde.svg 3840w" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"><noscript></noscript></span></span>
+
+The Delete button for CONFIRMATION window of deleting account (second window for confirmation of delete account) (should separate them)
+<button class="Button_button__HT4Ll Button_primary__kyg8s Button_wide__CRJCU" data-analytic-label="deleteAccount" data-analytic-element-location="delete_account_popup"><span class="Button_content__s8Ehy">Delete account</span></button>
+
+Close btn on the 3ds page (if possible)
+<span class="Icon_icon__DoDXU Modal_cross__M5oAl"><span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img alt="icon" sizes="100vw" srcset="/_next/static/media/cross_modal.f7d09249.svg 640w, /_next/static/media/cross_modal.f7d09249.svg 750w, /_next/static/media/cross_modal.f7d09249.svg 828w, /_next/static/media/cross_modal.f7d09249.svg 1080w, /_next/static/media/cross_modal.f7d09249.svg 1200w, /_next/static/media/cross_modal.f7d09249.svg 1920w, /_next/static/media/cross_modal.f7d09249.svg 2048w, /_next/static/media/cross_modal.f7d09249.svg 3840w" src="/_next/static/media/cross_modal.f7d09249.svg" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"></span></span>
+
+Result of searching in the top of the search page
+<h1 class="Typography_h1__Vi_98 Title_title__wicWY">"аипапавпвапвап"</h1>
+
+Search button "Search" in the search field
+<button class="SearchButton_button__8GVDU SearchButton_active__fnocw">Search</button>
+
+"Write to us" button if the search empty
+<h5 class="Typography_h5__P3NMz">Write to us</h5>
+
+The text "Nothing has been found" (unavailable product via search on the search page)
+<h2 class="Typography_h2__9oI5M EmptyResult_title__cfJZp">Nothing has been found</h2>
+
+The text "Wrong OTP" code (if the user entered incorrect OTP)
+<p class="Typography_p9__COUu5 Input_errorText__qOpl3">Wrong code!</p>
+
+Close button (X) from saved location window
+<img alt="icon" src="/_next/static/media/cross_modal.f7d09249.svg" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;" sizes="100vw" srcset="/_next/static/media/cross_modal.f7d09249.svg 640w, /_next/static/media/cross_modal.f7d09249.svg 750w, /_next/static/media/cross_modal.f7d09249.svg 828w, /_next/static/media/cross_modal.f7d09249.svg 1080w, /_next/static/media/cross_modal.f7d09249.svg 1200w, /_next/static/media/cross_modal.f7d09249.svg 1920w, /_next/static/media/cross_modal.f7d09249.svg 2048w, /_next/static/media/cross_modal.f7d09249.svg 3840w" xpath="1">
+
+Arrow to down on the location button on the main page
+<span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;" xpath="1"><img alt="icon" sizes="100vw" srcset="/_next/static/media/down_chevron.392b5965.svg 640w, /_next/static/media/down_chevron.392b5965.svg 750w, /_next/static/media/down_chevron.392b5965.svg 828w, /_next/static/media/down_chevron.392b5965.svg 1080w, /_next/static/media/down_chevron.392b5965.svg 1200w, /_next/static/media/down_chevron.392b5965.svg 1920w, /_next/static/media/down_chevron.392b5965.svg 2048w, /_next/static/media/down_chevron.392b5965.svg 3840w" src="/_next/static/media/down_chevron.392b5965.svg" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"></span>
+
+For radio buttons in a product card (for ex. checkboxes have "checkboxAdditional" id, need same for radio buttons)
+<input id="1736477" class="Radio_radio__bqQw4" type="radio" name="Platform0" value="1736477" field_signature="3789900319" form_signature="18346294253902681785" visibility_annotation="true">
+
+Preview images in the product card (big imegу in product cards)
+<span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;" xpath="1"><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2764%27%20height=%2764%27/%3e" style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"></span>
+
+And preview of images
+<div class="ProductSlider_galleryImage__JqsVi ProductSlider_activeImage__V5FEf"><span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"><span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2764%27%20height=%2764%27/%3e" style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"></span><img srcset="/_next/image?url=https%3A%2F%2Fimages.snoonu.com%2Fimage_product%2F2023-08%2FqLeaNZk6H7.png%3Fformat%3Dwebp&amp;w=64&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fimages.snoonu.com%2Fimage_product%2F2023-08%2FqLeaNZk6H7.png%3Fformat%3Dwebp&amp;w=128&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fimages.snoonu.com%2Fimage_product%2F2023-08%2FqLeaNZk6H7.png%3Fformat%3Dwebp&amp;w=128&amp;q=75" decoding="async" data-nimg="intrinsic" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span></div>
+

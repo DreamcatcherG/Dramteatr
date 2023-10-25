@@ -1,4 +1,4 @@
-package snoonu.tests.web.location;
+package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -7,7 +7,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.*;
+import snoonu.utils_generate.Auth;
+import snoonu.utils_generate.AwtRobot;
+import snoonu.utils_generate.LoadPage;
+import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
@@ -22,11 +25,11 @@ import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 @Tag("web")
 @Tag("delLoc")
 
-class DelLocViaAcMenu extends TestBase {
+class DeleteLoc extends TestBase {
 
     @Test
     @DisplayName("Delete a location via AcMenu")
-    void delLocViaAcMenu() {
+    void deleteLoc() {
 
         step("Go to login page", () -> {
 

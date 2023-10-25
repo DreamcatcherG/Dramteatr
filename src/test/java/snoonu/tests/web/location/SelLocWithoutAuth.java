@@ -1,13 +1,12 @@
 package snoonu.tests.web.location;
 
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
+import snoonu.utils_generate.LoadPage;
+import snoonu.utils_generate.AwtRobot;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
@@ -37,55 +36,13 @@ public class SelLocWithoutAuth extends TestBase {
 
             $(byTestId("selectLocation")).click();
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-            $(byTestId("crossIcon")).click();
-            $(byName("address")).sendKeys("532M+GG, Al Ruwais ");
-            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-            $(byTestId("addressPrediction")).shouldHave(text("532M+GG Al Ruwais")).click();
-            $(byName("address")).shouldHave(value("532M+GG, 532M+GG, Al Ruwais"));
-            $(byTestId("crossIcon")).click();
-            $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
-
-        });
-
-        step("Fill the authorization form", () -> {
-
-            Auth.fillFormOth();
-
-        });
-
-        step("No Confirm the last selected location", () -> {
-
-            $(byTestId("deleteConfirmNo")).click();
-
-        });
-
-        step("Add a New Location", () -> {
-
-            $(byTestId("addNewAddress")).click();
-            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-            $(byTestId("crossIcon")).click();
-            $(byName("address")).sendKeys("57F3+C2 Khasooma");
-            $(byTestId("addressPrediction")).shouldHave(text("57F3+C2 Khasooma")).click();
-            $(byName("address")).shouldHave(value("57F3+C2, 57F3+C2, Khasooma"));
-
-        });
-
-        step("Confirm the location", () -> {
-
-            $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
-
-        });
-
-        step("Fill in the address form", () -> {
-
-            $(byName("apartment")).sendKeys("Office");
-            $(byTestId("work")).click();
-            $(byName("notes")).sendKeys("Here should be notes for Drivers");
-        });
-
-        step("Save the location", () -> {
-
-            $(byTestId("saveAddress")).shouldBe(visible).click();
+            $(byTestId("crossIcon")).shouldBe(visible).click();
+            AwtRobot.entLoc();
+            $(byTestId("addressPrediction")).shouldBe(visible);
+            $(byTestId("addressPrediction")).click();
+            sleep(1000);
+            $(byTestId("loginContinue")).shouldBe(visible).click();
+            $(byTestId("loginContinue")).shouldBe(disappear);
 
         });
 

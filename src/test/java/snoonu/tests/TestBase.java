@@ -1,5 +1,6 @@
 package snoonu.tests;
 
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
@@ -20,6 +21,8 @@ public class TestBase {
     @AfterEach
     public void addAttachments(){
         String sessionId = getSessionId();
+//        closeWebDriver();
+//        Selenide.closeWindow();
 
         attachScreenshot("Last screenshot");
         attachPageSource();

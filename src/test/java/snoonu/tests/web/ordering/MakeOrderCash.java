@@ -3,6 +3,7 @@ package snoonu.tests.web.ordering;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.*;
 
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -20,14 +22,9 @@ class MakeOrderCash extends TestBase {
 
 
     @Test
-    @AllureId("4345")
-    @DisplayName("Place an order with CASH (AutoTests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
     void makeOrderCash() {
 
-
-        step("Go to login page", () -> {
+        step("Go to the web page", () -> {
 
             open("http://snoonu.com");
 
@@ -37,12 +34,13 @@ class MakeOrderCash extends TestBase {
 
             $(byTestId("selectLocation")).click();
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-            $(byTestId("crossIcon")).click();
-            $(byName("address")).sendKeys("57F3+C2, Khasooma ");
-            $(byTestId("addressPrediction")).shouldHave(text("57F3+C2 Khasooma")).click();
-            $(byName("address")).shouldHave(value("57F3+C2, 57F3+C2, Khasooma"));
-            $(byTestId("crossIcon")).click();
-            $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+            $(byTestId("crossIcon")).shouldBe(visible).click();
+            $(byName("address")).sendKeys("532M+GG Al Ruwais");
+            $(byTestId("addressPrediction")).shouldBe(visible);
+            $(byTestId("addressPrediction")).click();
+            sleep(1000);
+            $(byTestId("loginContinue")).shouldBe(visible).click();
+            $(byTestId("loginContinue")).shouldBe(disappear);
 
         });
 
@@ -59,10 +57,12 @@ class MakeOrderCash extends TestBase {
             $(byText("FeaturePhone")).shouldBe(appear);
             ElementsCollection elements = $$(byTestId("productButtonAdd"));
             elements.get(1).click();
-            $(byId("1736477")).click();
-            $(byId("1736479")).click();
-            $(byId("1736481")).click();
-            $(byId("1736483")).click();
+
+            $$(byName("Battery1")).get(1).click();
+            $$(byName("Platform0")).get(1).click();
+            $$(byTestId("checkboxAdditional")).get(0).click();
+            $$(byTestId("checkboxAdditional")).get(1).click();
+            $$(byTestId("checkboxAdditional")).get(3).click();
 
         });
 
@@ -73,25 +73,66 @@ class MakeOrderCash extends TestBase {
             $(byTestId("plus")).shouldBe(appear).click();
             $(byTestId("minus")).shouldBe(appear).click();
             $(byText("Add to Cart")).click();   // Need add ID
+
         });
 
         step("Go to Checkout / Fill auth Form", () -> {
 
             $(byTestId("sw_checkout_button_pressed")).shouldBe(visible).click();
-            $(byName("phoneNumber")).sendKeys("21343286");
-            $(byTestId("loginContinue")).click();
-            $(byName("pin")).click();
-            awtRobot.entOtp();
+
+        });
+
+        step("Go to Checkout / Fill auth Form", () -> {
+
+            Auth.fillForm286();
 
         });
 
         step("Confirm saved location / Go to Checkout ", () -> {
 
-            $(byTestId("deleteConfirmYes")).shouldBe(visible).click();
+            if ($(byTestId("deleteConfirmYes")).exists()) {
+
+                $(byTestId("deleteConfirmNo")).click();
+                $(byTestId("cardAddress")).hover();
+                $(byTestId("addressEdit")).shouldBe(appear).click();
+                $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+                AwtRobot.entLoc();
+                $(byTestId("addressPrediction")).shouldBe(appear).click();
+                sleep(1000);
+                $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+
+                String randomText = TextGenerator.getRandomFlatName(1, 10);
+                $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                $(byName("apartment")).setValue(randomText);
+                String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+                $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                $(byName("notes")).setValue(randomNotes);
+
+                String[] testIds = {"custom", "work", "home"};
+
+                $(byTestId(getRandomID(testIds))).click();
+
+                if ($(byName("customName")).exists()) {
+
+                    $(byName("customName")).setValue(randomText);
+
+                } else {
+
+                }
+
+                $(byTestId("saveAddress")).shouldBe(visible).click();
+                $(byTestId("saveAddress")).shouldBe(disappear);
+                $(byTestId("locationSelector")).shouldBe(visible);
+                $(byTestId("sw_checkout_button_pressed")).shouldBe(visible).click();
+
+            } else {
+
+            }
+
             $(byTestId("sw_checkout_button_pressed")).shouldBe(visible).click();
 
         });
-
 
         step("Select PayMethod", () -> {
 
@@ -107,7 +148,7 @@ class MakeOrderCash extends TestBase {
 
         });
 
-        step("Order cancellation", ()-> {
+        step("Order cancellation", () -> {
 
             $(byTestId("cancelOrderButton")).click();
             $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
@@ -117,10 +158,12 @@ class MakeOrderCash extends TestBase {
             elements.get(3).shouldBe(visible).click();
             $(byTestId("cancelOrderDone")).click();
             $(byTestId("feedbackConfirm")).shouldBe(visible).click();
+            $(byTestId("userPreview")).shouldBe(visible);
 
         });
 
     }
+
 }
 
 

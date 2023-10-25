@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.awtRobot;
+import snoonu.utils_generate.Auth;
+import snoonu.utils_generate.AwtRobot;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
@@ -22,36 +23,23 @@ import static snoonu.helpers.DriverHelper.byTestId;
 class SuccessLogin extends TestBase {
 
     @Test
-    @AllureId("4240")
-    @DisplayName("Login functionality(AutoTests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
+    void successLogin() {
 
-    void successfullyLogin() {
-
-        step("Go to login page", () -> {
+        step("Go to the web page", () -> {
 
             open("http://snoonu.com");
 
         });
 
-        step("Click on the Login button", () -> {
+        step("Authorisation", () -> {
 
-            $(byTestId("loginButton")).shouldBe(visible).click();
-
-        });
-
-        step("Enter (phone number, otp (current date)", () -> {
-
-            $(byName("phoneNumber")).sendKeys("21343286");
-            $(byTestId("loginContinue")).click();
+            Auth.fillForm230();
 
         });
 
-        step("Enter OTP (Actual date)", () -> {
+        step("Assert: Log in is successful", () -> {
 
-            $(byName("pin")).click();
-            awtRobot.entOtp();
+            $(byTestId("userPreview")).shouldBe(visible);
 
         });
 

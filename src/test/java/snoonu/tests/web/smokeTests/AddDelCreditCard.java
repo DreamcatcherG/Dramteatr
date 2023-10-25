@@ -1,16 +1,12 @@
 package snoonu.tests.web.smokeTests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.DataParamsDev;
-import snoonu.utils_generate.LoadPage;
-import snoonu.utils_generate.XPathUtil;
-import snoonu.utils_generate.awtRobot;
+import snoonu.utils_generate.*;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -31,7 +27,6 @@ class AddDelCreditCard extends TestBase {
             open(DataParamsDev.urlDev);
 //            open("http://snoonu.com");
 
-
         });
 
         step("Click on the Login button", () -> {
@@ -42,18 +37,7 @@ class AddDelCreditCard extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            $(byName("phoneNumber")).sendKeys("21343336");
-//            $(byName("phoneNumber")).sendKeys("21343230");
-            LoadPage.pageInit();
-            $(byTestId("loginContinue")).click();
-
-        });
-
-        step("Enter OTP (Actual date)", () -> {
-
-            $(byName("pin")).click();
-            LoadPage.pageInit();
-            awtRobot.entOtp();
+            Auth.fillForm336();
 
         });
 
@@ -66,12 +50,27 @@ class AddDelCreditCard extends TestBase {
         step("Open saved card window and adding a credit card", () -> {
 
             $(byTestId("savedCards")).shouldBe(appear).click();
-            LoadPage.pageInit();
+            $(byTestId("addNewCard")).shouldBe(visible);
+
+//            $(byCssSelector("Typography_p3__lZUUt CreditCard_number__T2lpU")).text();
+            if ($(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]"))
+                    .should(Condition.exist)
+                    .shouldHave(text("•••• 1111"))
+                    .exists()) {
+
+                XPathUtil.СardDelBut();
+                $(byTestId("yes")).shouldBe(appear).click();
+                $(byTestId("yes")).shouldBe(disappear);
+
+            } else {
+
+            }
+
             $(byTestId("addNewCard")).click();
 //            $(byName("number")).setValue("4242 4242 4242 4242");
             $(byName("number")).setValue("4111 1111 1111 1111");
-            $(byName("date")).setValue("0155");
-            $(byName("code")).setValue("111");
+            $(byName("date")).setValue(TextGenerator.getRandomCardData(4, 4));
+            $(byName("code")).setValue(TextGenerator.getRandomCardCvv(3, 3));
             $(byTestId("saveCard")).click();
             $(byTestId("saveCard")).should(disappear);
 
@@ -84,8 +83,6 @@ class AddDelCreditCard extends TestBase {
             $("h2").shouldHave(text("Successfully Added Credit/Debit Card"));
             switchTo().defaultContent();
             XPathUtil.Close3DS();
-            XPathUtil.СardDelBut();
-            $(byTestId("yes")).shouldBe(visible).click();
             $(byTestId("addNewCard")).shouldBe(appear);
 
         });

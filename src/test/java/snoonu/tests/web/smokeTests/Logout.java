@@ -1,5 +1,6 @@
 package snoonu.tests.web.smokeTests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -24,7 +25,7 @@ public class Logout extends TestBase {
         step("Pre-login", () -> {
 
             open("http://snoonu.com");
-            Auth.fillFormOth();
+            Auth.fillform285();
 
         });
 
@@ -43,9 +44,11 @@ public class Logout extends TestBase {
         step("Confirm Logout", () -> {
 
             $(byTestId("yes")).click();
+            $(byTestId("loginButton")).shouldBe(Condition.visible);
 
         });
 
     }
+
 }
 
