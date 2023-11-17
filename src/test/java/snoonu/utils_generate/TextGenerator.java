@@ -91,6 +91,14 @@ public class TextGenerator {
 
     }
 
+    public static String getKhasooma(int min, int max) {
+
+        String[] locations = {"57F2+FW Khasooma" };
+        int randomIndex = getRandomInt(0, locations.length - 1);
+        return locations[randomIndex];
+
+    }
+
     public static String getRandomCardData(int min, int max) {
 
         String[] locations = {"0150","1030","0928","0742","0526","1133","1228","0350","0288","0631","0150"};

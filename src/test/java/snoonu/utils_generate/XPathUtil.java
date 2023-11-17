@@ -33,25 +33,25 @@ public class XPathUtil {
     }
 
     public static void CloseLocWin() {
-//          Close btn on the 3ds page
+//          Close btn on the window of locations
         $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
 
     }
 
     public static void ArrLoc() {
-//          Close btn on the 3ds page
+//          Arrow for the locations element on the main page
         $(byXpath("/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[3]/div[1]/div[1]/span[2]/span[1]")).shouldBe(appear);
 
     }
 
     public static void ProdImage() {
-//          Close btn on the 3ds page
+//          Product image in the product card
         $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/img[1]")).shouldBe(appear);
 
     }
 
     public static void ConfirmRDel() {
-//          Close btn on the 3ds page
+//          Confirmation for delete account
         $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/button[1]")).click();
 
 

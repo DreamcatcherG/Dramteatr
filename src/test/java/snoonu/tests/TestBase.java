@@ -14,8 +14,7 @@ import static snoonu.helpers.EnvironmentHelper.*;
 public class TestBase {
 
     @BeforeAll
-    public static void beforeAll() {
-        configureSelenide();
+    public static void beforeAll() {configureSelenide();
     }
 
     @AfterEach

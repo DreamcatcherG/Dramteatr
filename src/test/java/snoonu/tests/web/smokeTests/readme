@@ -15,6 +15,14 @@ Numbers
 Команда для наведения курсора
 $(byTestId("saveAddress")).hover();
 
+Условие if / else
+
+ if ($(by(" ")).exists()) {
+
+            } else {
+
+            }
+
 IDs:
 
 Add to cart button in a product card window

@@ -1,22 +1,25 @@
 package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
-import snoonu.utils_generate.AwtRobot;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
+@Order(1)
+
 class Login extends TestBase {
 
     @Test
@@ -41,4 +44,5 @@ class Login extends TestBase {
         });
 
     }
+
 }

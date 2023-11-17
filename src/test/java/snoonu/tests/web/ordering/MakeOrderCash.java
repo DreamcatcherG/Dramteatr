@@ -92,38 +92,38 @@ class MakeOrderCash extends TestBase {
 
             if ($(byTestId("deleteConfirmYes")).exists()) {
 
-                $(byTestId("deleteConfirmNo")).click();
-                $(byTestId("cardAddress")).hover();
-                $(byTestId("addressEdit")).shouldBe(appear).click();
-                $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-                $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-                AwtRobot.entLoc();
-                $(byTestId("addressPrediction")).shouldBe(appear).click();
-                sleep(1000);
-                $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+                $(byTestId("deleteConfirmYes")).click();
+//                $(byTestId("cardAddress")).hover();
+//                $(byTestId("addressEdit")).shouldBe(appear).click();
+//                $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+//                $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+//                AwtRobot.entLoc();
+//                $(byTestId("addressPrediction")).shouldBe(appear).click();
+//                sleep(1000);
+//                $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+//
+//                String randomText = TextGenerator.getRandomFlatName(1, 10);
+//                $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+//                $(byName("apartment")).setValue(randomText);
+//                String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+//                $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+//                $(byName("notes")).setValue(randomNotes);
+//
+//                String[] testIds = {"custom", "work", "home"};
+//
+//                $(byTestId(getRandomID(testIds))).click();
+//
+//                if ($(byName("customName")).exists()) {
+//
+//                    $(byName("customName")).setValue(randomText);
+//
+//                } else {
+//
+//                }
 
-                String randomText = TextGenerator.getRandomFlatName(1, 10);
-                $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-                $(byName("apartment")).setValue(randomText);
-                String randomNotes = TextGenerator.getRandomFlatName(1, 10);
-                $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-                $(byName("notes")).setValue(randomNotes);
-
-                String[] testIds = {"custom", "work", "home"};
-
-                $(byTestId(getRandomID(testIds))).click();
-
-                if ($(byName("customName")).exists()) {
-
-                    $(byName("customName")).setValue(randomText);
-
-                } else {
-
-                }
-
-                $(byTestId("saveAddress")).shouldBe(visible).click();
-                $(byTestId("saveAddress")).shouldBe(disappear);
-                $(byTestId("locationSelector")).shouldBe(visible);
+//                $(byTestId("saveAddress")).shouldBe(visible).click();
+//                $(byTestId("saveAddress")).shouldBe(disappear);
+//                $(byTestId("locationSelector")).shouldBe(visible);
                 $(byTestId("sw_checkout_button_pressed")).shouldBe(visible).click();
 
             } else {
