@@ -44,7 +44,7 @@ class AddDelCreditCard extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            Auth.fillForm336();
+            Auth.fillForm333();
 
         });
 

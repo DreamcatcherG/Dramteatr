@@ -43,7 +43,7 @@ class OrderWithCash extends TestBase {
             $(byTestId("selectLocation")).click();
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
             $(byTestId("crossIcon")).shouldBe(visible).click();
-            AwtRobot.entLoc();
+            AwtRobot.LocKhasooma();
             $(byTestId("addressPrediction")).shouldBe(visible);
             $(byTestId("addressPrediction")).click();
             sleep(1000);
@@ -106,7 +106,7 @@ class OrderWithCash extends TestBase {
                 $(byTestId("addressEdit")).shouldBe(appear).click();
                 $(byName("address")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
                 $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-                AwtRobot.entLoc();
+                AwtRobot.LocKhasooma();
                 $(byTestId("addressPrediction")).shouldBe(appear).click();
                 sleep(1000);
                 $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();

@@ -38,12 +38,13 @@ public class DelAcWithOngOrd extends TestBase {
         step("Fill auth Form", () -> {
 
             Auth.fillForm286();
-
+//            $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
+            sleep(1000);
         });
 
         step("Assert User has an ongoing order", () -> {
 
-            if ($(byTestId("orderTrackingWidget")).exists()) {
+            if ($(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).exists()) {
 
                 step("Open account modal window", () -> {
 
@@ -64,12 +65,13 @@ public class DelAcWithOngOrd extends TestBase {
 
                     $(byTestId("ok")).shouldBe(visible).click();
                     $(byTestId("userPreview")).shouldBe(visible);
-                    $(byTestId("orderTrackingWidget")).shouldBe(visible);
+//                    $(byTestId("orderTrackingWidget")).shouldBe(visible);
+                    $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).shouldBe(visible);
 
                 });
 
             } else {
-                sleep(2000);
+
                 if ($(byTestId("selectLocation")).exists()) {
 
                     $(byTestId("selectLocation")).shouldBe(visible).click();
@@ -234,8 +236,9 @@ public class DelAcWithOngOrd extends TestBase {
                 step("Assert the user has an ongoing order", () -> {
 
                     $(byTestId("userPreview")).shouldBe(visible);
-                    $(byTestId("orderTrackingWidget")).shouldBe(visible);
-
+//                    $(byTestId("orderTrackingWidget")).wait(1000);
+//                    $(byTestId("orderTrackingWidget")).shouldBe(visible);
+                    $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
                 });
             }
 

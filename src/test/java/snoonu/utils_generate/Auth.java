@@ -1,6 +1,5 @@
 package snoonu.utils_generate;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
@@ -129,13 +128,13 @@ public class Auth {
 
     }
 
-    public static void fillForm336() {  // Auth.fillForm336();
+    public static void fillForm333() {  // Auth.fillForm336();
 
-        step("Login with 336", () -> {
+        step("Login with 333", () -> {
 
             if ($(byName("phoneNumber")).exists()) {
 
-                $(byName("phoneNumber")).sendKeys("21343336");
+                $(byName("phoneNumber")).sendKeys("21343333");
                 $(byTestId("loginContinue")).click();
                 AwtRobot.entOtp();
 
@@ -143,7 +142,7 @@ public class Auth {
 
                 $(byTestId("loginButton")).click();
                 $(byName("phoneNumber")).click();
-                $(byName("phoneNumber")).sendKeys("21343336");
+                $(byName("phoneNumber")).sendKeys("21343333");
                 $(byTestId("loginContinue")).click();
                 AwtRobot.entOtp();
 
