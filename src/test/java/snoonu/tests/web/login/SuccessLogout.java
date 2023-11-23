@@ -5,6 +5,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
 
@@ -17,16 +18,13 @@ import static snoonu.helpers.DriverHelper.byTestId;
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")
-@Tag("login")
+@Tag("signIn")
+
 
 public class SuccessLogout extends TestBase {
 
     @Test
-    @AllureId("4242")
-    @DisplayName("Logout functionality(AutoTests)")
-    @Epic("SNW-389 AutoTests")
-    @Owner("mikhail")
-
+    @Order(1)
     void successfullyLogout() {
 
         step("Pre-login", () -> {

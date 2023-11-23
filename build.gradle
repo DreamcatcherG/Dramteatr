@@ -86,9 +86,11 @@ tasks.withType(Test) {
 }
 
 test {
-    useJUnitPlatform()
-}
+    useJUnitPlatform {
+        systemProperty 'junit.jupiter.execution.order.default', 'OrderAnnotation'
+    }
 
+}
 
 task web(type: Test) {
     useJUnitPlatform {
@@ -96,51 +98,64 @@ task web(type: Test) {
     }
     systemProperty 'platform', 'web'
 }
+
+task signIn(type: Test) {
+    useJUnitPlatform {
+        includeTags 'signIn'
+        systemProperty 'junit.jupiter.execution.order.default', 'OrderAnnotation'
+
+    }
+//    systemProperty 'platform', 'web'
+}
+
 task smoke(type: Test) {
     useJUnitPlatform {
         includeTags 'smoke'
     }
     systemProperty 'platform', 'web'
 }
-task addlocal(type: Test) {
-    useJUnitPlatform {
-        includeTags 'addlocal'
-    }
-    systemProperty 'platform', 'web'
-}
-task delLoc(type: Test) {
-    useJUnitPlatform {
-        includeTags 'delLoc'
-    }
-    systemProperty 'platform', 'web'
-}
-task order(type: Test) {
-    useJUnitPlatform {
-        includeTags 'order'
-    }
-    systemProperty 'platform', 'web'
-}
 
-task prod(type: Test) {
-    useJUnitPlatform {
-        includeTags 'prod'
-    }
-    systemProperty 'env', 'prod'
-}
+//task addlocal(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'addlocal'
+//    }
+//    systemProperty 'platform', 'web'
+//}
+//
+//task delLoc(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'delLoc'
+//    }
+//    systemProperty 'platform', 'web'
+//}
+//
+//task order(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'order'
+//    }
+//    systemProperty 'platform', 'web'
+//}
 
-task android(type: Test) {
-    useJUnitPlatform {
-        includeTags 'android'
-    }
-    systemProperty 'platform', 'android'
-}
-
-task ios(type: Test) {
-    useJUnitPlatform {
-        includeTags 'ios'
-    }
-    systemProperty 'platform', 'ios'
-}
+//task prod(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'prod'
+//    }
+//    systemProperty 'env', 'prod'
+//}
+//
+//task android(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'android'
+//    }
+//    systemProperty 'platform', 'android'
+//}
+//
+//task ios(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'ios'
+//    }
+//    systemProperty 'platform', 'ios'
+//}
 
 help {
     doFirst {

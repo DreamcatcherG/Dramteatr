@@ -1,14 +1,14 @@
 package snoonu.tests.web.smokeTests;
 
 import com.codeborne.selenide.ElementsCollection;
-import io.qameta.allure.*;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.Keys;
 import org.springframework.core.annotation.Order;
-import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
 import snoonu.utils_generate.AwtRobot;
@@ -22,17 +22,21 @@ import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Order(7)
+@Order(8)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
-class OrderWithCash extends TestBase {
+class OrderHistoryPage extends TestBase {
 
 
     @Test
-       void orderCash() {
+       void orderWithCash() {
+
+
 
         step("Go to the web page", () -> {
+
+
 
             open("http://snoonu.com");
 
@@ -43,7 +47,7 @@ class OrderWithCash extends TestBase {
             $(byTestId("selectLocation")).click();
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
             $(byTestId("crossIcon")).shouldBe(visible).click();
-            AwtRobot.entLoc();
+            $(byName("address")).sendKeys("532M+GG Al Ruwais");
             $(byTestId("addressPrediction")).shouldBe(visible);
             $(byTestId("addressPrediction")).click();
             sleep(1000);
@@ -60,7 +64,7 @@ class OrderWithCash extends TestBase {
 
         });
 
-        step("Open product card / choose addons", () -> {
+        step("Open product card / choose additional", () -> {
 
             $(byText("FeaturePhone")).shouldBe(appear);
             ElementsCollection elements = $$(byTestId("productButtonAdd"));
@@ -71,7 +75,6 @@ class OrderWithCash extends TestBase {
             $$(byTestId("checkboxAdditional")).get(0).click();
             $$(byTestId("checkboxAdditional")).get(1).click();
             $$(byTestId("checkboxAdditional")).get(3).click();
-
 
         });
 
@@ -154,20 +157,16 @@ class OrderWithCash extends TestBase {
         step("Complete Checkout", () -> {
 
             $(byTestId("placeOrder")).click();
+            $(byTestId("trackOrderLink")).shouldBe(appear);
+
 
         });
 
-        step("Order cancellation", () -> {
+        step("Go to order History page and Assert", () -> {
 
-            $(byTestId("cancelOrderButton")).click();
-            $(byTestId("cancelOrderConfirm")).shouldBe(appear).click();
-            ElementsCollection elements = $$(byTestId("checkboxCancellationReason"));
-            elements.get(0).shouldBe(visible).click();
-            elements.get(1).shouldBe(visible).click();
-            elements.get(3).shouldBe(visible).click();
-            $(byTestId("cancelOrderDone")).click();
-            $(byTestId("feedbackConfirm")).shouldBe(visible).click();
-            $(byTestId("userPreview")).shouldBe(visible);
+            $(byTestId("trackOrder")).click();
+            $(byClassName("OrderHistoryContainer_wrapper__zRHoa")).shouldBe(appear);
+            $(byClassName("Status_wrapper__zDtch")).shouldBe(visible);
 
         });
 

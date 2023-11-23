@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class XPathUtil {
+public class Xpath {
 
 
     public static void checkBtnTxt() {
@@ -20,11 +20,6 @@ public class XPathUtil {
 
     }
 
-    public static void СardDelBut() {
-//          Delete button for Credit cards in saved cards window
-        $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
-
-    }
 
     public static void Close3DS() {
 //          Close btn on the 3ds page
@@ -50,12 +45,6 @@ public class XPathUtil {
 
     }
 
-    public static void ConfirmRDel() {
-//          Confirmation for delete account
-        $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/button[1]")).click();
-
-
-    }
 }
 // $(byClassName("SearchButton_button__8GVDU")).click();  Search button -
 //        Wrong code message

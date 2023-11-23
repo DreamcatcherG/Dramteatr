@@ -9,7 +9,7 @@ import static snoonu.helpers.BrowserstackHelper.getBSPublicLink;
 import static snoonu.helpers.DriverHelper.*;
 import static snoonu.helpers.EnvironmentHelper.*;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class TestBase {
 
@@ -20,7 +20,7 @@ public class TestBase {
     @AfterEach
     public void addAttachments(){
         String sessionId = getSessionId();
-//        closeWebDriver();
+        closeWebDriver();
 //        Selenide.closeWindow();
 
         attachScreenshot("Last screenshot");

@@ -4,10 +4,11 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
 import snoonu.utils_generate.TextGenerator;
-import snoonu.utils_generate.XPathUtil;
+import snoonu.utils_generate.Xpath;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -53,8 +54,8 @@ public class DelSignupAcc extends TestBase {
 
             $(byTestId("deleteAccount")).click();
             $(byCssSelector("h3.Typography_h3__odKq_.Modal_title__phnDp")).shouldHave(text("Are you sure you want to delete your account?"));
-//            $(byTestId("deleteAccount")).click();
-            XPathUtil.ConfirmRDel();
+            $(Css.byId("delete-account-modal-confirm")).click();
+
         });
 
         step("Create an Account / Authorisation", () -> {

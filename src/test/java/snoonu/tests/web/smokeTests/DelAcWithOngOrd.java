@@ -6,6 +6,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.*;
 
@@ -23,10 +24,10 @@ import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 @Story("Login tests. Web")
 @Tag("smoke")
 
-public class DelAcwithOngOrd extends TestBase {
+public class DelAcWithOngOrd extends TestBase {
 
     @Test
-    void delAcwithOngOrd() {
+    void deleteAccountWithOngoingOrder() {
 
         step("Go to the web page", () -> {
 
@@ -55,7 +56,7 @@ public class DelAcwithOngOrd extends TestBase {
 
                     $(byTestId("deleteAccount")).click();
                     $(byCssSelector("h3.Typography_h3__odKq_.Modal_title__phnDp")).shouldHave(text("Are you sure you want to delete your account?"));
-                    XPathUtil.ConfirmRDel();
+                    $(Css.byId("delete-account-modal-confirm")).click();
 
                 });
 
@@ -68,61 +69,102 @@ public class DelAcwithOngOrd extends TestBase {
                 });
 
             } else {
+                sleep(2000);
+                if ($(byTestId("selectLocation")).exists()) {
 
-                step("No Confirm location", () -> {
+                    $(byTestId("selectLocation")).shouldBe(visible).click();
 
-                    if ($(byTestId("deleteConfirmNo")).exists()) {
+                    step("Add a test Location", () -> {
 
-                        $(byTestId("deleteConfirmNo")).click();
+                        $(byTestId("crossIcon")).shouldBe(visible).click();
+                        $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+                        AwtRobot.LocKhasooma();
+                        $(byTestId("addressPrediction")).shouldBe(appear).click();
+                        sleep(1000);
+                        $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
 
-                        step("Add a test Location", () -> {
+                    });
 
-                            $(byTestId("addNewAddress")).click();
-                            $(byTestId("crossIcon")).shouldBe(visible).click();
-                            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-                            AwtRobot.LocKhasooma();
-                            $(byTestId("addressPrediction")).shouldBe(appear).click();
-                            sleep(1000);
-                            $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+                    step("Fill the location data", () -> {
 
-                        });
+                        String randomText = TextGenerator.getRandomFlatName(1, 10);
+                        $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                        $(byName("apartment")).setValue(randomText);
+                        String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+                        $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                        $(byName("notes")).setValue(randomNotes);
 
-                        step("Fill the location data", () -> {
+                        String[] testIds = {"custom", "work", "home"};
 
-                            String randomText = TextGenerator.getRandomFlatName(1, 10);
-                            $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-                            $(byName("apartment")).setValue(randomText);
-                            String randomNotes = TextGenerator.getRandomFlatName(1, 10);
-                            $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-                            $(byName("notes")).setValue(randomNotes);
+                        $(byTestId(getRandomID(testIds))).click();
 
-                            String[] testIds = {"custom", "work", "home"};
+                        if ($(byName("customName")).exists()) {
 
-                            $(byTestId(getRandomID(testIds))).click();
-
-                            if ($(byName("customName")).exists()) {
-
-                                $(byName("customName")).setValue(randomText);
+                            $(byName("customName")).setValue(randomText);
 
 
-                            } else {
-                            }
+                        } else {
 
-                        });
+                        }
 
-                        step("Saved the location", () -> {
+                    });
 
-                            $(byTestId("saveAddress")).shouldBe(visible).click();
-                            $(byTestId("saveAddress")).shouldBe(disappear);
-                            $(byTestId("locationSelector")).shouldBe(visible);
+                    step("Saved the location", () -> {
 
-                        });
+                        $(byTestId("saveAddress")).shouldBe(visible).click();
+                        $(byTestId("saveAddress")).shouldBe(disappear);
+                        $(byTestId("locationSelector")).shouldBe(visible);
+
+                    });
 
 
-                    } else {
-                    }
+                } else {
 
-                });
+                    $(byTestId("deleteConfirmNo")).click();
+
+                    step("Add a test Location", () -> {
+
+                        $(byTestId("addNewAddress")).click();
+                        $(byTestId("crossIcon")).shouldBe(visible).click();
+                        $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
+                        AwtRobot.LocKhasooma();
+                        $(byTestId("addressPrediction")).shouldBe(appear).click();
+                        sleep(1000);
+                        $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();
+
+                    });
+
+                    step("Fill the location data", () -> {
+
+                        String randomText = TextGenerator.getRandomFlatName(1, 10);
+                        $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                        $(byName("apartment")).setValue(randomText);
+                        String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+                        $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                        $(byName("notes")).setValue(randomNotes);
+
+                        String[] testIds = {"custom", "work", "home"};
+
+                        $(byTestId(getRandomID(testIds))).click();
+
+                        if ($(byName("customName")).exists()) {
+
+                            $(byName("customName")).setValue(randomText);
+
+
+                        } else {
+                        }
+
+                    });
+
+                    step("Saved the location", () -> {
+
+                        $(byTestId("saveAddress")).shouldBe(visible).click();
+                        $(byTestId("saveAddress")).shouldBe(disappear);
+                        $(byTestId("locationSelector")).shouldBe(visible);
+
+                    });
+                }
 
                 step("Make an order with Test Electronic Brand", () -> {
 
@@ -184,21 +226,17 @@ public class DelAcwithOngOrd extends TestBase {
 
                     $(byTestId("deleteAccount")).click();
                     $(byCssSelector("h3.Typography_h3__odKq_.Modal_title__phnDp")).shouldHave(text("Are you sure you want to delete your account?"));
-                    XPathUtil.ConfirmRDel();
+                    $(Css.byId("delete-account-modal-confirm")).click();
+                    $(byTestId("ok")).click();
 
                 });
 
                 step("Assert the user has an ongoing order", () -> {
 
-                    $(byTestId("deleteAccount")).click();
-                    $(byCssSelector("h3.Typography_h3__odKq_.Modal_title__phnDp")).shouldHave(text("Are you sure you want to delete your account?"));
-                    XPathUtil.ConfirmRDel();
-                    $(byTestId("ok")).click();
                     $(byTestId("userPreview")).shouldBe(visible);
                     $(byTestId("orderTrackingWidget")).shouldBe(visible);
 
                 });
-
             }
 
         });
@@ -206,4 +244,13 @@ public class DelAcwithOngOrd extends TestBase {
     }
 
 }
+
+
+
+
+
+
+
+
+
 

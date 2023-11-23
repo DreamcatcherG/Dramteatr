@@ -1,9 +1,12 @@
 package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.Keys;
+import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
 import snoonu.utils_generate.TextGenerator;
@@ -14,14 +17,16 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
+@Order(3)
+
 class EditProfile extends TestBase {
 
     @Test
     void editProfile() {
-
 
         step("Go to login page", () -> {
 

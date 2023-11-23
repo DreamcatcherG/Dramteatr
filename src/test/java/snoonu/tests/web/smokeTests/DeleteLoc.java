@@ -2,10 +2,9 @@ package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
+import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.Auth;
 import snoonu.utils_generate.AwtRobot;
@@ -19,7 +18,8 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Order(6)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.core.annotation.Order;
+import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
 import snoonu.utils_generate.*;
 
@@ -18,10 +19,11 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Order(9)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
-@Order(3)
+
 class AddDelCreditCard extends TestBase {
 
     @Test
@@ -57,13 +59,12 @@ class AddDelCreditCard extends TestBase {
             $(byTestId("savedCards")).shouldBe(appear).click();
             $(byTestId("addNewCard")).shouldBe(visible);
 
-//            $(byCssSelector("Typography_p3__lZUUt CreditCard_number__T2lpU")).text();
-            if ($(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]"))
+            if ($(Css.byId("credit-card-list-credit-card-number"))
                     .should(Condition.exist)
                     .shouldHave(text("•••• 1111"))
                     .exists()) {
 
-                XPathUtil.СardDelBut();
+                $(Css.byId("delete-card-btn")).click();
                 $(byTestId("yes")).shouldBe(appear).click();
                 $(byTestId("yes")).shouldBe(disappear);
 
@@ -87,8 +88,8 @@ class AddDelCreditCard extends TestBase {
             $("#acssubmit").click();
             $("h2").shouldHave(text("Successfully Added Credit/Debit Card"));
             switchTo().defaultContent();
-            XPathUtil.Close3DS();
-            $(byTestId("addNewCard")).shouldBe(appear);
+            Xpath.Close3DS();
+            $(Css.byId("credit-card-list-credit-card-number")).shouldHave(text("•••• 1111"));
 
         });
 
