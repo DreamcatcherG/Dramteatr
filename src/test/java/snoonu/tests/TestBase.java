@@ -20,7 +20,7 @@ public class TestBase {
     @AfterEach
     public void addAttachments(){
         String sessionId = getSessionId();
-        closeWebDriver();
+//        closeWebDriver();
 //        Selenide.closeWindow();
 
         attachScreenshot("Last screenshot");
