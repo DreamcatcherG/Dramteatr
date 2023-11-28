@@ -21,8 +21,6 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Order(8)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
