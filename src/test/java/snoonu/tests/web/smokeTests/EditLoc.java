@@ -41,6 +41,7 @@ class EditLoc extends TestBase {
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
             $(byTestId("crossIcon")).shouldBe(visible).click();
             AwtRobot.entLoc();
+            $(byTestId("addressPrediction")).wait(1000);
             $(byTestId("addressPrediction")).shouldBe(visible);
             $(byTestId("addressPrediction")).click();
             sleep(1000);

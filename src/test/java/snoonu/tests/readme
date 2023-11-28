@@ -3,6 +3,8 @@ cd ..
 allure serve
 gradle clean @tag
 
+Исправить add credit расскоментить
+
 4457 - 71 Should change dev to prod after adding a real credit / debit card
 4464 - 65 Should create voucher for the prod
 4467 should think about message to email (should create an email

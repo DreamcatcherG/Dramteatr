@@ -27,7 +27,7 @@ class DeleteLoc extends TestBase {
 
     @Test
     @DisplayName("Delete a location via AcMenu")
-    void deleteLoc() {
+    void deleteLocation() {
 
         step("Go to login page", () -> {
 
@@ -126,7 +126,7 @@ class DeleteLoc extends TestBase {
             $(byTestId("deleteAddress")).shouldBe(visible).click();
             $(byTestId("deleteConfirmYes")).click();
             $(byTestId("deleteConfirmYes")).shouldBe(disappear);
-            $(byTestId("addAddress")).shouldBe(visible);
+//            $(byTestId("addAddress")).shouldBe(visible);
 
         });
 

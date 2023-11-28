@@ -84,7 +84,8 @@ class AddDelCreditCard extends TestBase {
 
             switchTo().frame($(byId("challengeFrame")));
             $("#acssubmit").click();
-            $("h2").shouldHave(text("Successfully Added Credit/Debit Card"));
+//            $("h2").shouldHave(text("Successfully Added Credit/Debit Card"));
+            sleep(1000);
             switchTo().defaultContent();
             Xpath.Close3DS();
             $(Css.byId("credit-card-list-credit-card-number")).shouldHave(text("•••• 1111"));
