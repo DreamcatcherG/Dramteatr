@@ -19,6 +19,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -93,8 +94,7 @@ class OrderWithCash extends TestBase {
 
         step("Go to Checkout / Fill auth Form", () -> {
 
-            Auth.fillForm286();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Confirm saved location / Go to Checkout ", () -> {

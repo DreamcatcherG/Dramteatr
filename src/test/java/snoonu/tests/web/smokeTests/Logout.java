@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -26,8 +27,7 @@ public class Logout extends TestBase {
         step("Pre-login", () -> {
 
             open("http://snoonu.com");
-            Auth.fillform285();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Click on the profile icon", () -> {

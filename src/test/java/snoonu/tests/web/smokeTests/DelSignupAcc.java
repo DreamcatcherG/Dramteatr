@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -39,8 +40,7 @@ public class DelSignupAcc extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            Auth.fillform276();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Open account modal window", () -> {
@@ -60,8 +60,7 @@ public class DelSignupAcc extends TestBase {
 
         step("Create an Account / Authorisation", () -> {
 
-            Auth.fillform276();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Enter Credentials", () -> {

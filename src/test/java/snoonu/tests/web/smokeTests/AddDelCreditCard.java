@@ -17,6 +17,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Order(9)
@@ -44,8 +45,7 @@ class AddDelCreditCard extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            Auth.fillForm333();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Open account modal window)", () -> {

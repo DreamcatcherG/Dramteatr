@@ -2,6 +2,9 @@ cd build
 cd ..
 allure serve
 gradle clean @tag
+gradle clean qwer -Denvironment=prod
+
+gradle clean order -Dremote_driver_url=http://52.77.124.169/wd/hub/
 
 4457 - 71 Should change dev to prod after adding a real credit / debit card
 4464 - 65 Should create voucher for the prod
