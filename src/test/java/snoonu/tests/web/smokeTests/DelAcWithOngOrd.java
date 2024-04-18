@@ -81,6 +81,7 @@ public class DelAcWithOngOrd extends TestBase {
                         $(byTestId("crossIcon")).shouldBe(visible).click();
                         $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
                         AwtRobot.LocKhasooma();
+                        $(byTestId("addressPrediction")).wait(1000);
                         $(byTestId("addressPrediction")).shouldBe(appear).click();
                         sleep(1000);
                         $(byTestId("loginContinue")).shouldHave(text("Confirm location")).click();

@@ -18,8 +18,6 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Order(11)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Main Category pages")
 @Tag("smoke")

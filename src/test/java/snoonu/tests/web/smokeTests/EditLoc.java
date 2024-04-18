@@ -19,12 +19,11 @@ import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.sNumber208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Order(5)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("web")
 @Tag("smoke")
+
 class EditLoc extends TestBase {
 
     @Test
@@ -43,6 +42,7 @@ class EditLoc extends TestBase {
             $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
             $(byTestId("crossIcon")).shouldBe(visible).click();
             AwtRobot.entLoc();
+            $(byTestId("addressPrediction")).wait(1000);
             $(byTestId("addressPrediction")).shouldBe(visible);
             $(byTestId("addressPrediction")).click();
             sleep(1000);
@@ -65,7 +65,7 @@ class EditLoc extends TestBase {
             } else {
 
                 $(byTestId("locationSelector")).shouldBe(visible).click();
-                $(byTestId("deleteConfirmYes")).click();
+                $(byTestId("deleteConfirmYes")).shouldBe(appear).click();
 
             }
 

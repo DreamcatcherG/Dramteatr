@@ -22,8 +22,6 @@ import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.sNumber208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Order(4)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")

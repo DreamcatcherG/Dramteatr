@@ -18,11 +18,9 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.sNumber208;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
 @Tag("smoke")
-@Order(3)
 
 class EditProfile extends TestBase {
 
