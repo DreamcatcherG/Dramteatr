@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -51,8 +52,7 @@ class DeleteLoc extends TestBase {
 
         step("Fill the authorization form", () -> {
 
-            Auth.fillform285();
-
+            Auth.defaultProfile(sNumber208);
         });
 
         step("Confirm the last selected location", () -> {

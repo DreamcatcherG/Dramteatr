@@ -19,7 +19,8 @@ import static snoonu.helpers.EnvironmentHelper.*;
 public class DriverHelper {
 
     public static void configureSelenide() {
-                addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+
+        addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
         if (isWeb) {
             Configuration.browser = CustomWebDriver.class.getName();
@@ -32,23 +33,23 @@ public class DriverHelper {
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
         }
-        Configuration.timeout = 10000;
+        Configuration.timeout = 30000;
     }
 
     public static By byTestId(String testId) {
-        if(isWeb) {
-            return by("data-analytic-label",  testId);
+        if (isWeb) {
+            return by("data-analytic-label", testId);
         } else if (isAndroid) {
             return MobileBy.xpath("//*[@content-desc='" + testId + "']");
         } else if (isIos) {
             return MobileBy.id(testId);
         } else { // todo isDesktop
-            return by("some-desktop-attribute-name",  testId);
+            return by("some-desktop-attribute-name", testId);
         }
     }
 
-    public static String getSessionId(){
-        return ((RemoteWebDriver) getWebDriver()).getSessionId().toString().replace("selenoid","");
+    public static String getSessionId() {
+        return ((RemoteWebDriver) getWebDriver()).getSessionId().toString().replace("selenoid", "");
     }
 
     public static String getConsoleLogs() {

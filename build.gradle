@@ -29,10 +29,8 @@ dependencies {
     implementation 'junit:junit:4.13.1'
 
     testImplementation(
-            "io.qameta.allure:allure-java-commons:2.14.0",
             "io.qameta.allure:allure-java-commons:2.18.1",
-            "io.github.bonigarcia:webdrivermanager:5.5.0",
-            "io.qameta.allure:allure-rest-assured:2.18.1",
+            "io.github.bonigarcia:webdrivermanager:5.8.0",
             "org.aspectj:aspectjweaver:1.9.5",
             "com.codeborne:selenide:${selenideVersion}",
             "io.qameta.allure:allure-selenide:${allureVersion}",
@@ -111,6 +109,12 @@ task signIn(type: Test) {
 task smoke(type: Test) {
     useJUnitPlatform {
         includeTags 'smoke'
+    }
+    systemProperty 'platform', 'web'
+}
+task qwer(type: Test) {
+    useJUnitPlatform {
+        includeTags 'qwer'
     }
     systemProperty 'platform', 'web'
 }

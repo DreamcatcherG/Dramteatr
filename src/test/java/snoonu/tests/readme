@@ -2,6 +2,9 @@ cd build
 cd ..
 allure serve
 gradle clean @tag
+gradle clean qwer -Denvironment=prod
+
+gradle clean order -Dremote_driver_url=http://52.77.124.169/wd/hub/
 
 Исправить add credit расскоментить
 

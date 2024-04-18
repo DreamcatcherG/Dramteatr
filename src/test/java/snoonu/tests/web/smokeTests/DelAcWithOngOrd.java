@@ -18,6 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.sNumber208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -37,8 +38,7 @@ public class DelAcWithOngOrd extends TestBase {
 
         step("Fill auth Form", () -> {
 
-            Auth.fillForm286();
-//            $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
+            Auth.defaultProfile(sNumber208);//            $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
             sleep(1000);
         });
 

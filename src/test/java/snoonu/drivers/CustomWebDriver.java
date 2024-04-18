@@ -38,7 +38,7 @@ public class CustomWebDriver implements WebDriverProvider {
         switch (browser.toLowerCase()) {
             case "chrome":
                 capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().setup(); // helped to remove and adding "WebDriverManager" here
                 if (isRemoteDriver) {
                     return getRemoteWebDriver(capabilities);
                 } else {
@@ -86,6 +86,7 @@ public class CustomWebDriver implements WebDriverProvider {
 
     @SuppressWarnings("deprecation")
     private WebDriver getLocalChromeDriver(DesiredCapabilities capabilities) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
         return new ChromeDriver(capabilities);
     }
 
