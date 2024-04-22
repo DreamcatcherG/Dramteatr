@@ -2,15 +2,11 @@ package snoonu.tests.web.smokeTests;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.Keys;
-import org.springframework.core.annotation.Order;
-import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.Auth;
+import snoonu.tests.page_objects.scenario.logInScenario;
 import snoonu.utils_generate.AwtRobot;
 import snoonu.utils_generate.TextGenerator;
 
@@ -19,7 +15,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -92,7 +88,7 @@ class OrderWithCash extends TestBase {
 
         step("Go to Checkout / Fill auth Form", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("Confirm saved location / Go to Checkout ", () -> {

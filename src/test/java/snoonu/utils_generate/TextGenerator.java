@@ -1,6 +1,10 @@
 package snoonu.utils_generate;
 
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Random;
+
+import static snoonu.tests.TestData.*;
 import static snoonu.utils_generate.RandomUtils.getRandomInt;
 
 public class TextGenerator {
@@ -83,12 +87,11 @@ public class TextGenerator {
 
     }
 
-    public static String getRandomLoc(int min, int max) {
+    public static String getTestRandomLoc() {
 
-        String[] locations = {"57F2+FW Khasooma", "532M+GG Al Ruwais"};
+        String[] locations = {Khasooma, AlRuwais, AlZubara};
         int randomIndex = getRandomInt(0, locations.length - 1);
         return locations[randomIndex];
-
     }
 
     public static String getKhasooma(int min, int max) {
@@ -99,12 +102,9 @@ public class TextGenerator {
 
     }
 
-    public static String getRandomCardData(int min, int max) {
-
-        String[] locations = {"0150","1030","0928","0742","0526","1133","1228","0350","0288","0631","0150"};
-        int randomIndex = getRandomInt(0, locations.length - 1);
-        return locations[randomIndex];
-
+    public static int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
     public static String getRandomCardCvv(int min, int max) {

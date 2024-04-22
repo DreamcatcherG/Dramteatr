@@ -20,13 +20,6 @@ public class Xpath {
 
     }
 
-
-    public static void Close3DS() {
-//          Close btn on the 3ds page
-        $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();
-
-    }
-
     public static void CloseLocWin() {
 //          Close btn on the window of locations
         $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]")).click();

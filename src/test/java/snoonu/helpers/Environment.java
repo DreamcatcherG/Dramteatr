@@ -2,7 +2,13 @@ package snoonu.helpers;
 
 import static java.lang.Boolean.parseBoolean;
 
-public class EnvironmentHelper {
+public class Environment {
+
+    public static final String stageUrl = "https://qa.snoonu.com";
+    private static final String prodUrl = "https://snoonu.com";
+    //Set env
+    public static final String environment = System.getProperty("environment", "stage");
+    public static final String webPage = environment.equals("stage") ? stageUrl : prodUrl;
 
     // PLATFORM CONFIG
     public final static String

@@ -3,15 +3,14 @@ package snoonu.tests.web.smokeTests;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.Auth;
+import snoonu.tests.page_objects.scenario.logInScenario;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -25,7 +24,7 @@ public class Logout extends TestBase {
         step("Pre-login", () -> {
 
             open("http://snoonu.com");
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("Click on the profile icon", () -> {

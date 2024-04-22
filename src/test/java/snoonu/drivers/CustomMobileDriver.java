@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static snoonu.helpers.BrowserstackHelper.getBrowserstackUrl;
-import static snoonu.helpers.EnvironmentHelper.*;
+import static snoonu.helpers.Environment.*;
 
 
 public class CustomMobileDriver implements WebDriverProvider {

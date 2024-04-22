@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
+import snoonu.tests.page_objects.scenario.logInScenario;
 import snoonu.utils_generate.*;
 
 import static com.codeborne.selenide.Condition.*;
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -38,7 +39,7 @@ public class DelAcWithOngOrd extends TestBase {
 
         step("Fill auth Form", () -> {
 
-            Auth.defaultProfile(sNumber208);//            $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
+            logInScenario.defaultProfile(Number208);//            $(byCssSelector("#__next > div > div > div.TrackingWidgets_wrapper__vI1e0")).click();
             sleep(1000);
         });
 
