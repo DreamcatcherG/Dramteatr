@@ -3,17 +3,15 @@ package snoonu.tests.web.ordering;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.*;
+import snoonu.tests.page_objects.scenario.logInScenario;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
-import static snoonu.utils_generate.RandomIDSelector.getRandomID;
+import static snoonu.tests.TestData.Number208;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -85,7 +83,7 @@ class MakeOrderCash extends TestBase {
 
         step("Go to Checkout / Fill auth Form", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("Confirm saved location / Go to Checkout ", () -> {

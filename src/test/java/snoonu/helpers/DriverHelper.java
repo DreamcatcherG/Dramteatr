@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static org.openqa.selenium.logging.LogType.BROWSER;
-import static snoonu.helpers.EnvironmentHelper.*;
+import static snoonu.helpers.Environment.*;
 
 
 public class DriverHelper {

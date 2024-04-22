@@ -10,7 +10,7 @@ public class BrowserstackHelper {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL("https://" + EnvironmentHelper.bsLogin + ":" + EnvironmentHelper.bsPassword + "@hub-cloud.browserstack.com/wd/hub");
+            return new URL("https://" + Environment.bsLogin + ":" + Environment.bsPassword + "@hub-cloud.browserstack.com/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -18,7 +18,7 @@ public class BrowserstackHelper {
 
     public static String getBrowserstackVideoUrl(String sessionId) {
         String video_url = given()
-                .auth().basic(EnvironmentHelper.bsLogin, EnvironmentHelper.bsPassword)
+                .auth().basic(Environment.bsLogin, Environment.bsPassword)
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()
@@ -33,7 +33,7 @@ public class BrowserstackHelper {
 
     public static String getBSPublicLink(String sessionId){
         String publicUrl = given()
-                .auth().basic(EnvironmentHelper.bsLogin, EnvironmentHelper.bsPassword)
+                .auth().basic(Environment.bsLogin, Environment.bsPassword)
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()

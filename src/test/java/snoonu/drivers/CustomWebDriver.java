@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
-import static snoonu.helpers.EnvironmentHelper.*;
+import static snoonu.helpers.Environment.*;
 
 
 public class CustomWebDriver implements WebDriverProvider {
@@ -86,7 +86,7 @@ public class CustomWebDriver implements WebDriverProvider {
 
     @SuppressWarnings("deprecation")
     private WebDriver getLocalChromeDriver(DesiredCapabilities capabilities) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\snooweb-web\\.idea\\chromedriver-win64\\chromedriver.exe");
         return new ChromeDriver(capabilities);
     }
 

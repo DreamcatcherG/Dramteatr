@@ -4,12 +4,9 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.Auth;
-import snoonu.utils_generate.LoadPage;
 import snoonu.utils_generate.AwtRobot;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
@@ -19,7 +16,7 @@ import static snoonu.helpers.DriverHelper.byTestId;
 @Tag("web")
 @Tag("addLocal")
 
-public class SelLocWithoutAuth extends TestBase {
+public class SelLocWithoutLoggingIn extends TestBase {
 
 
     @Test

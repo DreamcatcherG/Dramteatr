@@ -36,9 +36,9 @@ public class AttachmentsHelper {
     }
 
     public static String getVideoUrl(String sessionId) {
-        if(EnvironmentHelper.isWeb) {
+        if(Environment.isWeb) {
             return getWebVideoUrl(sessionId);
-        } else if (EnvironmentHelper.isIos || EnvironmentHelper.isAndroid){
+        } else if (Environment.isIos || Environment.isAndroid){
             return BrowserstackHelper.getBrowserstackVideoUrl(sessionId);
         } else {
             return null; // todo isDesktop
@@ -47,7 +47,7 @@ public class AttachmentsHelper {
 
     public static String getWebVideoUrl(String sessionId) {
         try {
-            return new URL(EnvironmentHelper.videoStorageUrl + "/" + sessionId + ".mp4") + "";
+            return new URL(Environment.videoStorageUrl + "/" + sessionId + ".mp4") + "";
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

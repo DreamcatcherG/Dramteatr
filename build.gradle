@@ -106,9 +106,9 @@ task signIn(type: Test) {
 //    systemProperty 'platform', 'web'
 }
 
-task smoke(type: Test) {
+task smokeStage(type: Test) {
     useJUnitPlatform {
-        includeTags 'smoke'
+        includeTags 'smokeStage'
     }
     systemProperty 'platform', 'web'
 }

@@ -4,9 +4,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
-import org.springframework.core.annotation.Order;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.Auth;
+import snoonu.tests.page_objects.scenario.logInScenario;
 import snoonu.utils_generate.AwtRobot;
 import snoonu.utils_generate.LoadPage;
 import snoonu.utils_generate.TextGenerator;
@@ -16,7 +15,7 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -53,7 +52,7 @@ class EditLoc extends TestBase {
 
         step("Fill the authorization form", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("No Confirm the last selected location if available", () -> {

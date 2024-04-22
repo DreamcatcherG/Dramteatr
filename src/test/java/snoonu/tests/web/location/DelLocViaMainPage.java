@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import snoonu.tests.TestBase;
+import snoonu.tests.page_objects.scenario.logInScenario;
 import snoonu.utils_generate.*;
 
 import static com.codeborne.selenide.Condition.*;
@@ -14,7 +15,7 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
 @Feature("Selenide-appium web, iOS and Android tests")
@@ -50,7 +51,7 @@ public class DelLocViaMainPage extends TestBase {
 
         step("Fill the authorization form", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
 
         });
 

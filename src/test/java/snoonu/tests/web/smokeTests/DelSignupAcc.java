@@ -6,16 +6,15 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.helpers.Css;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.Auth;
+import snoonu.tests.page_objects.scenario.logInScenario;
 import snoonu.utils_generate.TextGenerator;
-import snoonu.utils_generate.Xpath;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.TestData.sNumber208;
+import static snoonu.tests.TestData.Number208;
 
 @Feature("Selenide-appium web, iOS and Android tests")
 @Story("Login tests. Web")
@@ -40,7 +39,7 @@ public class DelSignupAcc extends TestBase {
 
         step("Enter (phone number, otp (current date)", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("Open account modal window", () -> {
@@ -60,7 +59,7 @@ public class DelSignupAcc extends TestBase {
 
         step("Create an Account / Authorisation", () -> {
 
-            Auth.defaultProfile(sNumber208);
+            logInScenario.defaultProfile(Number208);
         });
 
         step("Enter Credentials", () -> {
