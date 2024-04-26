@@ -11,45 +11,37 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number272;
 import static snoonu.tests.page_objects.scenario.logInScenario.defaultProfile;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.assertSuccessAuth;
+import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
 import static snoonu.tests.page_objects.scenario.profileScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
-@Tag("smoke")
+@Tag("smokeStage")
 
-class EditProfile extends TestBase {
+public class SigningUp extends TestBase {
 
     @Test
-    void editProfile() {
+    void signingUpProfile() {
 
-        step("Go to the web page", () -> {
+        step("Preconditions: Open Web Page login and remove account", () -> {
             open(Environment.webPage);
-        });
-
-        step("Authorization", () -> {
             defaultProfile(Number272);
+            assertSuccessAuth();
+            assertIsOngoingOrders();
+            goToProfile();
+            goToMyAccount();
+            goToDeleteAccount();
+            confirmDeleteAccount();
+            assertProfileDeleted();
         });
 
-        step("Assert: Log in is successful", () -> {
+        step("Registration of New Profile", () -> {
+            defaultProfile(Number272);
+            registerNewProfile();
+        });
+
+        step("Assert Profile is created", () -> {
             assertSuccessAuth();
         });
-
-        step("Go to Profile)", () -> {
-            goToMyAccount();
-        });
-
-        step("Change Profile name", () -> {
-            changeProfileName();
-        });
-
-        step("Assert Profile name changed", () -> {
-            assertProfileNameChanged();
-        });
-
-        step("Assert Email and Phone won't be changed", () -> {
-            assertEmailPhoneWontChanged();
-        });
-
     }
 }

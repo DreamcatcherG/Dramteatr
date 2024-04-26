@@ -75,6 +75,7 @@ tasks.withType(Test) {
                 'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("web_threads").toInteger()
         ]
     }
+
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -97,69 +98,19 @@ task web(type: Test) {
     systemProperty 'platform', 'web'
 }
 
-task signIn(type: Test) {
-    useJUnitPlatform {
-        includeTags 'signIn'
-        systemProperty 'junit.jupiter.execution.order.default', 'OrderAnnotation'
-
-    }
-//    systemProperty 'platform', 'web'
-}
-
 task smokeStage(type: Test) {
     useJUnitPlatform {
         includeTags 'smokeStage'
     }
     systemProperty 'platform', 'web'
 }
-task qwer(type: Test) {
+
+task smokeProd(type: Test) {
     useJUnitPlatform {
-        includeTags 'qwer'
+        includeTags 'smokeProd'
     }
     systemProperty 'platform', 'web'
 }
-
-//task addlocal(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'addlocal'
-//    }
-//    systemProperty 'platform', 'web'
-//}
-//
-//task delLoc(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'delLoc'
-//    }
-//    systemProperty 'platform', 'web'
-//}
-//
-//task order(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'order'
-//    }
-//    systemProperty 'platform', 'web'
-//}
-
-//task prod(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'prod'
-//    }
-//    systemProperty 'env', 'prod'
-//}
-//
-//task android(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'android'
-//    }
-//    systemProperty 'platform', 'android'
-//}
-//
-//task ios(type: Test) {
-//    useJUnitPlatform {
-//        includeTags 'ios'
-//    }
-//    systemProperty 'platform', 'ios'
-//}
 
 help {
     doFirst {

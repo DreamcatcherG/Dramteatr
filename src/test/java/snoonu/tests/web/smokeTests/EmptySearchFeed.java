@@ -18,8 +18,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
 @Tag("smoke")
 class EmptySearchFeed extends TestBase {
 

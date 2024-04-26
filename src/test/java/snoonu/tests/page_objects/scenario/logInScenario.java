@@ -6,6 +6,7 @@ import snoonu.tests.page_objects.pages.logInObjects;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.page_objects.pages.logInObjects.*;
 
 public class logInScenario {
 
@@ -13,27 +14,28 @@ public class logInScenario {
 
     public static void defaultProfile(String phoneNumber) throws InterruptedException {
 
-        if ($(byName("phoneNumber")).exists()) {
-            $(byName("phoneNumber")).sendKeys(phoneNumber);
-            $(byTestId("loginContinue")).click();
+        if (phoneNumberInput().exists()) {
+            phoneNumberInput().sendKeys(phoneNumber);
+            loginContinueBtn().click();
             AwtRobot.entOtp();
         } else {
-            $(byTestId("loginButton")).click();
-            $(byName("phoneNumber")).click();
-            $(byName("phoneNumber")).sendKeys(phoneNumber);
-            $(byTestId("loginContinue")).click();
+            loginBtn().click();
+            phoneNumberInput().click();
+            phoneNumberInput().sendKeys(phoneNumber);
+            loginContinueBtn().click();
             AwtRobot.entOtp();
         }
     }
 
     public void clickLogin() {
-        logInObjects.loginBtn().click();
+        loginBtn().click();
     }
 
     public void enterPhoneNumber(String phoneNumber) {
-        logInObjects.phoneNumberInput().sendKeys(phoneNumber);
+        phoneNumberInput().sendKeys(phoneNumber);
     }
+
     public void clickLoginContinue() {
-        logInObjects.loginContinueBtn().click();
+        loginContinueBtn().click();
     }
 }

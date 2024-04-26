@@ -7,18 +7,19 @@ import org.junit.jupiter.api.Test;
 import snoonu.helpers.Environment;
 import snoonu.tests.TestBase;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.TestData.Electronics;
+import static snoonu.tests.TestData.BeautyAndPerfumes;
 import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Main Category pages")
-@Tag("smoke")
-class CategoryElectronics extends TestBase {
+@Tag("smokeProd")
+class CategoryBeautyAndPerfumes extends TestBase {
 
     @Test
-    void electronics() {
+    void beauty() {
 
         step("Open Web and Login in", () -> {
             open(Environment.webPage);
@@ -27,14 +28,14 @@ class CategoryElectronics extends TestBase {
         step("Close location popup and expand servise boxes", () -> {
             closeLocationPopup();
             expandServiceBoxes();
-        });
+    });
 
         step("Go to category of beauty and perfumes", () -> {
-            goToElectronics();
+            goToBeautyPerfumes();
         });
 
         step("Assert: URL contains 'beauty-and-perfumes'", () -> {
-            assertPageOpened(Electronics);
+            assertPageOpened(BeautyAndPerfumes);
         });
     }
 }

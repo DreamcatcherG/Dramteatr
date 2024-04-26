@@ -17,8 +17,8 @@ import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.Number208;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
 @Tag("web")
 @Tag("addLocal")
 
@@ -85,10 +85,10 @@ public class AddNewLoc extends TestBase {
 
         step("Filling the address forms with random values", () -> {
 
-            String randomText = TextGenerator.getRandomFlatName(1, 10);
+            String randomText = TextGenerator.getRandomText(1, 10);
             $(byName("apartment")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
             $(byName("apartment")).setValue(randomText);
-            String randomNotes = TextGenerator.getRandomFlatName(1, 10);
+            String randomNotes = TextGenerator.getRandomText(1, 10);
             $(byName("notes")).sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
             $(byName("notes")).setValue(randomNotes);
 

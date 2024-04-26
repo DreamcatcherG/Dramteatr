@@ -53,21 +53,21 @@ public class AwtRobot {
         return addressName;
     }
 
-    public static void LocKhasooma() throws InterruptedException { //awtRobot.LocKhasooma();
-        SelenideElement addressInput = $(byName("address"));
-        String addressName = TextGenerator.getKhasooma(16, 17);
-
-        try {
-            Robot robot = new Robot();
-            for (char c : addressName.toCharArray()) {
-                String character = Character.toString(c);
-                addressInput.sendKeys(character);
-                robot.delay(20);
-            }
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void LocKhasooma() throws InterruptedException { //awtRobot.LocKhasooma();
+//        SelenideElement addressInput = $(byName("address"));
+////        String addressName = TextGenerator.getKhasooma(16, 17);
+//
+//        try {
+//            Robot robot = new Robot();
+//            for (char c : addressName.toCharArray()) {
+//                String character = Character.toString(c);
+//                addressInput.sendKeys(character);
+//                robot.delay(20);
+//            }
+//        } catch (AWTException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
 

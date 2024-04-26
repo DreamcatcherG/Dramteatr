@@ -10,9 +10,9 @@ import snoonu.tests.page_objects.scenario.locationScenario;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
-@Tag("smoke")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
+@Tag("smokeStage")
 
 public class PickTestLocation extends TestBase {
 
@@ -24,10 +24,10 @@ public class PickTestLocation extends TestBase {
         });
 
         step("Select A Location", () -> {
-            locationScenario.selectNewLocation();
+            locationScenario.selectTestLocation();
         });
 
-step("Assert Location was applied", () -> {
+        step("Assert Location was applied", () -> {
             locationScenario.assertLocApplied();
         });
     }
