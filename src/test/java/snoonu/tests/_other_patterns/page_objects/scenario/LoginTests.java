@@ -11,8 +11,8 @@ import snoonu.tests._other_patterns.page_objects.scenario.pages.LoginPageDev;
 import snoonu.tests._other_patterns.page_objects.scenario.pages.MainPage;
 
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
 @Tag("not-very-bad-practice")
 @Tag("login")
 class LoginTests extends TestBase {

@@ -18,8 +18,8 @@
 //import static snoonu.helpers.DriverHelper.byTestId;
 //
 //public class OrderWithDebit {
-//    @Feature("Selenide-appium web, iOS and Android tests")
-//    @Story("Login tests. Web")
+//    @Feature("Selenide_Web")
+//    @Story("Smoke tests Web")
 //    @Tag("smoke")
 //    class AddDelCreditCard extends TestBase {
 //

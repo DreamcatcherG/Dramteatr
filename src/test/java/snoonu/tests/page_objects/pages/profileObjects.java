@@ -4,15 +4,50 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import snoonu.helpers.Css;
 
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.helpers.DriverHelper.byTestId;
 
 public class profileObjects {
 
+    public static SelenideElement profileNameField() {
+        return $(byName("name"));
+    }
+
+    public static SelenideElement profileEmailField() {
+        return $(byName("email"));
+    }
+
+    public static SelenideElement profilePhoneField() {
+        return $(byName("phone"));
+    }
+
+    public static SelenideElement registerProfileBtn() {
+        return $(byTestId("loginRegister"));
+    }
+
+    public static SelenideElement myAccount() {
+        return $(byTestId("myAccount"));
+    }
+
+    public static SelenideElement saveAccountBtn() {
+        return $(byTestId("saveAccount"));
+    }
+
+    public static SelenideElement deleteAccount() {
+        return $(byTestId("deleteAccount"));
+    }
+
+    public static SelenideElement deleteAccountConfirm() {
+        return $(Css.byId("delete-account-modal-confirm"));
+    }
+
     public static SelenideElement paymentCards() {
         return $(byTestId("savedCards"));
+    }
+
+    public static SelenideElement savedAddresses() {
+        return $(byTestId("myAddresses"));
     }
 
     public static SelenideElement isPaymentCard() {
@@ -52,14 +87,14 @@ public class profileObjects {
     }
 
     public static SelenideElement submitBtn3Ds() {
-        return  $("#acssubmit");
+        return $("#acssubmit");
     }
 
     public static SelenideElement close3DS() {
         return $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]"));
     }
 
-    public static SelenideElement savedPayCardNumber() {
+    public static SelenideElement savedPayCardField() {
         return $(Css.byId("credit-card-list-credit-card-number"));
     }
 }

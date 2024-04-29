@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import static com.codeborne.selenide.Selenide.Wait;
 
@@ -25,24 +27,21 @@ public class LoadPage {
     }
 
     public static void waitForApiResponse(String apiUrl) throws InterruptedException, IOException {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet(apiUrl);
-
         while (true) {
             try {
-                ClassicHttpResponse response = httpClient.execute(httpGet);
-                int statusCode = response.getCode();
+                URL url = new URL(apiUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+
+                int statusCode = connection.getResponseCode();
 
                 if (statusCode == 200) {
                     break;
                 }
             } catch (IOException e) {
-                // Если возникло исключение, ждем некоторое время и повторяем запрос
                 Thread.sleep(1000);
             }
         }
-
-        httpClient.close();
     }
 }
 

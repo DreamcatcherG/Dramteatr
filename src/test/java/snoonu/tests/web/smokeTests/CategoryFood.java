@@ -1,71 +1,40 @@
 package snoonu.tests.web.smokeTests;
 
-import com.codeborne.selenide.Condition;
-import io.qameta.allure.*;
-import org.junit.jupiter.api.MethodOrderer;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.springframework.core.annotation.Order;
+import snoonu.helpers.Environment;
 import snoonu.tests.TestBase;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.TestData.Food;
+import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
 
-@Feature("Selenide-appium web, iOS and Android tests")
+@Feature("Selenide_Web")
 @Story("Main Category pages")
-@Tag("smoke")
+@Tag("smokeProd")
 class CategoryFood extends TestBase {
-
 
     @Test
     void food() {
 
-        step("Opening the web page", () -> {
-
-            open("http://snoonu.com");
-
+        step("Open Web and Login in", () -> {
+            open(Environment.webPage);
         });
 
-        step("Close location popup and open category list", () -> {
-
-            if ($(byTestId("selectLocation")).exists()) {
-
-                $(byTestId("locationSelector")).click();
-
-
-            } else {
-
-            }
-
-            $(byClassName("ShowMore_wrapper__cbfzq")).click();
-            $("p.Typography_p10__teZqm.ShowMore_label__56Abc").shouldHave(Condition.text("Less"));
-
+        step("Close location popup and expand servise boxes", () -> {
+            closeLocationPopup();
+            expandServiceBoxes();
         });
 
-        step("Go to category of restaurants", () -> {
-
-            $(byAttribute("data-analytic-event-content", "restaurants")).click();
-
+        step("Go to category of beauty and perfumes", () -> {
+            goToFood();
         });
 
-        step("Assert: URL contains 'restaurants'", () -> {
-
-            String expectedUrlPart = "https://snoonu.com/restaurants";
-
-            $("meta[property='og:url']").shouldHave(attribute("content", expectedUrlPart));
-
+        step("Assert: URL contains 'beauty-and-perfumes'", () -> {
+            assertPageOpened(Food);
         });
-
-        step("Assert: the page is opened", () -> {
-
-            $("body").shouldHave(text("Restaurants & Cafes"));
-            $(byTestId("merchantCard")).shouldBe(appear);
-
-        });
-
     }
 }

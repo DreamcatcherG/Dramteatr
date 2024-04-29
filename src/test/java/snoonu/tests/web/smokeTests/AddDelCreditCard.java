@@ -14,8 +14,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.sNumber336;
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
 @Tag("smokeStage")
 class AddDelCreditCard extends TestBase {
 
@@ -24,6 +24,9 @@ class AddDelCreditCard extends TestBase {
 
         step("Open Web and Login in", () -> {
             open(Environment.webPage);
+        });
+
+        step("Login in", () -> {
             logInScenario.defaultProfile(sNumber336);
         });
 

@@ -4,8 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$$;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests._other_patterns.super_difficult_component.extentions.SelenideExtentions.$;
 
@@ -14,6 +12,14 @@ public class locationObjects {
     public static SelenideElement selectLocationBtn() {
         return $(byTestId("selectLocation"));
     }
+
+    public static SelenideElement pencilBtn() { return $(byTestId("addressEdit")); }
+
+    public static SelenideElement deleteAddressBtn() { return $(byTestId("deleteAddress")); }
+
+    public static SelenideElement cardSavedAddress() { return $(byTestId("cardAddress")); }
+
+    public static SelenideElement cardAddressName() { return $(By.cssSelector("p.CardAddress_notes__b6xbO")); }
 
     public static SelenideElement confirmLocBtn() {
         return $(byTestId("loginContinue"));
@@ -24,7 +30,6 @@ public class locationObjects {
     }
 
     public static SelenideElement addressPredictionField() {
-//        return $(By.xpath("//div[@class='AddressPredictions_prediction__RQIm5']"));
         return $(By.xpath("//div[@class='AddressPredictions_prediction__RQIm5' " +
                 "and @data-analytic-label='addressPrediction']"));
     }
@@ -64,6 +69,4 @@ public class locationObjects {
     public static SelenideElement saveAddressBtn() {
         return $(byTestId("saveAddress"));
     }
-
-
 }

@@ -12,8 +12,8 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.Number208;
 
-@Feature("Selenide-appium web, iOS and Android tests")
-@Story("Login tests. Web")
+@Feature("Selenide_Web")
+@Story("Smoke tests Web")
 @Tag("smoke")
 
 public class Logout extends TestBase {

@@ -9,16 +9,16 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.TestData.Electronics;
+import static snoonu.tests.TestData.HealthAndWellness;
 import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Main Category pages")
-@Tag("smoke")
-class CategoryElectronics extends TestBase {
+@Tag("smokeProd")
+class CategoryHealthAndWellness extends TestBase {
 
     @Test
-    void electronics() {
+    void health() {
 
         step("Open Web and Login in", () -> {
             open(Environment.webPage);
@@ -30,11 +30,11 @@ class CategoryElectronics extends TestBase {
         });
 
         step("Go to category of beauty and perfumes", () -> {
-            goToElectronics();
+            goToHealthAndWellness();
         });
 
         step("Assert: URL contains 'beauty-and-perfumes'", () -> {
-            assertPageOpened(Electronics);
+            assertPageOpened(HealthAndWellness);
         });
     }
 }
