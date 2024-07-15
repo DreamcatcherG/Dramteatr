@@ -13,8 +13,28 @@ public class mainPageObjects {
         return $(byTestId("userPreview"));
     }
 
+    public static SelenideElement searchField() {
+        return $(byName("search"));
+    }
+
+    public static SelenideElement nothingFoundText() {
+        return $(byAttribute("data-test-id","search-nothing-found"));
+    }
+
+    public static SelenideElement emptySearchWriteToUsBTN() {
+        return $(byAttribute("data-test-id", "nothing-found-write-to-us"));
+    }
+
+    public static SelenideElement writeToUsCommentField() {
+        return $(byName("comments"));
+    }
+
+    public static SelenideElement sendFeedbackBtn() {
+        return $(byTestId("sendFeedback"));
+    }
+
     public static SelenideElement locationBtn() {
-        return $(By.xpath("//p[@class='Typography_p5__8b5pg Selector_location__g2_Bs']"));
+        return $(byTestId("locationSelector"));
     }
 
     public static SelenideElement cssUrl() {
@@ -22,56 +42,64 @@ public class mainPageObjects {
     }
 
     // Service boxes
-    public static SelenideElement moreCategoryBtn() {
-        return $(By.cssSelector(".ShowMore_iconWrapper__f0950"));
+    public static SelenideElement moreServiceBoxesBtn() {
+        return $(byText("More"));
     }
 
     public static SelenideElement lessCategoryBtn() {
-        return $(By.cssSelector("p.Typography_p10__teZqm.ShowMore_label__udTb6"));
-    }
-
-    public static SelenideElement beautyPerfumesCategory() {
-        return $(byAttribute("data-analytic-event-content", "beauty-and-perfumes"));
-    }
-
-    public static SelenideElement electronicsCategory() {
-        return $(byAttribute("data-analytic-event-content", "electronics"));
-    }
-
-    public static SelenideElement flowersAnsGiftsCategory() {
-        return $(byAttribute("data-analytic-event-content", "flowers-and-gifts"));
-    }
-
-    public static SelenideElement healthAndWellnessCategory() {
-        return $(byAttribute("data-analytic-event-content", "pharmacy"));
-    }
-
-    public static SelenideElement kidsAndStationery() {
-        return $(byAttribute("data-analytic-event-content", "kids-and-stationery"));
-    }
-
-    public static SelenideElement pets() {
-        return $(byAttribute("data-analytic-event-content", "pets"));
-    }
-
-    public static SelenideElement shops() {
-        return $(byAttribute("data-analytic-event-content", "online-shopping"));
-    }
-
-    public static SelenideElement snoomart() {
-        return $(byAttribute("data-analytic-event-content", "snoomart"));
-    }
-
-    public static SelenideElement groceries() {
-        return $(byAttribute("data-analytic-event-content", "groceries"));
+        return $(byText("Less"));
     }
 
     public static SelenideElement food() {
-        return $(byAttribute("data-analytic-event-content", "restaurants"));
+        return $(byAttribute("href", "/restaurants"));
     }
 
-    public static SelenideElement snoosend() {
-        return $(byXpath("//div[@class='Category_category__PdwL9']"));
+    public static SelenideElement snoomart() {
+        return $(byAttribute("href", "/groceries/snoomart"));
+    }
+
+    public static SelenideElement groceries() {
+        return $(byAttribute("href", "/groceries"));
+    }
+
+    public static SelenideElement gifting() {
+        return $(byAttribute("href", "/flowers-and-gifts"));
+    }
+
+    public static SelenideElement pharmacy() {
+        return $(byAttribute("href", "/pharmacy"));
+    }
+
+    public static SelenideElement healthAndBeauty() {
+        return $(byAttribute("href", "/snoonu-market/health-and-beauty"));
+    }
+
+    public static SelenideElement electronics() {
+        return $(byAttribute("href", "/snoonu-market/electronics"));
+    }
+
+    public static SelenideElement babyAndKids() {
+        return $(byAttribute("href", "/snoonu-market/baby-and-kids"));
+    }
+
+    public static SelenideElement pets() {
+        return $(byAttribute("href", "/snoonu-market/pets"));
+    }
+
+    public static SelenideElement houseAndGarden() {
+        return $(byAttribute("href", "/snoonu-market/household-and-garden"));
+    }
+
+    public static SelenideElement booksAndStationery() {
+        return $(byAttribute("href", "/snoonu-market/books-and-stationery"));
+    }
+
+    public static SelenideElement sportsAndOutdoors() {
+        return $(byAttribute("href", "/snoonu-market/sport-and-outdoors"));
+    }
+
+    public static SelenideElement clothesAndAccessories() {
+        return $(byAttribute("href", "/snoonu-market/clothes-and-accessories"));
     }
 
     public static SelenideElement snoosendPopupText() {

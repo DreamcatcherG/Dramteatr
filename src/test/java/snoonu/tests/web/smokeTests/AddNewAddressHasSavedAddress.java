@@ -22,15 +22,12 @@ public class AddNewAddressHasSavedAddress extends TestBase {
     @Test
     void addLocation() {
 
-        step("Open Web Page", () -> {
+        step("Preconditions: Open Web Page / Log In", () -> {
             open(Environment.webPage);
-        });
-
-        step("Fill the authorization form", () -> {
             defaultProfile(Number208);
         });
 
-        step("No Confirm and add new location", () -> {
+        step("No Confirm and Go to add new location", () -> {
             confirmNoMainPopup();
             addNewAddress();
         });

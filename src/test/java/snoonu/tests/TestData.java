@@ -28,16 +28,18 @@ public class TestData {
             CreditCard = "4111 1111 1111 1111",
             DebitCard = "4215 3755 0088 3243",
 
-            //Category pages
-            BeautyAndPerfumes = "https://snoonu.com/beauty-and-perfumes",
-            FlowersAnsGifts = "https://snoonu.com/flowers-and-gifts",
-            Food = "https://snoonu.com/restaurants",
+            //URLs for Category pages From Service Boxes
+            Restaurants = "https://snoonu.com/restaurants",
             Groceries = "https://snoonu.com/groceries",
-            HealthAndWellness = "https://snoonu.com/pharmacy",
-            KidsAndStationery = "https://snoonu.com/kids-and-stationery",
-            Pets = "https://snoonu.com/pets",
-            Shops = "https://snoonu.com/online-shopping",
             Snoomart = "https://snoonu.com/groceries/snoomart",
-            Electronics = "https://snoonu.com/snoonu-market/electronics";
-
-}
+            Gifting = "https://snoonu.com/flowers-and-gifts",
+            Pharmacy = "https://snoonu.com/pharmacy",
+            HealthAndBeauty = "https://snoonu.com/snoonu-market/health-and-beauty",
+            Electronics = "https://snoonu.com/snoonu-market/electronics",
+            BabyAndKids = "https://snoonu.com/snoonu-market/baby-and-kids",
+            Pets = "https://snoonu.com/snoonu-market/pets",
+            HouseholdAndGarden = "https://snoonu.com/snoonu-market/household-and-garden",
+            BooksAndStationery = "https://snoonu.com/snoonu-market/books-and-stationery",
+            SportsAndOutdoors = "https://snoonu.com/snoonu-market/sport-and-outdoors",
+            ClothesAndAccessories = "https://snoonu.com/snoonu-market/clothes-and-accessories";
+    }

@@ -17,6 +17,8 @@ import static snoonu.tests.page_objects.scenario.mainPageScenario.assertSuccessA
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
 @Tag("smokeStage")
+@Tag("onetest")
+
 
 class Login extends TestBase {
 

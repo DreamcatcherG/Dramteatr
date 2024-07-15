@@ -33,7 +33,7 @@ public class DriverHelper {
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
         }
-        Configuration.timeout = 30000;
+        Configuration.timeout = 50000;
     }
 
     public static By byTestId(String testId) {

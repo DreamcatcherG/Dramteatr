@@ -86,7 +86,8 @@ public class CustomWebDriver implements WebDriverProvider {
 
     @SuppressWarnings("deprecation")
     private WebDriver getLocalChromeDriver(DesiredCapabilities capabilities) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\snooweb-web\\.idea\\chromedriver-win64\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\snooweb-web\\.idea\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         return new ChromeDriver(capabilities);
     }
 

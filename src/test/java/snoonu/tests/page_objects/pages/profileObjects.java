@@ -46,12 +46,20 @@ public class profileObjects {
         return $(byTestId("savedCards"));
     }
 
+    public static SelenideElement isPaymentCard() {
+        return $(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]"));
+    }
+
     public static SelenideElement savedAddresses() {
         return $(byTestId("myAddresses"));
     }
 
-    public static SelenideElement isPaymentCard() {
-        return $(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]"));
+    public static SelenideElement logOutBtn() {
+        return $(byTestId("logout"));
+    }
+
+    public static SelenideElement confirmLogOutBtn() {
+        return $(byTestId("yes"));
     }
 
     public static SelenideElement addPaymentCardBtn() {
@@ -78,8 +86,12 @@ public class profileObjects {
         return $(Css.byId("delete-card-btn"));
     }
 
-    public static SelenideElement confirmDeleteBtn() {
+    public static SelenideElement confirmDeleteBtnYes() {
         return $(byTestId("yes"));
+    }
+
+    public static SelenideElement confirmDeleteBtnYesLoader() {
+        return $(byAttribute("class", "Loader_loader__4A5f1 Button_loader__I8AK4"));
     }
 
     public static SelenideElement Frame3ds() {

@@ -16,7 +16,7 @@ import static snoonu.tests.page_objects.scenario.profileScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
-@Tag("smoke")
+@Tag("smokeStage")
 
 class EditProfile extends TestBase {
 
@@ -31,7 +31,7 @@ class EditProfile extends TestBase {
             defaultProfile(Number272);
         });
 
-        step("Assert: Log in is successful", () -> {
+        step("Assert: Logging in is successful", () -> {
             assertSuccessAuth();
         });
 

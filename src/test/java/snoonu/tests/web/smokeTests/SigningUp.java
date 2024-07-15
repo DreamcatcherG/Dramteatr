@@ -32,7 +32,7 @@ public class SigningUp extends TestBase {
             goToMyAccount();
             goToDeleteAccount();
             confirmDeleteAccount();
-            assertProfileDeleted();
+            assertLoginBtnVisible();
         });
 
         step("Registration of New Profile", () -> {

@@ -1,14 +1,15 @@
 package snoonu.tests.page_objects.scenario;
 
 import org.openqa.selenium.Keys;
-import snoonu.helpers.Css;
 import snoonu.tests.TestData;
 import snoonu.tests.page_objects.pages.profileObjects;
 import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static snoonu.tests.page_objects.pages.mainPageObjects.profileIcon;
 import static snoonu.tests.page_objects.pages.profileObjects.*;
 import static snoonu.utils_generate.TextGenerator.*;
@@ -29,10 +30,15 @@ public class profileScenario {
         myAccount().shouldBe(visible).click();
     }
 
+    public static void goToLogOutAndConfirm() {
+        logOutBtn().shouldBe(enabled).click();
+        confirmLogOutBtn().shouldBe(visible).click();
+    }
+
     public static String originalProfileName;
 
     public static void changeProfileName() {
-        originalProfileName = profileNameField().getText();
+        originalProfileName = profileNameField().getValue();
         profileNameField().click();
         profileNameField().sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE);
         String randomName = getRandomAlphaNumeric(3, 8) + " WEBtEST!";
@@ -42,8 +48,8 @@ public class profileScenario {
 
     public static void assertProfileNameChanged() {
         myAccount().shouldBe(visible).click();
-        String changedProfileName = profileNameField().getText();
-        assertEquals(originalProfileName, changedProfileName, "Profile name has not been changed successfully");
+        String changedProfileName = profileNameField().getValue();
+        assertNotEquals(originalProfileName, changedProfileName, "Profile name has not been changed successfully");
     }
 
     public static void assertEmailPhoneWontChanged() {
@@ -70,8 +76,8 @@ public class profileScenario {
         if (deleteSavedCardBtn().exists()) {
             while (deleteSavedCardBtn().exists()) {
                 deleteSavedCardBtn().click();
-                confirmDeleteBtn().shouldBe(appear).click();
-                confirmDeleteBtn().should(disappear);
+                confirmDeleteBtnYes().shouldBe(enabled).click();
+                confirmDeleteBtnYesLoader().should(disappear);
             }
         } else {
             sleep(2000);
@@ -96,7 +102,7 @@ public class profileScenario {
         saveCardBtn().should(disappear);
     }
 
-    public static void completePayCardAdding() {
+    public static void completePayCardAddingOn3DSPage() {
         Frame3ds().shouldBe(visible);
         switchTo().frame(profileObjects.Frame3ds());
         submitBtn3Ds().click();
@@ -106,12 +112,20 @@ public class profileScenario {
     }
 
     public static void assertCardMatched() {
-        String lastFourDigits = TestData.CreditCard.substring(TestData.CreditCard.length() - 4); // Получаем последние четыре цифры карты из TestData
-        String displayedText = $(Css.byId("credit-card-list-credit-card-number")).getText(); // Получаем отображаемый текст с веб-страницы
-        String displayedLastFourDigits = displayedText.substring(displayedText.length() - 4); // Получаем последние четыре цифры из отображаемого текста
+        String lastFourDigits = TestData.CreditCard.substring(TestData.CreditCard.length() - 4);
+        String displayedText = $(byAttribute("data-test-id", "credit-card-list-credit-card-number")).getText();
+        String displayedLastFourDigits = displayedText.substring(displayedText.length() - 4);
         assertEquals(lastFourDigits, displayedLastFourDigits, "Last four digits of the card do not match the displayed text");
     }
+
+    public static void assertCardAddedCompletely() {
+        boolean isElementExists = $(byAttribute("class", "CreditCard_verify__bRzvU")).exists();
+        if (isElementExists) {
+            throw new AssertionError("The Credit Card Not added completely");
+        }
+    }
 }
+
 
 
 

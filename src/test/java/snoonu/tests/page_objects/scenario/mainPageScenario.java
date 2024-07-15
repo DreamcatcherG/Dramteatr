@@ -1,8 +1,9 @@
 package snoonu.tests.page_objects.scenario;
 
-import org.bouncycastle.util.test.TestFailedException;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.Keys;
 import snoonu.tests.page_objects.pages.mainPageObjects;
+import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
 import static snoonu.tests.page_objects.pages.locationObjects.locationPopup;
@@ -10,8 +11,6 @@ import static snoonu.tests.page_objects.pages.logInObjects.loginBtn;
 import static snoonu.tests.page_objects.pages.mainPageObjects.*;
 
 public class mainPageScenario {
-
-    private static final snoonu.tests.page_objects.pages.mainPageObjects mainPageObjects = new mainPageObjects();
 
     public static void goToProfile() {
         profileIcon().shouldBe(visible).click();
@@ -21,32 +20,33 @@ public class mainPageScenario {
         profileIcon().shouldBe(visible);
     }
 
-    public static void goToBeautyPerfumes() {
-        beautyPerfumesCategory().shouldBe(visible).click();
+    public static void wrongGlobalSearchRequest() {
+        searchField().shouldBe(enabled).setValue("Капибара");
+        searchField().sendKeys(Keys.ENTER);
     }
 
-    public static void goToElectronics() {
-        electronicsCategory().shouldBe(visible).click();
+    public static void assertNothingFoundResult() {
+        nothingFoundText().shouldBe(visible).shouldHave(text("Nothing has been found"));
     }
 
-    public static void goToFlowersAnsGifts() {
-        flowersAnsGiftsCategory().shouldBe(visible).click();
+    public static void goToWriteToUsBtn() {
+        emptySearchWriteToUsBTN().shouldBe(visible).click();
+        writeToUsCommentField().shouldBe(enabled);
+        writeToUsCommentField().sendKeys(TextGenerator.getRandomText(1, 50));
+        sendFeedbackBtn().shouldBe(enabled).click();
+        sendFeedbackBtn().shouldBe(disappear);
     }
 
-    public static void goToHealthAndWellness() {
-        healthAndWellnessCategory().shouldBe(visible).click();
+    public static void writeAndSendRequest() {
+        emptySearchWriteToUsBTN().shouldBe(visible).click();
+        writeToUsCommentField().shouldBe(enabled);
+        writeToUsCommentField().sendKeys(TextGenerator.getRandomText(1, 50));
+        sendFeedbackBtn().shouldBe(enabled).click();
+        sendFeedbackBtn().shouldBe(disappear);
     }
 
-    public static void goToKidsAndStationery() {
-        kidsAndStationery().shouldBe(visible).click();
-    }
-
-    public static void goToPets() {
-        pets().shouldBe(visible).click();
-    }
-
-    public static void goToShops() {
-        shops().shouldBe(visible).click();
+    public static void goToRestaurants() {
+        food().click();
     }
 
     public static void goToSnoomart() {
@@ -57,12 +57,44 @@ public class mainPageScenario {
         groceries().shouldBe(visible).click();
     }
 
-    public static void goToFood() {
-        food().shouldBe(visible).click();
+    public static void goToGifting() {
+        gifting().shouldBe(visible).click();
     }
 
-    public static void goToSnoosend() {
-        snoosend().shouldBe(visible).click();
+    public static void goToPharmacy() {
+        pharmacy().shouldBe(visible).click();
+    }
+
+    public static void goToHealthAndBeauty() {
+        healthAndBeauty().shouldBe(visible).click();
+    }
+
+    public static void goToElectronics() {
+        electronics().shouldBe(visible).click();
+    }
+
+    public static void goToBabyAndKids() {
+        babyAndKids().shouldBe(visible).click();
+    }
+
+    public static void goToPets() {
+        pets().shouldBe(visible).click();
+    }
+
+    public static void goToHouseholdAndGarden() {
+        houseAndGarden().shouldBe(visible).click();
+    }
+
+    public static void goToBooksAndStationery() {
+        booksAndStationery().shouldBe(visible).click();
+    }
+
+    public static void goToSportsAndOutdoors() {
+        sportsAndOutdoors().shouldBe(visible).click();
+    }
+
+    public static void goToClothesAndAccessories() {
+        clothesAndAccessories().shouldBe(visible).click();
     }
 
     public static void closeLocationPopup() {
@@ -70,7 +102,7 @@ public class mainPageScenario {
     }
 
     public static void expandServiceBoxes() {
-        moreCategoryBtn().shouldBe(visible).click();
+        moreServiceBoxesBtn().shouldBe(visible).click();
         lessCategoryBtn().shouldHave(text("Less"));
     }
 
@@ -88,8 +120,14 @@ public class mainPageScenario {
         }
     }
 
-    public static void assertProfileDeleted() {
+    public static void assertLoginBtnVisible() {
         loginBtn().shouldBe(visible, enabled);
+    }
+
+    public static void searchTestMerchant() {
+        searchField().shouldBe(enabled).sendKeys("Fake Devices Store");
+        searchField().pressEnter();
+
     }
 }
 

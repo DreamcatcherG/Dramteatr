@@ -2,59 +2,42 @@ package snoonu.tests.web.smokeTests;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.By;
-import org.springframework.core.annotation.Order;
+import snoonu.helpers.Environment;
 import snoonu.tests.TestBase;
-import snoonu.utils_generate.RandomUtils;
-import snoonu.utils_generate.TextGenerator;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.helpers.DriverHelper.byTestId;
+import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
-@Tag("smoke")
+@Tag("smokeStage")
 class EmptySearchFeed extends TestBase {
 
     @Test
     void emptySearchFeed() {
 
         step("Go to web page", () -> {
-
-            open("http://snoonu.com");
-
-
+            open(Environment.webPage);
         });
 
         step("Search fake product", () -> {
-
-            $(byName("search")).shouldBe(visible).setValue("капибара");
-            $(byClassName("SearchButton_button__8GVDU")).click();
-
+            wrongGlobalSearchRequest();
         });
 
-        step("Go to 'Write to us'", () -> {
-
-            $(By.cssSelector("h2.EmptyResult_title__cfJZp")).shouldHave(exactText("Nothing has been found"));
-            $(byXpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]/div[1]/h5[1]")).click();
-
+        step("Assert Nothing found", () -> {
+            assertNothingFoundResult();
         });
 
-        step("Entering request", () -> {
-
-            $(byName("comments")).sendKeys(TextGenerator.getRandomText(1, 15));
-            $(byTestId("sendFeedback")).click();
-            $(By.cssSelector("h2.EmptyResult_title__cfJZp")).shouldHave(exactText("Nothing has been found"));
-
+        step("Go to 'Write to us' and send a request", () -> {
+            goToWriteToUsBtn();
         });
 
+        step("Entering and sending a request", () -> {
+            writeAndSendRequest();
+        });
     }
 }
 

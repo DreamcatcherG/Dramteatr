@@ -3,7 +3,7 @@ package snoonu.tests.page_objects.pages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selectors.*;
 import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests._other_patterns.super_difficult_component.extentions.SelenideExtentions.$;
 
@@ -19,9 +19,11 @@ public class locationObjects {
 
     public static SelenideElement cardSavedAddress() { return $(byTestId("cardAddress")); }
 
-    public static SelenideElement cardAddressName() { return $(By.cssSelector("p.CardAddress_notes__b6xbO")); }
+    public static SelenideElement nameLocationCard() { return $(By.cssSelector("p.Typography_p8__gvA_C.CardAddress_notes__b6xbO")); }
 
-    public static SelenideElement confirmLocBtn() {
+    public static SelenideElement cardAddressName() { return $(byAttribute("class","Typography_p8__bwpG6 CardAddress_notes__Hx8C0")); }
+
+    public static SelenideElement confirmBtnMapWindow() {
         return $(byTestId("loginContinue"));
     }
 
@@ -30,8 +32,7 @@ public class locationObjects {
     }
 
     public static SelenideElement addressPredictionField() {
-        return $(By.xpath("//div[@class='AddressPredictions_prediction__RQIm5' " +
-                "and @data-analytic-label='addressPrediction']"));
+        return $(byTestId("addressPrediction"));
     }
 
     public static SelenideElement delConfirmYesBtn() {

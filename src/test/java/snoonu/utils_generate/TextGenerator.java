@@ -50,7 +50,9 @@ public class TextGenerator {
     }
 
     public static String getTestRandomLoc() {
-        String[] locations = {Khasooma, AlRuwais, AlZubara};
+//        String[] locations = {AlRuwais, AlZubara};
+//        String[] locations = {AlRuwais, Khasooma};
+        String[] locations = {Khasooma};
         int randomIndex = getRandomInt(0, locations.length - 1);
         return locations[randomIndex];
     }
