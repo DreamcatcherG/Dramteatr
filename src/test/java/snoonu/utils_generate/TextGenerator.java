@@ -52,7 +52,7 @@ public class TextGenerator {
     public static String getTestRandomLoc() {
 //        String[] locations = {AlRuwais, AlZubara};
 //        String[] locations = {AlRuwais, Khasooma};
-        String[] locations = {Khasooma};
+        String[] locations = {AlRuwais};
         int randomIndex = getRandomInt(0, locations.length - 1);
         return locations[randomIndex];
     }

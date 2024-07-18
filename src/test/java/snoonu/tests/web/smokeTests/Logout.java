@@ -1,20 +1,18 @@
 package snoonu.tests.web.smokeTests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.helpers.DriverHelper.byTestId;
 import static snoonu.tests.TestData.Number208;
-import static snoonu.tests.page_objects.scenario.logInScenario.defaultProfile;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.assertLoginBtnVisible;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.goToProfile;
-import static snoonu.tests.page_objects.scenario.profileScenario.goToLogOutAndConfirm;
+import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.assertLoginBtnVisible;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.goToProfile;
+import static snoonu.helpers.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
@@ -27,7 +25,7 @@ public class Logout extends TestBase {
 
         step("Pre-Conditions Open Web Page and logging in", () -> {
             open(Environment.webPage);
-            defaultProfile(Number208);
+            logginInNumberOtp(Number208);
         });
 
         step("Go To Profile", () -> {

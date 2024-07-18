@@ -91,9 +91,9 @@ test {
 
 }
 
-task web(type: Test) {
+task categories(type: Test) {
     useJUnitPlatform {
-        includeTags 'web'
+        includeTags 'Categories'
     }
     systemProperty 'platform', 'web'
 }

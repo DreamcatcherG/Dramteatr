@@ -4,12 +4,12 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")

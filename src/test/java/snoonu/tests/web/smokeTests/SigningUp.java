@@ -4,15 +4,15 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number272;
-import static snoonu.tests.page_objects.scenario.logInScenario.defaultProfile;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
-import static snoonu.tests.page_objects.scenario.profileScenario.*;
+import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
+import static snoonu.helpers.page_object.scenario.ProfileScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
@@ -25,7 +25,7 @@ public class SigningUp extends TestBase {
 
         step("Preconditions: Open Web Page login and remove account", () -> {
             open(Environment.webPage);
-            defaultProfile(Number272);
+            logginInNumberOtp(Number272);
             assertSuccessAuth();
             assertIsOngoingOrders();
             goToProfile();
@@ -36,7 +36,7 @@ public class SigningUp extends TestBase {
         });
 
         step("Registration of New Profile", () -> {
-            defaultProfile(Number272);
+            logginInNumberOtp(Number272);
             registerNewProfile();
         });
 

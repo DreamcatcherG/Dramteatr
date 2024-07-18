@@ -4,10 +4,10 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
-import static snoonu.helpers.AttachmentsHelper.*;
-import static snoonu.helpers.BrowserstackHelper.getBSPublicLink;
-import static snoonu.helpers.DriverHelper.*;
-import static snoonu.helpers.Environment.*;
+import static snoonu.drivers.AttachmentsHelper.*;
+import static snoonu.drivers.BrowserstackHelper.getBSPublicLink;
+import static snoonu.drivers.DriverHelper.*;
+import static snoonu.drivers.Environment.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)

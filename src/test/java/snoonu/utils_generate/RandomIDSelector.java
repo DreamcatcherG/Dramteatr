@@ -2,8 +2,8 @@ package snoonu.utils_generate;
 
 import java.util.Random;
 
-import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests._other_patterns.super_difficult_component.extentions.SelenideExtentions.$;
+import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.helpers._other_patterns.super_difficult_component.extentions.SelenideExtentions.$;
 
 public class RandomIDSelector {
 

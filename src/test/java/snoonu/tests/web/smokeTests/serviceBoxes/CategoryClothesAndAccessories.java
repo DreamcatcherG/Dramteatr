@@ -4,18 +4,21 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
+import snoonu.helpers.page_object.scenario.NativeScenario;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.TestData.BooksAndStationery;
+import static snoonu.helpers.page_object.scenario.CategoryPageScenario.findAProductCardInCategoryPage;
+import static snoonu.helpers.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.ClothesAndAccessories;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Availability of Category Pages From Service Boxes")
 @Tag("smokeProd")
+@Tag("Categories")
 class CategoryClothesAndAccessories extends TestBase {
 
     @Test
@@ -25,8 +28,11 @@ class CategoryClothesAndAccessories extends TestBase {
             open(Environment.webPage);
         });
 
-        step("Close location popup and expand service boxes", () -> {
+        step("Close location popup", () -> {
             closeLocationPopup();
+        });
+
+        step("Expand service boxes", () -> {
             expandServiceBoxes();
         });
 
@@ -36,6 +42,10 @@ class CategoryClothesAndAccessories extends TestBase {
 
         step("Assert: URL contains 'snoonu-market/clothes-and-accessories'", () -> {
             assertPageOpened(ClothesAndAccessories);
+        });
+
+        step("Assert: Verify the page has product cards", () -> {
+            findAProductCardInCategoryPage();
         });
     }
 }

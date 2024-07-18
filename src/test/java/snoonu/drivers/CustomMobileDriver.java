@@ -6,8 +6,8 @@ import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static snoonu.helpers.BrowserstackHelper.getBrowserstackUrl;
-import static snoonu.helpers.Environment.*;
+import static snoonu.drivers.BrowserstackHelper.getBrowserstackUrl;
+import static snoonu.drivers.Environment.*;
 
 
 public class CustomMobileDriver implements WebDriverProvider {

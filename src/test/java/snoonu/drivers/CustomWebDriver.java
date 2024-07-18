@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
-import static snoonu.helpers.Environment.*;
+import static snoonu.drivers.Environment.*;
 
 
 public class CustomWebDriver implements WebDriverProvider {

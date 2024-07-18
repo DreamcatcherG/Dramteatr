@@ -4,17 +4,20 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
+import snoonu.helpers.page_object.scenario.NativeScenario;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+import static snoonu.helpers.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.SportsAndOutdoors;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.*;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Availability of Category Pages From Service Boxes")
 @Tag("smokeProd")
+@Tag("Categories")
 class CategorySportsAndOutdoors extends TestBase {
 
     @Test
@@ -24,8 +27,11 @@ class CategorySportsAndOutdoors extends TestBase {
             open(Environment.webPage);
         });
 
-        step("Close location popup and expand service boxes", () -> {
+        step("Close location popup", () -> {
             closeLocationPopup();
+        });
+
+        step("Expand service boxes", () -> {
             expandServiceBoxes();
         });
 

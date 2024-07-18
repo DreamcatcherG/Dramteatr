@@ -2,15 +2,14 @@ package snoonu.utils_generate;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 import java.awt.*;
 
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
-import static snoonu.helpers.DriverHelper.byTestId;
-import static snoonu.tests.page_objects.pages.locationObjects.addressInputField;
+import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.helpers.page_object.elements.LocationObjects.addressInputField;
 
 public class AwtRobot {
 

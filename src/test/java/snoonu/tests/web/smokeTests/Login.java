@@ -4,14 +4,14 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import snoonu.helpers.Environment;
+import snoonu.drivers.Environment;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number208;
-import static snoonu.tests.page_objects.scenario.logInScenario.defaultProfile;
-import static snoonu.tests.page_objects.scenario.mainPageScenario.assertSuccessAuth;
+import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.helpers.page_object.scenario.MainPageScenario.assertSuccessAuth;
 
 
 @Feature("Selenide_Web")
@@ -31,13 +31,11 @@ class Login extends TestBase {
         });
 
         step("Authorization", () -> {
-            defaultProfile(Number208);
+            logginInNumberOtp(Number208);
         });
 
-        step("Assert: Log in is successful", () -> {
+        step("Assert: Log in is successful (Profile Icon is visible)", () -> {
             assertSuccessAuth();
         });
-
     }
-
 }
