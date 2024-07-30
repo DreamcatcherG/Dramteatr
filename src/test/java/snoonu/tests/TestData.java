@@ -1,9 +1,10 @@
 package snoonu.tests;
-
-
+/*
+Should fix this class to use data as dynamic, for ex if env is stage take stage numbers if prod takes prod numbers etc.
+ */
 public class TestData {
 
-    public static String
+    public static final String
 
             //Stage
             sNumber333 = "21343333",

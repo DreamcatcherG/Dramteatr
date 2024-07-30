@@ -22,14 +22,11 @@ public class DriverHelper {
 
         if (isWeb) {
             Configuration.browser = CustomWebDriver.class.getName();
-            Configuration.browser = CustomWebDriver.class.getName();
             Configuration.baseUrl = webUrl;
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
-        } else if (isAndroid || isIos) {
-            Configuration.startMaximized = true;
-            Configuration.browserSize = "1920x1080";
         }
+
         Configuration.timeout = 50000;
     }
 
@@ -48,9 +45,5 @@ public class DriverHelper {
     public static String getConsoleLogs() {
         return String.join("\n", Selenide.getWebDriverLogs(BROWSER));
     }
-
-//    public static String getNetworkLogs() {
-//        todo https://ru.selenide.org/2019/12/18/advent-calendar-network-logs-with-proxy/
-//    }
 
 }

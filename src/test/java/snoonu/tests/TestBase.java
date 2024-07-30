@@ -26,7 +26,6 @@ public class TestBase {
         if (isWeb) attachAsText("Browser console logs", getConsoleLogs());
         Selenide.closeWindow();
         closeWebDriver();
-        if (isIos || isAndroid) attachAsText("Browserstack build link", getBSPublicLink(sessionId));
         closeWebDriver();
         if (isVideoOn) attachVideo(sessionId); // in browserstack video url generates after driver close
         closeWebDriver();
