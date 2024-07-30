@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.drivers.DriverHelper.byTestId;
-import static snoonu.helpers.page_object.elements.LocationObjects.addressInputField;
+import static snoonu.page_object.elements.LocationObjects.addressInputField;
 
 public class AwtRobot {
 

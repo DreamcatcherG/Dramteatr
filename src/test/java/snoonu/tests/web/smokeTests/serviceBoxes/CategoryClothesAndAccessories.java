@@ -5,15 +5,14 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
-import snoonu.helpers.page_object.scenario.NativeScenario;
 import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.helpers.page_object.scenario.CategoryPageScenario.findAProductCardInCategoryPage;
-import static snoonu.helpers.page_object.scenario.NativeScenario.assertPageOpened;
+import static snoonu.page_object.scenario.CategoryPageScenario.findAProductCardInCategoryPage;
+import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.ClothesAndAccessories;
-import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
+import static snoonu.page_object.scenario.MainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Availability of Category Pages From Service Boxes")

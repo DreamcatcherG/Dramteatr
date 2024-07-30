@@ -9,7 +9,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.helpers.page_object.scenario.MainPageScenario.*;
+import static snoonu.page_object.scenario.MainPageScenario.*;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")

@@ -9,10 +9,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number208;
-import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
-import static snoonu.helpers.page_object.scenario.MainPageScenario.assertLoginBtnVisible;
-import static snoonu.helpers.page_object.scenario.MainPageScenario.goToProfile;
-import static snoonu.helpers.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
+import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.MainPageScenario.assertLoginBtnVisible;
+import static snoonu.page_object.scenario.MainPageScenario.goToProfile;
+import static snoonu.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")

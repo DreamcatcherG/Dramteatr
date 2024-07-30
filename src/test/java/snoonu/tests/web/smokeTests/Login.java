@@ -10,24 +10,22 @@ import snoonu.tests.TestBase;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number208;
-import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
-import static snoonu.helpers.page_object.scenario.MainPageScenario.assertSuccessAuth;
-
+import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.MainPageScenario.assertSuccessAuth;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")
 @Tag("smokeStage")
 @Tag("onetest")
 
-
 class Login extends TestBase {
-
 
     @Test
     void successfullyLogin() {
 
         step("Go to the web page", () -> {
             open(Environment.webPage);
+//            open("http://localhost:3000/");
         });
 
         step("Authorization", () -> {

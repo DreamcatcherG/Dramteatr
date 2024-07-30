@@ -8,7 +8,7 @@
 //import org.openqa.selenium.Keys;
 //import snoonu.drivers.Environment;
 //import snoonu.tests.TestBase;
-//import snoonu.helpers.page_object.scenario.logInScenario;
+//import snoonu.page_object.scenario.logInScenario;
 //import snoonu.utils_generate.AwtRobot;
 //import snoonu.utils_generate.TextGenerator;
 //
@@ -18,10 +18,10 @@
 //import static io.qameta.allure.Allure.step;
 //import static snoonu.drivers.DriverHelper.byTestId;
 //import static snoonu.tests.TestData.Number208;
-//import static snoonu.helpers.page_object.scenario.locationScenario.*;
-//import static snoonu.helpers.page_object.scenario.logInScenario.defaultProfile;
-//import static snoonu.helpers.page_object.scenario.mainPageScenario.searchTestMerchant;
-//import static snoonu.helpers.page_object.scenario.searchPageScenario.findMerchantCard;
+//import static snoonu.page_object.scenario.locationScenario.*;
+//import static snoonu.page_object.scenario.logInScenario.defaultProfile;
+//import static snoonu.page_object.scenario.mainPageScenario.searchTestMerchant;
+//import static snoonu.page_object.scenario.searchPageScenario.findMerchantCard;
 //import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 //
 //@Feature("Selenide_Web")

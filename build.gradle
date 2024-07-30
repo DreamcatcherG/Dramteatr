@@ -125,21 +125,3 @@ task order(type: Test) {
     systemProperty 'platform', 'web'
 }
 
-help {
-    doFirst {
-        println ""
-        println "************************************************************************ "
-        println "***                                                                  *** "
-        println "*** Welcome to                                                       *** "
-        println "*** https://github.com/autotests-cloud/selenide-junit5-allure-gradle *** "
-        println "***                                                                  *** "
-        println "***                                                                  *** "
-        println "*** You can run tests by one of the following commands:              *** "
-        println "*** ./gradlew web                                                    *** "
-        println "*** ./gradlew android                                                *** "
-        println "*** ./gradlew ios                                                    *** "
-        println "***                                                                  *** "
-        println "************************************************************************ "
-        println ""
-    }
-}

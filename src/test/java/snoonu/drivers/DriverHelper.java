@@ -27,7 +27,6 @@ public class DriverHelper {
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
         } else if (isAndroid || isIos) {
-            Configuration.browser = CustomMobileDriver.class.getName();
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
         }
@@ -35,15 +34,11 @@ public class DriverHelper {
     }
 
     public static By byTestId(String testId) {
-        if (isWeb) {
-            return by("data-analytic-label", testId);
-        } else if (isAndroid) {
-            return MobileBy.xpath("//*[@content-desc='" + testId + "']");
-        } else if (isIos) {
-            return MobileBy.id(testId);
-        } else { // todo isDesktop
-            return by("some-desktop-attribute-name", testId);
-        }
+        return by("data-analytic-label", testId);
+    }
+
+    public static By dataTestId(String testId) {
+        return by("data-test-id", testId);
     }
 
     public static String getSessionId() {

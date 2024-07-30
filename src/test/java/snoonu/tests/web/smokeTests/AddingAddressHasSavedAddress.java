@@ -10,8 +10,8 @@ import snoonu.tests.TestBase;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.tests.TestData.Number208;
-import static snoonu.helpers.page_object.scenario.LocationScenario.*;
-import static snoonu.helpers.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LocationScenario.*;
+import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
 
 @Feature("Selenide_Web")
 @Story("Smoke tests Web")

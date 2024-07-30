@@ -7,7 +7,6 @@
 //import org.junit.jupiter.api.Test;
 //import org.openqa.selenium.Keys;
 //import snoonu.tests.TestBase;
-//import snoonu.helpers.page_object.scenario.logInScenario;
 //import snoonu.utils_generate.*;
 //
 //import static com.codeborne.selenide.Condition.*;
@@ -23,17 +22,20 @@
 //@Story("Smoke tests Web")
 //@Tag("web")
 //@Tag("smoke")
-//class EditLoc extends TestBase {
+//class TestOl extends TestBase {
 //
 //    @Test
 //    @DisplayName("Edit a location")
-//    void editLoc() {
+//    void testOl() {
 //
 //        step("Go to login page", () -> {
 //
 //            open("http://snoonu.com");
 //
 //        });
+//
+//}
+//        }
 //
 //        step("Select A Location", () -> {
 //

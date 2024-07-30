@@ -8,7 +8,7 @@
 //import org.openqa.selenium.Keys;
 //import snoonu.drivers.Css;
 //import snoonu.tests.TestBase;
-//import snoonu.helpers.page_object.scenario.logInScenario;
+//import snoonu.page_object.scenario.logInScenario;
 //import snoonu.utils_generate.*;
 //
 //import static com.codeborne.selenide.Condition.*;

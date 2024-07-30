@@ -5,7 +5,7 @@
 //import org.junit.jupiter.api.Test;
 //import org.openqa.selenium.Keys;
 //import snoonu.tests.TestBase;
-//import snoonu.helpers.page_object.scenario.logInScenario;
+//import snoonu.page_object.scenario.logInScenario;
 //import snoonu.utils_generate.*;
 //
 //
@@ -35,7 +35,7 @@
 //
 //        step("Select A Location", () -> {
 //
-//            $(byTestId("selectLocation")).click();
+//            $(byTestId("selectLocation")).;
 //            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
 //            $(byTestId("crossIcon")).shouldBe(visible).click();
 //            AwtRobot.entLoc();

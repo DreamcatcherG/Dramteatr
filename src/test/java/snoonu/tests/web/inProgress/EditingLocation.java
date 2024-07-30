@@ -11,9 +11,9 @@
 //import static com.codeborne.selenide.Selenide.open;
 //import static io.qameta.allure.Allure.step;
 //import static snoonu.tests.TestData.Number272;
-//import static snoonu.helpers.page_object.scenario.locationScenario.*;
-//import static snoonu.helpers.page_object.scenario.logInScenario.defaultProfile;
-//import static snoonu.helpers.page_object.scenario.mainPageScenario.assertSuccessAuth;
+//import static snoonu.page_object.scenario.locationScenario.*;
+//import static snoonu.page_object.scenario.logInScenario.defaultProfile;
+//import static snoonu.page_object.scenario.mainPageScenario.assertSuccessAuth;
 //
 //@Feature("Selenide_Web")
 //@Story("Smoke tests Web")
