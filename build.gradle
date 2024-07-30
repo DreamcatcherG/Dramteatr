@@ -104,6 +104,12 @@ task onetest(type: Test) {
     }
     systemProperty 'platform', 'web'
 }
+task tag(type: Test) {
+    useJUnitPlatform {
+        includeTags 'tag'
+    }
+    systemProperty 'platform', 'web'
+}
 
 task smokeStage(type: Test) {
     useJUnitPlatform {
