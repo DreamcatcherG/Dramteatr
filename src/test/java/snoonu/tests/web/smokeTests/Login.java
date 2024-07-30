@@ -25,7 +25,6 @@ class Login extends TestBase {
 
         step("Go to the web page", () -> {
             open(Environment.webPage);
-//            open("http://localhost:3000/");
         });
 
         step("Authorization", () -> {
