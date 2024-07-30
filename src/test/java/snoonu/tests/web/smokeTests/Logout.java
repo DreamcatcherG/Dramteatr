@@ -1,22 +1,19 @@
 package snoonu.tests.web.smokeTests;
 
-import io.qameta.allure.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
 import snoonu.tests.TestBase;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.TestData.Number208;
 import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.assertLoginBtnVisible;
 import static snoonu.page_object.scenario.MainPageScenario.goToProfile;
 import static snoonu.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
+import static snoonu.tests.TestData.Number208;
 
-@Feature("Selenide_Web")
-@Story("Smoke tests Web")
-@Tag("smokeStage")
+@Tag("smoke")
 
 public class Logout extends TestBase {
 

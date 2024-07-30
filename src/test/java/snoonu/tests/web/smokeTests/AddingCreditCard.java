@@ -1,7 +1,5 @@
 package snoonu.tests.web.smokeTests;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
@@ -13,20 +11,25 @@ import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
 import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.*;
 
-@Feature("Selenide_Web")
-@Story("Smoke tests Web")
-@Tag("smokeStage")
+@Tag("smoke")
+
 class AddingCreditCard extends TestBase {
 
     @Test
     void addCreditCard() {
+
+        step("Assert is it Prod if No pass the test", () -> {
+            if (Environment.environment.equals("prod")) {
+                throw new AssertionError("The case of adding credit cards can't be checked in production");
+            }
+        });
 
         step("Open Web and Login in", () -> {
             open(Environment.webPage);
         });
 
         step("Login in", () -> {
-            logginInNumberOtp(Number208);
+            logginInNumberOtp(Number272);
         });
 
         step("Open Saved Cards window)", () -> {

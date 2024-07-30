@@ -36,10 +36,8 @@ public class AttachmentsHelper {
     }
 
     public static String getVideoUrl(String sessionId) {
-        if(Environment.isWeb) {
+        if (Environment.isWeb) {
             return getWebVideoUrl(sessionId);
-        } else if (Environment.isIos || Environment.isAndroid){
-            return BrowserstackHelper.getBrowserstackVideoUrl(sessionId);
         } else {
             return null; // todo isDesktop
         }

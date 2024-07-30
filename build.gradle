@@ -111,19 +111,13 @@ task tag(type: Test) {
     systemProperty 'platform', 'web'
 }
 
-task smokeStage(type: Test) {
-    useJUnitPlatform {
-        includeTags 'smokeStage'
-    }
-    systemProperty 'platform', 'web'
-}
-
 task smokeProd(type: Test) {
     useJUnitPlatform {
         includeTags 'smokeProd'
     }
     systemProperty 'platform', 'web'
 }
+
 task order(type: Test) {
     useJUnitPlatform {
         includeTags 'Order'

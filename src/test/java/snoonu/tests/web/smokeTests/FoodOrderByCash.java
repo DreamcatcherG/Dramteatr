@@ -1,7 +1,5 @@
 package snoonu.tests.web.smokeTests;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
@@ -26,10 +24,8 @@ import static snoonu.page_object.scenario.SuccessPageScenario.*;
 import static snoonu.tests.TestData.Number208;
 import static snoonu.tests.TestData.Restaurants;
 
-@Feature("Selenide_Web")
-@Story("Buy simple food product by cash")
-@Tag("smokeStage")
 @Tag("Order")
+@Tag("smoke")
 class FoodOrderByCash extends TestBase {
 
     @Test

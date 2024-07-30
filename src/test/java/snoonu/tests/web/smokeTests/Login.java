@@ -1,7 +1,5 @@
 package snoonu.tests.web.smokeTests;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
@@ -9,13 +7,11 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.tests.TestData.Number208;
 import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.assertSuccessAuth;
+import static snoonu.tests.TestData.Number208;
 
-@Feature("Selenide_Web")
-@Story("Smoke tests Web")
-@Tag("smokeStage")
+@Tag("smoke")
 @Tag("onetest")
 
 class Login extends TestBase {
