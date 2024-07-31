@@ -71,12 +71,12 @@ public class ProfileScenario {
     }
 
     public static void assertNoSavedCards() {
-        sleep(3000);
+        sleep(2000);
         if (deleteSavedCardBtn().exists()) {
             while (deleteSavedCardBtn().exists()) {
                 deleteSavedCardBtn().click();
                 confirmDeleteBtnYes().shouldBe(enabled).click();
-                confirmDeleteBtnYesLoader().should(disappear);
+                loaderInButtons().should(disappear);
             }
         } else {
             sleep(2000);
@@ -96,9 +96,8 @@ public class ProfileScenario {
 //      Cvv
         int randomCvv = TextGenerator.getRandomNumber(1, 999);
         cvvField().setValue(String.format("%03d", randomCvv));
-
         saveCardBtn().click();
-        saveCardBtn().should(disappear);
+        loaderInButtons().should(disappear);
     }
 
     public static void completePayCardAddingOn3DSPage() {
