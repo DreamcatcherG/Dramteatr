@@ -7,6 +7,7 @@ import snoonu.drivers.Css;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.drivers.DriverHelper.dataTestId;
 
 public class ProfileObjects {
 
@@ -90,8 +91,8 @@ public class ProfileObjects {
         return $(byTestId("yes"));
     }
 
-    public static SelenideElement confirmDeleteBtnYesLoader() {
-        return $(byAttribute("class", "Loader_loader__4A5f1 Button_loader__I8AK4"));
+    public static SelenideElement loaderInButtons() {
+        return $(dataTestId("loaderInButtons"));
     }
 
     public static SelenideElement Frame3ds() {

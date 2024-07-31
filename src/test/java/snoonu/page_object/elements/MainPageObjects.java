@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.drivers.DriverHelper.dataTestId;
 
 public class MainPageObjects {
 
@@ -18,7 +19,7 @@ public class MainPageObjects {
     }
 
     public static SelenideElement emptySearchWriteToUsBTN() {
-        return $(byAttribute("data-test-id", "nothing-found-write-to-us"));
+        return $(dataTestId("nothing-found-write-to-us"));
     }
 
     public static SelenideElement writeToUsCommentField() {

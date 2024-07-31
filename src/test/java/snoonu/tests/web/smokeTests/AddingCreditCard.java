@@ -8,6 +8,7 @@ import snoonu.tests.TestBase;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.NativeScenario.assertIsProdEnvironment;
 import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.*;
 
@@ -17,12 +18,6 @@ class AddingCreditCard extends TestBase {
 
     @Test
     void addCreditCard() {
-
-        step("Assert is it Prod if No pass the test", () -> {
-            if (Environment.environment.equals("prod")) {
-                throw new AssertionError("The case of adding credit cards can't be checked in production");
-            }
-        });
 
         step("Open Web and Login in", () -> {
             open(Environment.webPage);
@@ -42,6 +37,10 @@ class AddingCreditCard extends TestBase {
 
         step("Add new Payment card", () -> {
             addNewPayCard(CreditCard);
+        });
+
+        step("Assert is it Prod then show message if Stage pass the test", () -> {
+            assertIsProdEnvironment();
         });
 
         step("Complete adding for Payment Card", () -> {
