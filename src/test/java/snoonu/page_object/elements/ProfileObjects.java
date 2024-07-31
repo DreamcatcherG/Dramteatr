@@ -92,7 +92,7 @@ public class ProfileObjects {
     }
 
     public static SelenideElement loaderInButtons() {
-        return $(dataTestId("loaderInButtons"));
+        return $(dataTestId("loaderInBtn"));
     }
 
     public static SelenideElement Frame3ds() {
