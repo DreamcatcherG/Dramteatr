@@ -8,7 +8,7 @@ public class SuccessPageScenario {
 
     public static void orderPlacesSuccessful() {
         try {
-            successTitle().shouldHave(text("Success!"));
+            successModal().shouldHave(text("Success!"));
         } catch (AssertionError e) {
             throw new AssertionError("Order didn't placed. Expected title: 'Success!'", e);
         }
@@ -22,11 +22,7 @@ public class SuccessPageScenario {
         trackOrderBtn().click();
     }
 
-    public static void goToSnoonuLogoOnOrdersPage() {
+    public static void goToSLogoOnOrdersPage() {
         snoonuLogoInOrdersPage().click();
     }
 }
-
-
-
-

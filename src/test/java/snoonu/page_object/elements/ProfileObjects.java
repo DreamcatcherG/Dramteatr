@@ -7,7 +7,7 @@ import snoonu.drivers.Css;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static snoonu.drivers.DriverHelper.byTestId;
-import static snoonu.drivers.DriverHelper.dataTestId;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class ProfileObjects {
 
@@ -52,7 +52,7 @@ public class ProfileObjects {
     }
 
     public static SelenideElement savedAddresses() {
-        return $(byTestId("myAddresses"));
+        return $(byDataTestId("myAddressesBtn"));
     }
 
     public static SelenideElement logOutBtn() {
@@ -92,7 +92,7 @@ public class ProfileObjects {
     }
 
     public static SelenideElement loaderInButtons() {
-        return $(dataTestId("loaderInBtn"));
+        return $(byDataTestId("loaderInBtn"));
     }
 
     public static SelenideElement Frame3ds() {

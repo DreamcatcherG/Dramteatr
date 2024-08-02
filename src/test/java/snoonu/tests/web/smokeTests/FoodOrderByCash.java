@@ -19,7 +19,7 @@ import static snoonu.page_object.scenario.MerchantPageScenario.clickToAddBtn;
 import static snoonu.page_object.scenario.MerchantPageScenario.findAProduct;
 import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.page_object.scenario.NativeScenario.switchToNewTab;
-import static snoonu.page_object.scenario.OrderHistoryPageScenario.verifyOrdersTitle;
+import static snoonu.page_object.scenario.OrderHistoryPageScenario.verifyOrderIsInHistory;
 import static snoonu.page_object.scenario.SuccessPageScenario.*;
 import static snoonu.tests.TestData.Number208;
 import static snoonu.tests.TestData.Restaurants;
@@ -36,7 +36,7 @@ class FoodOrderByCash extends TestBase {
         });
 
         step("Select A Location", () -> {
-            clickToSelectLocation();
+            clickToSelectAddressButton();
         });
 
         step("Input Random Test Address", () -> {
@@ -67,9 +67,11 @@ class FoodOrderByCash extends TestBase {
             switchToNewTab();
         });
 
-//        step("Assert: Merchant Page opened", () -> {
-//            assertPageOpened(TestCafeBrand);
-//        });
+        /* Urls from Stage and Prod are different should think how fix it
+        step("Assert: Merchant Page opened", () -> {
+            assertPageOpened(TestCafeBrand);
+        });
+         */
 
         step("Find a simple product with 'Product Name' if there isn't show message 'Product Not found'", () -> {
             findAProduct("Simple Product");
@@ -83,12 +85,12 @@ class FoodOrderByCash extends TestBase {
             clickToCart();
         });
 
-        step("Assert: Cart is loaded", () -> {
-            cartIsLoaded();
+        step("Assert: The cart has a product", () -> {
+            isProductInCart();
         });
 
         step("Assert: Selected product in the cart", () -> {
-            verifyProductInCart("Simple Product");
+            isSelectedProductInCart("Simple Product");
         });
 
         step("Click to Checkout button in the cart", () -> {
@@ -111,8 +113,12 @@ class FoodOrderByCash extends TestBase {
             paymentMethodIsDisplayed();
         });
 
+        step("Open Payment methods modal", () -> {
+            openPayMethodModal();
+        });
+
         step("Select Payment Method by Cash", () -> {
-            selectPaymentMethodScenario("Cash");
+            selectPaymentMethodScenario();
         });
 
         step("Click To Place Order Btn on the Checkout Page", () -> {
@@ -131,15 +137,13 @@ class FoodOrderByCash extends TestBase {
             clickToTrackYourOrderBtn();
         });
 
-        step("Assert: Order History page opened and has title 'Orders'", () -> {
-            verifyOrdersTitle();
+        step("Assert: Order History page opened and has an order", () -> {
+            verifyOrderIsInHistory();
         });
 
-        step("Post conditions: Go to Main Page and Remove the saved location", () -> {
-            goToSnoonuLogoOnOrdersPage();
+        step("Post conditions: Remove the saved location", () -> {
             removeNewSavedAddress();
         });
-
     }
 }
 

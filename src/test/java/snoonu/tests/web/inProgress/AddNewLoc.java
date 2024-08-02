@@ -35,15 +35,6 @@
 //
 //        step("Select A Location", () -> {
 //
-//            $(byTestId("selectLocation")).;
-//            $(byTestId("loginContinue")).shouldHave(text("Confirm location"));
-//            $(byTestId("crossIcon")).shouldBe(visible).click();
-//            AwtRobot.entLoc();
-//            $(byTestId("addressPrediction")).shouldBe(visible);
-//            $(byTestId("addressPrediction")).click();
-//            sleep(1000);
-//            $(byTestId("loginContinue")).shouldBe(visible).click();
-//            LoadPage.pageInit();
 //
 //        });
 //

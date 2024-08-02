@@ -21,7 +21,7 @@ public class PickTestLocation extends TestBase {
         });
 
         step("Select A Location", () -> {
-            clickToSelectLocation();
+            clickToSelectAddressButton();
         });
 
         step("Input Random Test Address", () -> {

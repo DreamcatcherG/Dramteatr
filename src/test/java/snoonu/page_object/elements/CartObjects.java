@@ -3,26 +3,26 @@ package snoonu.page_object.elements;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class CartObjects {
 
-    public static ElementsCollection mpProductCardsInCart() {
-        return $$(byAttribute("class", "CartProduct_wrapper__nFipV CartProduct_marketplace__1hbJL"));
+    public static SelenideElement productCardInCart() {
+        return $(byDataTestId("cardOfProductInCart"));
     }
 
-    public static ElementsCollection mpProductCardTitlesInCart() {
-        return $$(byAttribute("class", "Typography_p11__Zpcyp CartProduct_name__zlfe_"));
+    public static ElementsCollection productCardsInCart() {
+        return $$(byDataTestId("cardOfProductInCart"));
     }
 
-    public static SelenideElement mpCardSceletonLoadingInCart() {
-        return $(byAttribute("class", "CartLoading_wrapper__AydaS"));
+    public static ElementsCollection productTitlesInCart() {
+        return $$(byDataTestId("productTitleInCart"));
     }
 
     public static SelenideElement checkoutBtnInCart() {
-        return $(byAttribute("class", "MarketplaceCart_checkoutButton__AXBof"));
+        return $(byDataTestId("checkoutBtn"));
     }
 }
 

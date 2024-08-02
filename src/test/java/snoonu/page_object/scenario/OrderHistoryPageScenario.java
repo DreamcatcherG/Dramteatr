@@ -1,16 +1,16 @@
 package snoonu.page_object.scenario;
 
-import static com.codeborne.selenide.Condition.text;
-import static snoonu.page_object.elements.OrderHistoryPageObjects.ordersTitleInOrdersPage;
+import static com.codeborne.selenide.Condition.appear;
+import static snoonu.page_object.elements.OrderHistoryPageObjects.productCardInOrdersPage;
 
 public class OrderHistoryPageScenario {
 
-    public static void verifyOrdersTitle() {
+    public static void verifyOrderIsInHistory() {
         try {
-            ordersTitleInOrdersPage().shouldHave(text("Orders"));
+            productCardInOrdersPage().should(appear);
         } catch (AssertionError e) {
 
-            throw new AssertionError("Orders History Page didn't open", e);
+            throw new AssertionError("Orders History Page does not have any order", e);
         }
     }
 }
