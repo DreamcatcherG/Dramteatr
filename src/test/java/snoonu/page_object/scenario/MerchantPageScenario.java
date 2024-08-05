@@ -10,7 +10,8 @@ import static snoonu.page_object.elements.MerchantPageObjects.*;
 public class MerchantPageScenario {
     private static SelenideElement foundProductCard;
 
-    public static void findAProduct(String productName) { // Need to think how search on 2 page (pagination)
+    // Need to think how search on 2 page (pagination)
+    public static void findAProduct(String productName) {
         int scrollAttempts = 0;
         boolean productFound = false;
 

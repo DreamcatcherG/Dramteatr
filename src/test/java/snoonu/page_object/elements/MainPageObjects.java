@@ -1,12 +1,14 @@
 package snoonu.page_object.elements;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static snoonu.drivers.DriverHelper.byTestId;
-import static snoonu.drivers.DriverHelper.dataTestId;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class MainPageObjects {
 
@@ -19,7 +21,7 @@ public class MainPageObjects {
     }
 
     public static SelenideElement emptySearchWriteToUsBTN() {
-        return $(dataTestId("nothing-found-write-to-us"));
+        return $(byDataTestId("nothing-found-write-to-us"));
     }
 
     public static SelenideElement writeToUsCommentField() {
@@ -39,8 +41,8 @@ public class MainPageObjects {
         return $(byText("Less"));
     }
 
-    public static SelenideElement food() {
-        return $(byAttribute("href", "/restaurants"));
+    public static ElementsCollection categoryIcon() {
+        return $$(byDataTestId("categoryIcon"));
     }
 
     public static SelenideElement snoomart() {

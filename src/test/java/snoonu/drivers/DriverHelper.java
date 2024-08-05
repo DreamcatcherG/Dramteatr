@@ -2,7 +2,6 @@ package snoonu.drivers;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import io.appium.java_client.MobileBy;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -34,7 +33,7 @@ public class DriverHelper {
         return by("data-analytic-label", testId);
     }
 
-    public static By dataTestId(String testId) {
+    public static By byDataTestId(String testId) {
         return by("data-test-id", testId);
     }
 

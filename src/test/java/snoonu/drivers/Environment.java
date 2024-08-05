@@ -6,7 +6,7 @@ public class Environment {
 
     private static final String prodUrl = "https://snoonu.com";
     public static final String stageUrl = "https://development.snoonu.com";
-    public static final String environment = System.getProperty("environment", "prod");
+    public static final String environment = System.getProperty("environment", "stage");
     public static final String webPage = environment.equals("prod") ? prodUrl : stageUrl;
 
     // PLATFORM CONFIG

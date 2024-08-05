@@ -5,15 +5,12 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.$$;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class MerchantPageObjects {
 
     public static ElementsCollection productCardListView() {
-        return $$(byAttribute("data-analytic-label", "productCard"));
-    }
-
-    public static ElementsCollection productCardListViewTitle() {
-        return $$(byAttribute("data-analytic-label", "productCard"));
+        return $$(byDataTestId("cardOfProduct"));
     }
 
     public static ElementsCollection productCardBestSelling() {
@@ -25,6 +22,6 @@ public class MerchantPageObjects {
     }
 
     public static SelenideElement productCardAddBtn(SelenideElement productCard) {
-        return productCard.$(byAttribute("data-analytic-label", "productButtonAdd"));
+        return productCard.$(byDataTestId("addBtnProductCard"));
     }
 }

@@ -3,36 +3,36 @@ package snoonu.page_object.elements;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.*;
 import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 import static snoonu.drivers.extentions.SelenideExtentions.$;
 
 public class LocationObjects {
 
-    public static SelenideElement selectLocationBtn() {
-        return $(byTestId("selectLocation"));
+    public static SelenideElement selectLocationButton() {
+        return $(byDataTestId("selectAddressBtn"));
     }
 
-    public static SelenideElement pencilBtn() { return $(byTestId("addressEdit")); }
+    public static SelenideElement pencilBtn() { return $(byDataTestId("pencilEditBtn")); }
 
-    public static SelenideElement deleteAddressBtn() { return $(byTestId("deleteAddress")); }
+    public static SelenideElement deleteAddressBtn() { return $(byDataTestId("deleteAddressBtn")); }
 
     public static SelenideElement cardSavedAddress() { return $(byTestId("cardAddress")); }
 
     public static SelenideElement nameLocationCard() { return $(By.cssSelector("p.Typography_p8__gvA_C.CardAddress_notes__b6xbO")); }
 
-    public static SelenideElement cardAddressName() { return $(byAttribute("class","Typography_p8__bwpG6 CardAddress_notes__Hx8C0")); }
+    public static SelenideElement savedAddressCard() { return $(byDataTestId("cardSavedAddress")); }
 
-    public static SelenideElement confirmBtnMapWindow() {
-        return $(byTestId("loginContinue"));
+    public static SelenideElement confirmBtnOnMap() {
+        return $(byDataTestId("confirmLocationBtn"));
     }
 
     public static SelenideElement crossIconX() {
-        return $(byTestId("crossIcon"));
+        return $(byDataTestId("crossXBtn"));
     }
 
     public static SelenideElement addressPredictionField() {
-        return $(byTestId("addressPrediction"));
+        return $(byDataTestId("addressSuggest"));
     }
 
     public static SelenideElement delConfirmYesBtn() {
@@ -48,22 +48,22 @@ public class LocationObjects {
     }
 
     public static SelenideElement addressInputField() {
-        return $(byName("address"));
+        return $(byDataTestId("addressInputField"));
     }
 
     public static SelenideElement apartmentInputField() {
-        return $(byName("apartment"));
+        return $(byDataTestId("apartmentField"));
     }
 
-    public static SelenideElement notesInputField() {
-        return $(byName("notes"));
+    public static SelenideElement driverNotesInputField() {
+        return $(byDataTestId("driverNote"));
     }
 
     public static SelenideElement customNameInputField() {
-        return $(byName("customName"));
+        return $(byDataTestId("customNameField"));
     }
 
     public static SelenideElement saveAddressBtn() {
-        return $(byTestId("saveAddress"));
+        return $(byDataTestId("saveAddressBtn"));
     }
 }

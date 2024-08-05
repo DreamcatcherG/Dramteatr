@@ -10,11 +10,12 @@ import java.io.IOException;
 import static com.codeborne.selenide.Condition.*;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static snoonu.drivers.DriverHelper.byTestId;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 import static snoonu.drivers.extentions.SelenideExtentions.$;
 import static snoonu.page_object.elements.HeaderObjects.locationPopup;
 import static snoonu.page_object.elements.HeaderObjects.profileIcon;
 import static snoonu.page_object.elements.LocationObjects.*;
+import static snoonu.page_object.elements.ProfileObjects.loaderInButtons;
 import static snoonu.page_object.elements.ProfileObjects.savedAddresses;
 import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 
@@ -22,12 +23,12 @@ public class LocationScenario {
 
     private static String lastEnteredAddress;
 
-    public static void clickToSelectLocation() {
-        selectLocationBtn().click();
-        confirmBtnMapWindow().shouldHave(text("Confirm location")); // разделить на два шага и написать ассерт
+    public static void clickToSelectAddressButton() {
+        selectLocationButton().click();
     }
 
     public static void inputRandomTestAddressScenario() throws InterruptedException, IOException {
+        loaderInButtons().shouldBe(disappear);
         crossIconX().shouldBe(visible).click();
         lastEnteredAddress = AwtRobot.entLoc();
         addressPredictionField().shouldBe(appear);
@@ -35,27 +36,34 @@ public class LocationScenario {
         sleep(2000);
         addressPredictionField().shouldBe(enabled).click();
         addressPredictionField().shouldBe(disappear);
-        sleep(2000); // here should add checking api request instead of sleep Like:
-        // String apiUrl = Environment.webPage.equals(Environment.stageUrl) ?
-        // "https://qa.snoonu.com/_next/data/VNfspcDq8WlGYscEAjpN7/en.json" :
-        // "https://snoonu.com/_next/data/uQARuxrLqw3lRG9VH-mpa/en.json";
-        // LoadPage.waitForApiResponse(apiUrl);
-        confirmBtnMapWindow().shouldBe(visible).click();
+        sleep(2000);
+        /*
+        here should add checking api request instead of "sleep" Like:
+        String apiUrl = Environment.webPage.equals(Environment.stageUrl) ?
+        "https://qa.snoonu.com/_next/data/VNfspcDq8WlGYscEAjpN7/en.json" :
+        "https://snoonu.com/_next/data/uQARuxrLqw3lRG9VH-mpa/en.json";
+        LoadPage.waitForApiResponse(apiUrl);
+         */
+        loaderInButtons().shouldBe(disappear);
+        confirmBtnOnMap().shouldBe(enabled).click();
     }
 
     public static void removeNewSavedAddress() throws InterruptedException {
         profileIcon().shouldBe(visible).click();
         savedAddresses().shouldBe(visible).click();
-        cardAddressName().shouldBe(visible);
+        savedAddressCard().shouldBe(visible);
         sleep(2000);
-        String addressBeforeDeletion = cardAddressName().getText();
+        String addressBeforeDeletion = savedAddressCard().getText();
         pencilBtn().shouldBe(appear).click();
         deleteAddressBtn().shouldBe(enabled).click();
         delConfirmYesBtn().shouldBe(enabled).click();
-        delConfirmYesBtn().shouldBe(disappear);
-        sleep(1000); // waiting when address name will update
-        String addressAfterDeletion = cardAddressName().getText();
-        assertNotEquals(addressBeforeDeletion, addressAfterDeletion, "The saved address was removed");
+        loaderInButtons().shouldBe(disappear);
+        sleep(3000);
+        /*
+         waiting when address name will update
+         */
+        String addressAfterDeletion = savedAddressCard().getText();
+        assertNotEquals(addressBeforeDeletion, addressAfterDeletion, "The saved address was not removed");
     }
 
     public static void assertLocAppliedInHeader() {
@@ -97,10 +105,10 @@ public class LocationScenario {
         apartmentInputField().sendKeys(Keys.CONTROL + "a", Keys.DELETE);
         apartmentInputField().setValue(randomApartName);
         String randomNotes = TextGenerator.getRandomText(1, 10);
-        notesInputField().sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-        notesInputField().setValue(randomNotes);
-        String[] testIds = {"custom", "work", "home"};
-        $(byTestId(getRandomID(testIds))).click();
+        driverNotesInputField().sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+        driverNotesInputField().setValue(randomNotes);
+        String[] testIds = {"customBtn", "workBtn", "homeBtn"};
+        $(byDataTestId(getRandomID(testIds))).click();
 
         String enteredAddressName = randomApartName;
         if (customNameInputField().exists()) {
@@ -126,12 +134,12 @@ public class LocationScenario {
     }
 
     public static void selectTestAddressOnMap() throws InterruptedException, IOException {
-        confirmBtnMapWindow().shouldHave(text("Confirm location"));
+        confirmBtnOnMap().shouldHave(text("Confirm location"));
         inputRandomTestAddressScenario();
     }
 
     public static void clickSaveAddressBtn() {
-        saveAddressBtn().shouldBe(visible);
+        saveAddressBtn().shouldBe(enabled);
         saveAddressBtn().click();
     }
 }

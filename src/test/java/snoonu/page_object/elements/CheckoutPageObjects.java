@@ -6,19 +6,20 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class CheckoutPageObjects {
 
-    public static SelenideElement selectPaymentBtn() {
-        return $(byAttribute("data-analytic-label","selectPaymentMethod"));
+    public static SelenideElement chooseMethodBtn() {
+        return $(byDataTestId("choosePayMethodBtn"));
     }
 
-    public static ElementsCollection paymentMethods() {
-        return $$(byAttribute("class","PaymentRadio_method__K2D1h"));
+    public static SelenideElement cashPaymentMethod() {
+        return $(byDataTestId("cashBtn"));
     }
 
     public static SelenideElement paymentMethodsDoneBtn() {
-        return $(byAttribute("id","selectPaymentMethodId"));
+        return $(byDataTestId("doneInPayMethodModal"));
     }
 
     public static SelenideElement loaderFullScreen() {
@@ -26,7 +27,7 @@ public class CheckoutPageObjects {
     }
 
     public static SelenideElement placeOrderBtn() {
-        return $(byAttribute("data-analytic-label","placeOrder"));
+        return $(byDataTestId("placeOrderBtn"));
     }
 }
 
