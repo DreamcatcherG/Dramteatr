@@ -1,7 +1,5 @@
 package snoonu.tests.web.smokeTests.serviceBoxes;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
@@ -15,16 +13,14 @@ import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.Snoomart;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 
-@Feature("Selenide_Web")
-@Story("Availability of Category Pages From Service Boxes")
-@Tag("smokeProd")
+@Tag("smoke")
 @Tag("Categories")
 class CategorySnoomart extends TestBase {
 
     @Test
     void snoomart() {
 
-        step("Open Web and Login in", () -> {
+        step("Open Web", () -> {
             open(Environment.webPage);
         });
 

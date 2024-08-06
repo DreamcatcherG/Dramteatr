@@ -40,7 +40,7 @@ public class CategoryPageScenario {
         }
     }
 
-    public static void findAProductCardInCategoryPage() {
+    public static void findBestSellingCard() {
         int scrollAttempts = 0;
         boolean productFound = false;
 
