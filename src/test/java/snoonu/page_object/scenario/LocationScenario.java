@@ -56,7 +56,7 @@ public class LocationScenario {
         String addressBeforeDeletion = savedAddressCard().getText();
         pencilBtn().shouldBe(appear).click();
         deleteAddressBtn().shouldBe(enabled).click();
-        delConfirmYesBtn().shouldBe(enabled).click();
+        yesDeleteAddressConfirmBtn().shouldBe(enabled).click();
         loaderInButtons().shouldBe(disappear);
         sleep(3000);
         /*
@@ -79,13 +79,13 @@ public class LocationScenario {
     }
 
     public static void confirmNoLocationPopup() {
-        delConfirmNoBtn().shouldBe(appear).click();
+        dontDeleteAddressConfirmBtn().shouldBe(appear).click();
     }
 
     public static void confirmLastOrAddNewAddress() throws InterruptedException, IOException {
         $(By.cssSelector(".Popup_popup__PEvWF.LocationBlock_popup__79Z9V")).shouldBe(appear);
-        if (delConfirmYesBtn().exists()) {
-            delConfirmNoBtn().click();
+        if (yesDeleteAddressConfirmBtn().exists()) {
+            dontDeleteAddressConfirmBtn().click();
         } else {
             inputRandomTestAddressScenario();
         }

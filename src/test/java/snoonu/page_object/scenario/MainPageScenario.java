@@ -49,51 +49,51 @@ public class MainPageScenario {
     }
 
     public static void goToSnoomart() {
-        snoomart().shouldBe(visible).click();
+        categoryIcon().findBy(text("Snoomart")).click();
     }
 
     public static void goToGroceries() {
-        groceries().shouldBe(visible).click();
+        categoryIcon().findBy(text("Grocery")).click();
     }
 
     public static void goToGifting() {
-        gifting().shouldBe(visible).click();
+        categoryIcon().findBy(text("Gifting")).click();
     }
 
     public static void goToPharmacy() {
-        pharmacy().shouldBe(visible).click();
+        categoryIcon().findBy(text("Pharmacy")).click();
     }
 
     public static void goToHealthAndBeauty() {
-        healthAndBeauty().shouldBe(visible).click();
+        categoryIcon().findBy(text("Health & Beauty")).click();
     }
 
     public static void goToElectronics() {
-        electronics().shouldBe(visible).click();
+        categoryIcon().findBy(text("Electronics")).click();
     }
 
     public static void goToBabyAndKids() {
-        babyAndKids().shouldBe(visible).click();
+        categoryIcon().findBy(text("Baby & Kids")).click();
     }
 
     public static void goToPets() {
-        pets().shouldBe(visible).click();
+        categoryIcon().findBy(text("Pets")).click();
     }
 
     public static void goToHouseholdAndGarden() {
-        houseAndGarden().shouldBe(visible).click();
+        categoryIcon().findBy(text("Household & Garden")).click();
     }
 
     public static void goToBooksAndStationery() {
-        booksAndStationery().shouldBe(visible).click();
+        categoryIcon().findBy(text("Books & Stationery")).click();
     }
 
     public static void goToSportsAndOutdoors() {
-        sportsAndOutdoors().shouldBe(visible).click();
+        categoryIcon().findBy(text("Sports & Outdoor")).click();
     }
 
     public static void goToClothesAndAccessories() {
-        clothesAndAccessories().shouldBe(visible).click();
+        categoryIcon().findBy(text("Clothes & Accessories")).click();
     }
 
     public static void closeLocationPopup() {
@@ -103,10 +103,6 @@ public class MainPageScenario {
     public static void expandServiceBoxes() {
         moreServiceBoxesBtn().shouldBe(visible).click();
         lessCategoryBtn().shouldHave(text("Less"));
-    }
-
-    public static void assertSnoosendPopupOpened() {
-        snoosendPopupText().shouldHave(text("Your personal door-to-door delivery service"));
     }
 
     public static void assertIsOngoingOrders() {

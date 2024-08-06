@@ -1,7 +1,5 @@
 package snoonu.tests.web.smokeTests.serviceBoxes;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import snoonu.drivers.Environment;
@@ -9,21 +7,19 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.CategoryPageScenario.findAProductCardInCategoryPage;
+import static snoonu.page_object.scenario.CategoryPageScenario.isMerchantCardVisible;
+import static snoonu.page_object.scenario.MainPageScenario.*;
 import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.Gifting;
-import static snoonu.page_object.scenario.MainPageScenario.*;
 
-@Feature("Selenide_Web")
-@Story("Availability of Category Pages From Service Boxes")
-@Tag("smokeProd")
+@Tag("smoke")
 @Tag("Categories")
 class CategoryGifting extends TestBase {
 
     @Test
     void gifting() {
 
-        step("Open Web and Login in", () -> {
+        step("Open Web", () -> {
             open(Environment.webPage);
         });
 
@@ -44,7 +40,7 @@ class CategoryGifting extends TestBase {
         });
 
         step("Assert: Verify the page has product cards", () -> {
-            findAProductCardInCategoryPage();
+            isMerchantCardVisible();
         });
     }
 }
