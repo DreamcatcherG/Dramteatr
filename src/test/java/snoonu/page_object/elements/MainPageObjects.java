@@ -33,12 +33,8 @@ public class MainPageObjects {
     }
 
     // Service boxes
-    public static SelenideElement moreServiceBoxesBtn() {
-        return $(byText("More"));
-    }
-
-    public static SelenideElement lessCategoryBtn() {
-        return $(byText("Less"));
+    public static SelenideElement showMoreOnServiseBoxes() {
+        return $(byDataTestId("showMoreBtn"));
     }
 
     public static ElementsCollection categoryIcon() {

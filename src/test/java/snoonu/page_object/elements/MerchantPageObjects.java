@@ -13,12 +13,12 @@ public class MerchantPageObjects {
         return $$(byDataTestId("cardOfProduct"));
     }
 
-    public static ElementsCollection productCardBestSelling() {
-        return $$(byAttribute("data-analytic-label", "bestSellingProduct"));
+    public static ElementsCollection bestSellingProductCards() {
+        return $$(byDataTestId("bestSellProductCard"));
     }
 
     public static ElementsCollection subcategoryCardsInMerchant() {
-        return $$(byAttribute("data-analytic-label", "subcategory"));
+        return $$(byDataTestId("subcategoryCard"));
     }
 
     public static SelenideElement productCardAddBtn(SelenideElement productCard) {

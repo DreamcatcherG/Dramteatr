@@ -49,7 +49,7 @@ public class MerchantPageScenario {
     }
 
     public static void findAProductCardInMerchantPage() {
-        if (productCardBestSelling().isEmpty() || !productCardBestSelling().first().is(Condition.visible)) {
+        if (bestSellingProductCards().isEmpty() || !bestSellingProductCards().first().is(Condition.visible)) {
             throw new AssertionError("Product Cards not found.");
         }
     }

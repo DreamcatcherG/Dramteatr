@@ -1,6 +1,5 @@
 package snoonu.page_object.scenario;
 
-import com.codeborne.selenide.conditions.Text;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 import snoonu.utils_generate.TextGenerator;
@@ -101,8 +100,8 @@ public class MainPageScenario {
     }
 
     public static void expandServiceBoxes() {
-        moreServiceBoxesBtn().shouldBe(visible).click();
-        lessCategoryBtn().shouldHave(text("Less"));
+        showMoreOnServiseBoxes().shouldBe(visible).click();
+        showMoreOnServiseBoxes().shouldHave(text("Less"));
     }
 
     public static void assertIsOngoingOrders() {
