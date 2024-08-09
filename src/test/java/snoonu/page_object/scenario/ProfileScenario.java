@@ -5,7 +5,6 @@ import snoonu.page_object.elements.ProfileObjects;
 import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -64,29 +63,30 @@ public class ProfileScenario {
         deleteAccountConfirm().shouldBe(enabled).click();
     }
 
-    public static void goToSavedPaymentsCard() {
+    public static void goToProfileIcon() {
         profileIcon().click();
+    }
+
+    public static void goToSavedPaymentsCard() {
         paymentCards().click();
         assert addPaymentCardBtn().isDisplayed();
     }
 
     public static void assertNoSavedCards() {
         sleep(2000);
-        if (deleteSavedCardBtn().exists()) {
-            while (deleteSavedCardBtn().exists()) {
-                deleteSavedCardBtn().click();
-                confirmDeleteBtnYes().shouldBe(enabled).click();
-                loaderInButtons().should(disappear);
-            }
+        if (savedPaymentCard().exists()) {
+            deleteSavedCardBtn().click();
+            yesConfirmDeleteBtn().shouldBe(enabled).click();
+            loaderInButtons().should(disappear);
+            assertNoSavedCards();
         } else {
-            sleep(2000);
-            isPaymentCard().shouldHave(text("You do not have any saved cards at the moment"));
+            savedPaymentCard().shouldNot(exist);
         }
     }
 
     public static void addNewPayCard(String cardNumber) {
         addPaymentCardBtn().click();
-        cardNumberField(cardNumber);
+        cardNumberField().setValue(cardNumber);
 //      Date
         int month = TextGenerator.getRandomNumber(1, 12);
         int year = TextGenerator.getRandomNumber(28, 99);
@@ -109,18 +109,19 @@ public class ProfileScenario {
         close3DS().click();
     }
 
-    public static void assertCardAdded() {
-        String lastFourDigits = CreditCard.substring(CreditCard.length() - 4);
-        String displayedText = payCardList().getText();
-        String displayedLastFourDigits = displayedText.substring(displayedText.length() - 4);
-        assertEquals(lastFourDigits, displayedLastFourDigits, "Last four digits of the card do not match the displayed text");
+    public static void isCardVerified() {
+        savedPaymentCard().shouldBe(appear);
+        boolean isElementExists = verifyPaymentCardBtn().exists();
+        if (isElementExists) {
+            throw new AssertionError("Payment Card isn't verified");
+        }
     }
 
-    public static void assertCardAddedCompletely() {
-        boolean isElementExists = $(byAttribute("class", "CreditCard_verify__bRzvU")).exists();
-        if (isElementExists) {
-            throw new AssertionError("The Credit Card Not added completely");
-        }
+    public static void assertCardAdded() {
+        String lastFourDigits = CreditCard.substring(CreditCard.length() - 4);
+        String displayedText = savedPaymentCard().getText();
+        String displayedLastFourDigits = displayedText.substring(displayedText.length() - 4);
+        assertEquals(lastFourDigits, displayedLastFourDigits, "Last four digits of the card do not match the added card");
     }
 }
 

@@ -8,7 +8,7 @@ import snoonu.tests.TestBase;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
-import static snoonu.page_object.scenario.NativeScenario.assertIsProdEnvironment;
+import static snoonu.page_object.scenario.NativeScenario.isProdEnvironment;
 import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.*;
 
@@ -27,11 +27,15 @@ class AddingCreditCard extends TestBase {
             logginInNumberOtp(Number272);
         });
 
+        step("Go to Profile Icon", () -> {
+            goToProfileIcon();
+        });
+
         step("Open Saved Cards window)", () -> {
             goToSavedPaymentsCard();
         });
 
-        step("Assert is a credit card if It Is, then Remove all", () -> {
+        step("Assert is there a credit card if It Is, then Remove all", () -> {
             assertNoSavedCards();
         });
 
@@ -40,21 +44,20 @@ class AddingCreditCard extends TestBase {
         });
 
         step("Assert is it Prod then show message if Stage pass the test", () -> {
-            assertIsProdEnvironment();
+            isProdEnvironment();
         });
 
         step("Complete adding for Payment Card", () -> {
             completePayCardAddingOn3DSPage();
         });
 
+        step("Assert card verified", () -> {
+            isCardVerified();
+        });
+
         step("Assert Added card is displayed in modal of saved cards", () -> {
             assertCardAdded();
         });
-
-        step("Assert card was added and saved completely", () -> {
-            assertCardAddedCompletely();
-        });
-
     }
 }
 

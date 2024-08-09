@@ -1,6 +1,7 @@
 package snoonu.page_object.scenario;
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.Assumptions;
 import snoonu.drivers.Environment;
 
 import static com.codeborne.selenide.Condition.attributeMatching;
@@ -20,9 +21,9 @@ public class NativeScenario {
         }
     }
 
-    public static void assertIsProdEnvironment() {
-        if (Environment.environment.equals("prod")) {
-            throw new AssertionError("This case can't be checked in production");
-        }
+    public static void isProdEnvironment() {
+        Assumptions.assumeFalse(Environment.environment.equals("prod"),
+                "This case can't be checked on production");
     }
 }
+
