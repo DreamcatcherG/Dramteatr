@@ -7,6 +7,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+import static snoonu.page_object.scenario.CategoryPageScenario.findBestSellingCard;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.Electronics;
@@ -36,6 +37,10 @@ class CategoryElectronics extends TestBase {
 
         step("Assert: URL contains 'snoonu-market/electronics' if not, show an error", () -> {
             assertPageOpened(Electronics);
+        });
+
+        step("Assert: Verify the page has product cards", () -> {
+            findBestSellingCard();
         });
     }
 }

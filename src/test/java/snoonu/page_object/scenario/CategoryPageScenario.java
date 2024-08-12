@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static snoonu.page_object.elements.CategoryPageObjects.merchantCard;
 import static snoonu.page_object.elements.CategoryPageObjects.merchantCards;
-import static snoonu.page_object.elements.MerchantPageObjects.productCardBestSelling;
+import static snoonu.page_object.elements.MerchantPageObjects.bestSellingProductCards;
 
 public class CategoryPageScenario {
 
@@ -45,7 +45,7 @@ public class CategoryPageScenario {
         boolean productFound = false;
 
         while (scrollAttempts < 5 && !productFound) {
-            ElementsCollection productCards = productCardBestSelling();
+            ElementsCollection productCards = bestSellingProductCards();
 
             if (!productCards.isEmpty()) {
                 productCards.first().scrollTo();
