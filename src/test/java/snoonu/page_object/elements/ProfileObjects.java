@@ -44,11 +44,7 @@ public class ProfileObjects {
     }
 
     public static SelenideElement paymentCards() {
-        return $(byTestId("savedCards"));
-    }
-
-    public static SelenideElement isPaymentCard() {
-        return $(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]"));
+        return $(byDataTestId("savedCardsBtn"));
     }
 
     public static SelenideElement savedAddresses() {
@@ -64,31 +60,43 @@ public class ProfileObjects {
     }
 
     public static SelenideElement addPaymentCardBtn() {
-        return $(byTestId("addNewCard"));
+        return $(byDataTestId("addNewCardBtn"));
     }
 
-    public static SelenideElement cardNumberField(String сardNumber) {
-        return $(By.name("number")).setValue(сardNumber);
+    public static SelenideElement cardNumberField() {
+        return $(byDataTestId("payCardNumberField"));
     }
 
     public static SelenideElement expiryDateField() {
-        return $(By.name("date"));
+        return $(byDataTestId("payCardDateField"));
     }
 
     public static SelenideElement cvvField() {
-        return $(By.name("code"));
+        return $(byDataTestId("payCardCodeField"));
     }
 
     public static SelenideElement saveCardBtn() {
-        return $(byTestId("saveCard"));
+        return $(byDataTestId("saveCardBtn"));
     }
 
     public static SelenideElement deleteSavedCardBtn() {
-        return $(Css.byId("delete-card-btn"));
+        return $(byDataTestId("deleteCardBtn"));
     }
 
-    public static SelenideElement confirmDeleteBtnYes() {
-        return $(byTestId("yes"));
+    public static SelenideElement savedPaymentCard() {
+        return $(byDataTestId("savedCreditCard"));
+    }
+
+    public static SelenideElement listOfSavedCards() {
+        return $(byDataTestId("savedCardsList"));
+    }
+
+    public static SelenideElement yesConfirmDeleteBtn() {
+        return $(byDataTestId("yesBtn"));
+    }
+
+    public static SelenideElement verifyPaymentCardBtn() {
+        return $(byDataTestId("verifyCardBtn"));
     }
 
     public static SelenideElement loaderInButtons() {
@@ -107,8 +115,5 @@ public class ProfileObjects {
         return $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]"));
     }
 
-    public static SelenideElement payCardList() {
-        return $(byAttribute("data-test-id","credit-card-list-credit-card-number"));
-    }
 }
 
