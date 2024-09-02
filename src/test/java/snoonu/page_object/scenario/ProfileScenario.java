@@ -38,10 +38,14 @@ public class ProfileScenario {
     public static void changeProfileName() {
         originalProfileName = profileNameField().getValue();
         profileNameField().click();
-        profileNameField().sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE);
+        profileNameField().sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         String randomName = getRandomAlphaNumeric(3, 8) + " WEBtEST!";
         profileNameField().setValue(randomName);
+    }
+
+    public static void saveProfileName() {
         saveAccountBtn().click();
+        loaderInButtons().should(disappear);
     }
 
     public static void assertProfileNameChanged() {

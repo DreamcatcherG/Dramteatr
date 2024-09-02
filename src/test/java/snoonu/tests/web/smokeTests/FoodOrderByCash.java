@@ -21,8 +21,7 @@ import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.page_object.scenario.NativeScenario.switchToNewTab;
 import static snoonu.page_object.scenario.OrderHistoryPageScenario.verifyOrderIsInHistory;
 import static snoonu.page_object.scenario.SuccessPageScenario.*;
-import static snoonu.tests.TestData.Number208;
-import static snoonu.tests.TestData.Restaurants;
+import static snoonu.tests.TestData.*;
 
 @Tag("Order")
 @Tag("smoke")
@@ -56,7 +55,7 @@ class FoodOrderByCash extends TestBase {
         });
 
         step("Find Test Merchant if not show message 'MerchantName not found'", () -> {
-            findTestMerchant("Test Cafe Brand");
+            findTestMerchant("Fake Dinner Cafe");
         });
 
         step("Open Selected Test Merchant page", () -> {
@@ -74,7 +73,7 @@ class FoodOrderByCash extends TestBase {
          */
 
         step("Find a simple product with 'Product Name' if there isn't show message 'Product Not found'", () -> {
-            findAProduct("Simple Product");
+            findAProduct("Fresh S");
         });
 
         step("Click Add button", () -> {
@@ -90,7 +89,7 @@ class FoodOrderByCash extends TestBase {
         });
 
         step("Assert: Selected product in the cart", () -> {
-            isSelectedProductInCart("Simple Product");
+            isSelectedProductInCart("Fresh S");
         });
 
         step("Click to Checkout button in the cart", () -> {
@@ -98,7 +97,7 @@ class FoodOrderByCash extends TestBase {
         });
 
         step("Sign in with 208 number", () -> {
-            logginInNumberOtp(Number208);
+            logginInNumberOtp(Number272);
         });
 
         step("Fill address fields", () -> {

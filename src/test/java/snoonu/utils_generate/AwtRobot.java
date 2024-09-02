@@ -8,6 +8,7 @@ import java.awt.*;
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
+import static snoonu.drivers.DriverHelper.byDataTestId;
 import static snoonu.drivers.DriverHelper.byTestId;
 import static snoonu.page_object.elements.LocationObjects.addressInputField;
 
@@ -28,13 +29,13 @@ public class AwtRobot {
                     robot.delay(100);
                 }
                 Thread.sleep(2000);
-                if ($(byAttribute("data-test-id", "wrong-code")).exists()) {
+                if ($(byDataTestId("wrong-code")).exists()) {
                     attempts++;
                     if (attempts >= maxAttempts) {
                         throw new AssertionError("Wrong Otp after 5 attempts");
                     }
-                    $(byAttribute("class", "Icon_icon__CTVm1 Modal_back__Hfh_h")).shouldBe(Condition.enabled);
-                    $(byAttribute("class", "Icon_icon__CTVm1 Modal_back__Hfh_h")).click();
+                    $(byDataTestId("backIconBtn")).shouldBe(Condition.enabled);
+                    $(byDataTestId("backIconBtn")).click();
                     $(byTestId("loginContinue")).click();
                 } else {
                     break;
