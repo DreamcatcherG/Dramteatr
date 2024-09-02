@@ -20,7 +20,7 @@ public class MainPageScenario {
 
     public static void wrongGlobalSearchRequest() {
         searchField().shouldBe(enabled).setValue("Капибара");
-        searchField().sendKeys(Keys.ENTER);
+        searchFieldButton().click();
     }
 
     public static void assertNothingFoundResult() {

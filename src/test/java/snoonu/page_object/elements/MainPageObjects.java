@@ -13,23 +13,27 @@ import static snoonu.drivers.DriverHelper.byDataTestId;
 public class MainPageObjects {
 
     public static SelenideElement searchField() {
-        return $(byName("search"));
+        return $(byDataTestId("searchField"));
+    }
+
+    public static SelenideElement searchFieldButton() {
+        return $(byDataTestId("searchFieldBtn"));
     }
 
     public static SelenideElement nothingFoundText() {
-        return $(byAttribute("data-test-id","search-nothing-found"));
+        return $(byDataTestId("searchNothingFoundText"));
     }
 
     public static SelenideElement emptySearchWriteToUsBTN() {
-        return $(byDataTestId("nothing-found-write-to-us"));
+        return $(byDataTestId("searchWriteToUsBtn"));
     }
 
     public static SelenideElement writeToUsCommentField() {
-        return $(byName("comments"));
+        return $(byDataTestId("searchFeedbackField"));
     }
 
     public static SelenideElement sendFeedbackBtn() {
-        return $(byTestId("sendFeedback"));
+        return $(byDataTestId("searchFeedbackBtn"));
     }
 
     // Service boxes

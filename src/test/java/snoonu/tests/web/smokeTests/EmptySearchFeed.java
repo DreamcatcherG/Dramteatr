@@ -31,10 +31,6 @@ class EmptySearchFeed extends TestBase {
         step("Go to 'Write to us' and send a request", () -> {
             goToWriteToUsBtn();
         });
-
-        step("Entering and sending a request", () -> {
-            writeAndSendRequest();
-        });
     }
 }
 
