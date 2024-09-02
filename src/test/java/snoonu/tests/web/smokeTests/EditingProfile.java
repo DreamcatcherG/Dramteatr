@@ -44,12 +44,16 @@ class EditingProfile extends TestBase {
             changeProfileName();
         });
 
-        step("Assert Profile name changed", () -> {
-            assertProfileNameChanged();
-        });
-
         step("Assert Email and Phone won't be changed", () -> {
             assertEmailPhoneWontChanged();
+        });
+
+        step("Save Profile name", () -> {
+            saveProfileName();
+        });
+
+        step("Assert Profile name changed", () -> {
+            assertProfileNameChanged();
         });
 
     }
