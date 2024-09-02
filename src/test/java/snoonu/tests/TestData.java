@@ -19,10 +19,11 @@ public class TestData {
             Number272 = "21343272",
             Number208 = "21343208",
 
-            //Test Prod Locations
+            //Test  Locations
             Khasooma = "57F2+FW Khasooma",
             AlZubara = "7HRG3WQC+PH",
             AlRuwais = "532M+GG Al Ruwais",
+            RasAbu = "7HPHHJJ7+9H",
             CenterDoha = "Al Najada, Doha",
 
             //Test Payment Cards

@@ -12,15 +12,15 @@ import static snoonu.drivers.DriverHelper.byDataTestId;
 public class ProfileObjects {
 
     public static SelenideElement profileNameField() {
-        return $(byName("name"));
+        return $(byDataTestId("nameInput"));
     }
 
     public static SelenideElement profileEmailField() {
-        return $(byName("email"));
+        return $(byDataTestId("emailField"));
     }
 
     public static SelenideElement profilePhoneField() {
-        return $(byName("phone"));
+        return $(byDataTestId("phoneField"));
     }
 
     public static SelenideElement registerProfileBtn() {
@@ -28,11 +28,11 @@ public class ProfileObjects {
     }
 
     public static SelenideElement myAccount() {
-        return $(byTestId("myAccount"));
+        return $(byDataTestId("myAccountBtn"));
     }
 
     public static SelenideElement saveAccountBtn() {
-        return $(byTestId("saveAccount"));
+        return $(byDataTestId("saveAccountBtn"));
     }
 
     public static SelenideElement deleteAccount() {
