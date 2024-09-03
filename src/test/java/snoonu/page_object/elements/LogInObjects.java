@@ -14,4 +14,12 @@ public class LogInObjects {
     public static SelenideElement loginContinueBtn() {
         return $(byDataTestId("btnContinueLogin"));
     }
+
+    public static SelenideElement pinField() {
+        return $(byDataTestId("pinInputField"));
+    }
+
+    public static SelenideElement wrongPinText() {
+        return $(byDataTestId("wrongCodeMessage"));
+    }
 }
