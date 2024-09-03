@@ -21,7 +21,7 @@ public class Environment {
             browser = System.getProperty("browser", "chrome"),
             screenResolution = System.getProperty("screen_resolution", "1920x1080"),
             webMobileDevice = System.getProperty("web_mobile_device"),
-            remoteDriverUrl = System.getProperty("remote_driver_url"), // https://username:password@selenoid.autotests.cloud:4444/wd/hub/
+            remoteDriverUrl = System.getProperty("http://localhost:4444/wd/hub/"), // https://username:password@selenoid.autotests.cloud:4444/wd/hub/
             videoStorageUrl = System.getProperty("video_storage_url"); // https://selenoid.autotests.cloud/video/
     public static final boolean
             isHeadless = parseBoolean(System.getProperty("headless", "false")),

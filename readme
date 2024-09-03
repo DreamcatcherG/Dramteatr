@@ -3,5 +3,5 @@ cd ..
 allure serve
 gradle clean tag -Denvironment=prod
 
-gradle clean tag -Dremote_driver_url=http://52.77.124.169/wd/hub/
+gradle clean onetest -Dremote_driver_url=http://localhost:4444/wd/hub
 
