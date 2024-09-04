@@ -28,10 +28,6 @@ class CategorySnoomart extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Snoomart", () -> {
             goToSnoomart();
         });

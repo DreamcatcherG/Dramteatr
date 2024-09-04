@@ -27,10 +27,6 @@ class CategorySportsAndOutdoors extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Sports And Outdoors", () -> {
             goToSportsAndOutdoors();
         });

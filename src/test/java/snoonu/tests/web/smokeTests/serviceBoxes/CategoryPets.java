@@ -27,10 +27,6 @@ class CategoryPets extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Pets", () -> {
             goToPets();
         });
