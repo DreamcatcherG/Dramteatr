@@ -27,10 +27,6 @@ class CategoryGifting extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Flowers & Chocolates", () -> {
             goToGifting();
         });

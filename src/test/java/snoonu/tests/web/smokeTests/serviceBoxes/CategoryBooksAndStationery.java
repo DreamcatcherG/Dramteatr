@@ -27,10 +27,6 @@ class CategoryBooksAndStationery extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Books And Stationery", () -> {
             goToBooksAndStationery();
         });

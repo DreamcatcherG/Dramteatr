@@ -27,10 +27,6 @@ class CategoryPharmacy extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Pharmacy", () -> {
             goToPharmacy();
         });

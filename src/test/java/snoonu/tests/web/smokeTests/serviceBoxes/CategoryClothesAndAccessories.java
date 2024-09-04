@@ -27,10 +27,6 @@ class CategoryClothesAndAccessories extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Clothes And Accessories", () -> {
             goToClothesAndAccessories();
         });

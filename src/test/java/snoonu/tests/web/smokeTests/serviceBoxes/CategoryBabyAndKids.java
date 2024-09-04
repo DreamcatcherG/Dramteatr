@@ -27,10 +27,6 @@ class CategoryBabyAndKids extends TestBase {
             closeLocationPopup();
         });
 
-        step("Expand service boxes", () -> {
-            expandServiceBoxes();
-        });
-
         step("Go to Baby & Kids", () -> {
             goToBabyAndKids();
         });
