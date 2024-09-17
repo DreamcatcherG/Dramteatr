@@ -93,7 +93,7 @@ test {
 
 task categories(type: Test) {
     useJUnitPlatform {
-        includeTags 'Categories'
+        includeTags 'categories'
     }
     systemProperty 'platform', 'web'
 }
@@ -104,23 +104,73 @@ task onetest(type: Test) {
     }
     systemProperty 'platform', 'web'
 }
-task tag(type: Test) {
+
+task newAddress(type: Test) {
     useJUnitPlatform {
-        includeTags 'tag'
+        includeTags 'newAddress'
     }
     systemProperty 'platform', 'web'
 }
 
-task smokeProd(type: Test) {
+task newPayCard(type: Test) {
     useJUnitPlatform {
-        includeTags 'smokeProd'
+        includeTags 'newPayCard'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task editProfile(type: Test) {
+    useJUnitPlatform {
+        includeTags 'editProfile'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task emptySearch(type: Test) {
+    useJUnitPlatform {
+        includeTags 'emptySearch'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task login(type: Test) {
+    useJUnitPlatform {
+        includeTags 'login'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task signup(type: Test) {
+    useJUnitPlatform {
+        includeTags 'signup'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task logout(type: Test) {
+    useJUnitPlatform {
+        includeTags 'logout'
     }
     systemProperty 'platform', 'web'
 }
 
 task order(type: Test) {
     useJUnitPlatform {
-        includeTags 'Order'
+        includeTags 'order'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task pickLocation(type: Test) {
+    useJUnitPlatform {
+        includeTags 'pickLocation'
+    }
+    systemProperty 'platform', 'web'
+}
+
+task smoke(type: Test) {
+    useJUnitPlatform {
+        includeTags 'smoke'
     }
     systemProperty 'platform', 'web'
 }

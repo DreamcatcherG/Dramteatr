@@ -10,6 +10,7 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.page_object.scenario.LocationScenario.*;
 
 @Tag("smoke")
+@Tag("pickLocation")
 
 public class PickTestLocation extends TestBase {
 

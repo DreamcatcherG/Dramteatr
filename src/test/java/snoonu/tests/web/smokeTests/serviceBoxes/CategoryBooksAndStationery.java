@@ -13,7 +13,7 @@ import static snoonu.page_object.scenario.NativeScenario.assertPageOpened;
 import static snoonu.tests.TestData.BooksAndStationery;
 
 @Tag("smoke")
-@Tag("Categories")
+@Tag("categories")
 class CategoryBooksAndStationery extends TestBase {
 
     @Test

@@ -13,6 +13,7 @@ import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.*;
 
 @Tag("smoke")
+@Tag("newPayCard")
 
 class AddingCreditCard extends TestBase {
 

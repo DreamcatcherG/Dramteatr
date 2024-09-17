@@ -23,7 +23,7 @@ import static snoonu.page_object.scenario.OrderHistoryPageScenario.verifyOrderIs
 import static snoonu.page_object.scenario.SuccessPageScenario.*;
 import static snoonu.tests.TestData.*;
 
-@Tag("Order")
+@Tag("order")
 @Tag("smoke")
 class FoodOrderByCash extends TestBase {
 
@@ -96,7 +96,7 @@ class FoodOrderByCash extends TestBase {
             goToCheckoutBtn();
         });
 
-        step("Sign in with 208 number", () -> {
+        step("Sign in with 272 number", () -> {
             logginInNumberOtp(Number272);
         });
 

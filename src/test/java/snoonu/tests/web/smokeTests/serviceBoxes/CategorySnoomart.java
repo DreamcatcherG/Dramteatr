@@ -14,7 +14,7 @@ import static snoonu.tests.TestData.Snoomart;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 
 @Tag("smoke")
-@Tag("Categories")
+@Tag("categories")
 class CategorySnoomart extends TestBase {
 
     @Test

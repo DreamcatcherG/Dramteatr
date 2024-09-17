@@ -10,6 +10,7 @@ import static io.qameta.allure.Allure.step;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 
 @Tag("smoke")
+@Tag("emptySearch")
 
 class EmptySearchFeed extends TestBase {
 

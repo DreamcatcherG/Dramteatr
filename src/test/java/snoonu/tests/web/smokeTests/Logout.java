@@ -14,6 +14,7 @@ import static snoonu.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
 import static snoonu.tests.TestData.Number208;
 
 @Tag("smoke")
+@Tag("logout")
 
 public class Logout extends TestBase {
 

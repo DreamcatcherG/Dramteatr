@@ -14,6 +14,7 @@ import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.Number272;
 
 @Tag("smoke")
+@Tag("editProfile")
 
 class EditingProfile extends TestBase {
 

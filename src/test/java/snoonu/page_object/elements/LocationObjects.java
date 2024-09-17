@@ -35,12 +35,20 @@ public class LocationObjects {
         return $(byDataTestId("addressSuggest"));
     }
 
-    public static SelenideElement yesDeleteAddressConfirmBtn() {
+    public static SelenideElement confirmYesAddressBtn() {
+        return $(byDataTestId("confirmYesBtn"));
+    }
+
+    public static SelenideElement confirmRemoveAddressYesBtn() {
         return $(byDataTestId("yesDeleteConfirmBtn"));
     }
 
-    public static SelenideElement dontDeleteAddressConfirmBtn() {
+    public static SelenideElement confirmDontDeleteAddressBtn() {
         return $(byDataTestId("dontDeleteBtn"));
+    }
+
+    public static SelenideElement confirmNoAddressBtn() {
+        return $(byDataTestId("confirmNoBtn"));
     }
 
     public static SelenideElement addNewAddressBtn() {
