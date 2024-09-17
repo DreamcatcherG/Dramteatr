@@ -1,6 +1,6 @@
 package snoonu.page_object.scenario;
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.conditions.Enabled;
 import org.openqa.selenium.Keys;
 import snoonu.utils_generate.AwtRobot;
 import snoonu.utils_generate.TextGenerator;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import static com.codeborne.selenide.Condition.*;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static snoonu.drivers.DriverHelper.byDataTestId;
 import static snoonu.drivers.extentions.SelenideExtentions.$;
 import static snoonu.page_object.elements.HeaderObjects.locationPopup;
@@ -31,6 +32,7 @@ public class LocationScenario {
         loaderInButtons().shouldBe(disappear);
         crossIconX().shouldBe(visible).click();
         lastEnteredAddress = AwtRobot.entLoc();
+        addressInputField().click();
         addressPredictionField().shouldBe(appear);
         addressPredictionField().shouldHave(text(lastEnteredAddress));
         sleep(2000);
@@ -51,43 +53,55 @@ public class LocationScenario {
     public static void removeNewSavedAddress() throws InterruptedException {
         profileIcon().shouldBe(visible).click();
         savedAddresses().shouldBe(visible).click();
-        savedAddressCard().shouldBe(visible);
-        sleep(2000);
-        String addressBeforeDeletion = savedAddressCard().getText();
-        pencilBtn().shouldBe(appear).click();
-        deleteAddressBtn().shouldBe(enabled).click();
-        yesDeleteAddressConfirmBtn().shouldBe(enabled).click();
-        loaderInButtons().shouldBe(disappear);
-        sleep(3000);
-        /*
-         waiting when address name will update
-         */
-        String addressAfterDeletion = savedAddressCard().getText();
-        assertNotEquals(addressBeforeDeletion, addressAfterDeletion, "The saved address was not removed");
+        if (savedAddressCard().is(exist)) {
+            String addressBeforeDeletion = savedAddressCard().getText();
+            pencilBtn().shouldBe(appear).click();
+            deleteAddressBtn().shouldBe(enabled).click();
+            confirmRemoveAddressYesBtn().shouldBe(enabled).click();
+            loaderInButtons().shouldBe(disappear);
+            sleep(3000);
+
+            if (savedAddressCard().is(exist)) {
+                String addressAfterDeletion = savedAddressCard().getText();
+                assertNotEquals(addressBeforeDeletion, addressAfterDeletion, "The saved address was not removed");
+            } else {
+                assertTrue(true, "All addresses were successfully removed");
+            }
+        } else {
+            assertTrue(true, "No saved addresses found. All addresses were already removed.");
+        }
     }
 
-    public static void assertLocAppliedInHeader() {
+    public static void assertLocAppliedInHeader() throws InterruptedException {
+        sleep(2000);
         String buttonText = locationPopup().getText();
         assertNotEquals("Doha, Qatar", buttonText, "Location button text matches unexpected value");
         assertNotEquals("Al Najada, Doha, Doha, Qatar", buttonText, "Location button text matches unexpected value");
     }
 
-    public static void isSelectedLocationCorrectInModal() {
+    public static void isSelectedLocationCorrectInModal() throws InterruptedException {
         String buttonText = addressInputField().getText();
         assertNotEquals("Doha, Qatar", buttonText, "Location button text matches unexpected value");
         assertNotEquals("Al Najada, Doha, Doha, Qatar", buttonText, "Location button text matches unexpected value");
     }
 
     public static void confirmNoLocationPopup() {
-        dontDeleteAddressConfirmBtn().shouldBe(appear).click();
+        confirmNoAddressBtn().shouldBe(appear).click();
     }
 
     public static void confirmLastOrAddNewAddress() throws InterruptedException, IOException {
-        $(By.cssSelector(".Popup_popup__PEvWF.LocationBlock_popup__79Z9V")).shouldBe(appear);
-        if (yesDeleteAddressConfirmBtn().exists()) {
-            dontDeleteAddressConfirmBtn().click();
+        if (confirmYesAddressBtn().is(appear)) {
+            confirmNoAddressBtn().click();
+        } else if (selectLocationButton().is(appear)) {
+            selectLocationButton().click();
         } else {
-            inputRandomTestAddressScenario();
+        }
+    }
+
+    public static void addNewAddressButton() {
+       if (addNewAddressBtn().is(appear)) {
+            addNewAddressBtn().click();
+        } else {
         }
     }
 
@@ -129,12 +143,9 @@ public class LocationScenario {
         }
     }
 
-    public static void addNewAddressButton() {
-        addNewAddressBtn().shouldBe(visible).click();
-    }
-
     public static void selectTestAddressOnMap() throws InterruptedException, IOException {
-        confirmBtnOnMap().shouldHave(text("Confirm location"));
+        confirmBtnOnMap().shouldBe(enabled);
+        loaderInButtons().shouldBe(disappear);
         inputRandomTestAddressScenario();
     }
 

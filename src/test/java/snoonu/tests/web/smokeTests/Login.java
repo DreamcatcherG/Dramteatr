@@ -12,7 +12,7 @@ import static snoonu.page_object.scenario.MainPageScenario.assertSuccessAuth;
 import static snoonu.tests.TestData.Number208;
 
 @Tag("smoke")
-@Tag("onetest")
+@Tag("login")
 
 class Login extends TestBase {
 

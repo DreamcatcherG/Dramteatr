@@ -7,24 +7,26 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+import static java.lang.Thread.sleep;
 import static snoonu.page_object.scenario.LocationScenario.*;
 import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
-import static snoonu.tests.TestData.Number208;
+import static snoonu.tests.TestData.Number272;
 
 @Tag("smoke")
+@Tag("newAddress")
 
 public class AddingAddressHasSavedAddress extends TestBase {
 
     @Test
     void addLocation() {
 
-        step("Preconditions: Open Web Page / Log In with 208", () -> {
+        step("Preconditions: Open Web Page / Log In with 272", () -> {
             open(Environment.webPage);
-            logginInNumberOtp(Number208);
+            logginInNumberOtp(Number272);
         });
 
         step("No Confirm Address in Location Popup", () -> {
-            confirmNoLocationPopup();
+            confirmLastOrAddNewAddress();
         });
 
         step("Go to add new location button", () -> {

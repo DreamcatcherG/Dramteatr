@@ -13,7 +13,7 @@ import static snoonu.tests.TestData.HouseholdAndGarden;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 
 @Tag("smoke")
-@Tag("Categories")
+@Tag("categories")
 class CategoryHouseholdAndGarden extends TestBase {
 
     @Test
