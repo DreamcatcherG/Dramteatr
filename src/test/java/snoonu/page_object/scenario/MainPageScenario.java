@@ -6,6 +6,7 @@ import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
 import static snoonu.page_object.elements.HeaderObjects.*;
+import static snoonu.page_object.elements.LogInObjects.wrongPinText;
 import static snoonu.page_object.elements.MainPageObjects.*;
 
 public class MainPageScenario {
@@ -16,6 +17,10 @@ public class MainPageScenario {
 
     public static void assertSuccessAuth() {
         profileIcon().shouldBe(visible);
+    }
+
+    public static void assertOtpWrong() {
+        wrongPinText().shouldBe(appear);
     }
 
     public static void wrongGlobalSearchRequest() {

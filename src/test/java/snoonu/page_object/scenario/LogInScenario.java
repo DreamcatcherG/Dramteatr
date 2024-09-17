@@ -7,8 +7,7 @@ import static snoonu.utils_generate.AwtRobot.entOtp;
 
 public class LogInScenario {
 
-
-    public static void logginInNumberOtp(String phoneNumber) throws InterruptedException {
+    public static void enterNumberOtp(String phoneNumber) throws InterruptedException {
 
         if (phoneNumberInput().exists()) {
             phoneNumberInput().sendKeys(phoneNumber);
@@ -21,6 +20,13 @@ public class LogInScenario {
             loginContinueBtn().click();
             entOtp();
         }
+    }
+
+public static void negativeEnterNumberOtp(String phoneNumber) throws InterruptedException {
+
+    loginBtn().click();
+    phoneNumberInput().sendKeys(phoneNumber);
+    loginContinueBtn().click();
     }
 
     public static void clickLogin() {

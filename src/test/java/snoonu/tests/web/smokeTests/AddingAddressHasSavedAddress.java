@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static java.lang.Thread.sleep;
 import static snoonu.page_object.scenario.LocationScenario.*;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.tests.TestData.Number272;
 
 @Tag("smoke")
@@ -22,7 +22,7 @@ public class AddingAddressHasSavedAddress extends TestBase {
 
         step("Preconditions: Open Web Page / Log In with 272", () -> {
             open(Environment.webPage);
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
         });
 
         step("No Confirm Address in Location Popup", () -> {

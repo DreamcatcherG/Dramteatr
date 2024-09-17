@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byName;
@@ -37,11 +38,32 @@ public class AwtRobot {
                     if (attempts >= maxAttempts) {
                         throw new AssertionError("Wrong Otp after 5 attempts");
                     }
-                    pinInput.doubleClick(); // Backspace
+                    pinInput.doubleClick();
                 } else {
                     break;
                 }
             }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void wrongEntOtp() throws InterruptedException { // awtRobot.entOtp();
+        pinField().shouldBe(Condition.visible);
+        SelenideElement pinInput = pinField();
+        String pinCode = "123456";
+
+        try {
+            Robot robot = new Robot();
+            pinInput.click();
+
+            for (char c : pinCode.toCharArray()) {
+                int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+                robot.keyPress(keyCode);
+                robot.keyRelease(keyCode);
+                robot.delay(100);
+            }
+
         } catch (AWTException e) {
             e.printStackTrace();
         }

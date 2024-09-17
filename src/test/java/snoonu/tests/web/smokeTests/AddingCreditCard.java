@@ -7,7 +7,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.NativeScenario.isProdEnvironment;
 import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.*;
@@ -25,7 +25,7 @@ class AddingCreditCard extends TestBase {
         });
 
         step("Login in", () -> {
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
         });
 
         step("Go to Profile Icon", () -> {

@@ -7,7 +7,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.*;
 import static snoonu.page_object.scenario.ProfileScenario.*;
 import static snoonu.tests.TestData.Number272;
@@ -22,7 +22,7 @@ public class SigningUp extends TestBase {
 
         step("Preconditions: Open Web Page login and remove account", () -> {
             open(Environment.webPage);
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
             assertSuccessAuth();
             assertIsOngoingOrders();
             goToProfile();
@@ -33,7 +33,7 @@ public class SigningUp extends TestBase {
         });
 
         step("Registration of New Profile", () -> {
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
             registerNewProfile();
         });
 

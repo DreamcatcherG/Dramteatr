@@ -13,7 +13,7 @@ import static snoonu.page_object.scenario.CategoryPageScenario.openMerchantPage;
 import static snoonu.page_object.scenario.CheckoutPageScenario.*;
 import static snoonu.page_object.scenario.HeaderScenario.clickToCart;
 import static snoonu.page_object.scenario.LocationScenario.*;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.goToRestaurants;
 import static snoonu.page_object.scenario.MerchantPageScenario.clickToAddBtn;
 import static snoonu.page_object.scenario.MerchantPageScenario.findAProduct;
@@ -97,7 +97,7 @@ class FoodOrderByCash extends TestBase {
         });
 
         step("Sign in with 272 number", () -> {
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
         });
 
         step("Fill address fields", () -> {

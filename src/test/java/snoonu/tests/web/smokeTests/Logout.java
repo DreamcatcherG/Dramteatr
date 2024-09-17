@@ -7,7 +7,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.assertLoginBtnVisible;
 import static snoonu.page_object.scenario.MainPageScenario.goToProfile;
 import static snoonu.page_object.scenario.ProfileScenario.goToLogOutAndConfirm;
@@ -23,7 +23,7 @@ public class Logout extends TestBase {
 
         step("Pre-Conditions Open Web Page and logging in", () -> {
             open(Environment.webPage);
-            logginInNumberOtp(Number208);
+            enterNumberOtp(Number208);
         });
 
         step("Go To Profile", () -> {

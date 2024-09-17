@@ -7,7 +7,7 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.LogInScenario.logginInNumberOtp;
+import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.MainPageScenario.assertSuccessAuth;
 import static snoonu.page_object.scenario.MainPageScenario.goToProfile;
 import static snoonu.page_object.scenario.ProfileScenario.*;
@@ -26,7 +26,7 @@ class EditingProfile extends TestBase {
         });
 
         step("Authorization", () -> {
-            logginInNumberOtp(Number272);
+            enterNumberOtp(Number272);
         });
 
         step("Assert: Logging in is successful (Profile icon is visible)", () -> {
