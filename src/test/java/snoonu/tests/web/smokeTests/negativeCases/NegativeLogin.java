@@ -7,14 +7,13 @@ import snoonu.tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static snoonu.page_object.scenario.LogInScenario.enterNumberOtp;
 import static snoonu.page_object.scenario.LogInScenario.negativeEnterNumberOtp;
-import static snoonu.page_object.scenario.MainPageScenario.assertOtpWrong;
-import static snoonu.tests.TestData.Number208;
+import static snoonu.page_object.scenario.MainPageScenario.wrongOtpTextIsDisplayed;
 import static snoonu.tests.TestData.Number276;
 import static snoonu.utils_generate.AwtRobot.wrongEntOtp;
 
 @Tag("smoke")
+@Tag("negativeTesting")
 @Tag("login")
 
 class NegativeLogin extends TestBase {
@@ -35,7 +34,7 @@ class NegativeLogin extends TestBase {
         });
 
         step("Assert: Otp is wrong, show a message", () -> {
-            assertOtpWrong();
+            wrongOtpTextIsDisplayed();
         });
     }
 }

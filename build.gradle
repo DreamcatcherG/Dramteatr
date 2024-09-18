@@ -175,3 +175,10 @@ task smoke(type: Test) {
     systemProperty 'platform', 'web'
 }
 
+task negativeTesting(type: Test) {
+    useJUnitPlatform {
+        includeTags 'negativeTesting'
+    }
+    systemProperty 'platform', 'web'
+}
+

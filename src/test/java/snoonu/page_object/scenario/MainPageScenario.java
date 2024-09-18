@@ -1,7 +1,6 @@
 package snoonu.page_object.scenario;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Keys;
 import snoonu.utils_generate.TextGenerator;
 
 import static com.codeborne.selenide.Condition.*;
@@ -19,7 +18,7 @@ public class MainPageScenario {
         profileIcon().shouldBe(visible);
     }
 
-    public static void assertOtpWrong() {
+    public static void wrongOtpTextIsDisplayed() {
         wrongPinText().shouldBe(appear);
     }
 
