@@ -104,6 +104,31 @@ public class ProfileScenario {
         loaderInButtons().should(disappear);
     }
 
+    public static void enterWrongCreditCardNumber(String cardNumber) {
+        addPaymentCardBtn().click();
+        cardNumberField().setValue(cardNumber);
+    }
+
+    public static void enterWrongCreditCardDate() {
+        expiryDateField().setValue("00" + "00");
+    }
+
+      public static void enterWrongCreditCardCvv() {
+        cvvField().setValue("000");
+    }
+
+      public static void clickSaveCardBtn() {
+        saveCardBtn().click();
+    }
+
+      public static void loaderInButtonsIsNotAppeared() {
+        loaderInButtons().shouldNot(appear);
+    }
+
+      public static void isCheckDateTextDisplayed() {
+          checkDateError().isDisplayed();
+    }
+
     public static void completePayCardAddingOn3DSPage() {
         Frame3ds().shouldBe(visible);
         switchTo().frame(ProfileObjects.Frame3ds());

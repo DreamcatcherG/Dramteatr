@@ -24,9 +24,9 @@ public class DriverHelper {
             Configuration.baseUrl = webUrl;
             Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
+            Configuration.timeout = 40000;
+            Configuration.pageLoadTimeout = 100000;
         }
-
-        Configuration.timeout = 50000;
     }
 
     public static By byTestId(String testId) {

@@ -15,6 +15,7 @@ import static snoonu.drivers.DriverHelper.byTestId;
 import static snoonu.page_object.elements.LocationObjects.addressInputField;
 import static snoonu.page_object.elements.LogInObjects.pinField;
 import static snoonu.page_object.elements.LogInObjects.wrongPinText;
+import static snoonu.tests.TestData.CenterDoha;
 
 public class AwtRobot {
 
@@ -72,6 +73,40 @@ public class AwtRobot {
     public static String entLoc() throws InterruptedException {
         SelenideElement addressInput = addressInputField();
         String addressName = TextGenerator.getTestRandomLoc();
+
+        try {
+            Robot robot = new Robot();
+            for (char c : addressName.toCharArray()) {
+                String character = Character.toString(c);
+                addressInput.sendKeys(character);
+                robot.delay(50);
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        return addressName;
+    }
+
+    public static String entCenterOfDoha() throws InterruptedException {
+        SelenideElement addressInput = addressInputField();
+        String addressName = CenterDoha;
+
+        try {
+            Robot robot = new Robot();
+            for (char c : addressName.toCharArray()) {
+                String character = Character.toString(c);
+                addressInput.sendKeys(character);
+                robot.delay(50);
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        return addressName;
+    }
+
+    public static String entWrongLoc() throws InterruptedException {
+        SelenideElement addressInput = addressInputField();
+        String addressName = TextGenerator.getWrongRandomLoc();
 
         try {
             Robot robot = new Robot();

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static snoonu.drivers.AttachmentsHelper.*;
-import static snoonu.drivers.BrowserstackHelper.getBSPublicLink;
 import static snoonu.drivers.DriverHelper.*;
 import static snoonu.drivers.Environment.*;
 

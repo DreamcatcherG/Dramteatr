@@ -38,7 +38,7 @@ public class CustomWebDriver implements WebDriverProvider {
         switch (browser.toLowerCase()) {
             case "chrome":
                 capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
-                WebDriverManager.chromedriver().setup(); // helped to remove and adding "WebDriverManager" here
+                WebDriverManager.chromedriver().setup();
                 if (isRemoteDriver) {
                     return getRemoteWebDriver(capabilities);
                 } else {
@@ -66,10 +66,10 @@ public class CustomWebDriver implements WebDriverProvider {
             chromeOptions.setExperimentalOption("mobileEmulation", mobileDevice);
         }
         chromeOptions.addArguments("--window-size=" + screenResolution);
-//        chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-notifications");
-        chromeOptions.addArguments("--disable-infobars");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
         if (isHeadless) chromeOptions.addArguments("headless");
 
         return chromeOptions;
@@ -86,7 +86,6 @@ public class CustomWebDriver implements WebDriverProvider {
 
     @SuppressWarnings("deprecation")
     private WebDriver getLocalChromeDriver(DesiredCapabilities capabilities) {
-//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Slowdowns\\IdeaProjects\\snooweb-web\\.idea\\chromedriver-win64\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         return new ChromeDriver(capabilities);
     }

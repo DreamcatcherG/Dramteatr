@@ -1,7 +1,6 @@
 package snoonu.page_object.elements;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import snoonu.drivers.Css;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -113,6 +112,10 @@ public class ProfileObjects {
 
     public static SelenideElement close3DS() {
         return $(byXpath("/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/div[1]/span[1]/span[1]/img[1]"));
+    }
+
+    public static SelenideElement checkDateError() {
+        return $(byXpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/p[1]"));
     }
 
 }

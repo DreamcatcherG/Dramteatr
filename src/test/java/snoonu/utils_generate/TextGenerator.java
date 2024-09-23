@@ -31,7 +31,7 @@ public class TextGenerator {
         StringBuilder text = new StringBuilder();
         Random random = new Random();
 
-        int textLength = getRandomNumber(min, max); // тут принимает getRandomNumber
+        int textLength = getRandomNumber(min, max);
         while (text.length() < textLength) {
             char randomChar;
             if (random.nextBoolean()) {
@@ -57,6 +57,12 @@ public class TextGenerator {
         return locations[randomIndex];
     }
 
+    public static String getWrongRandomLoc() {
+        String[] locations = {RasAbu, AlZubara};
+        int randomIndex = getRandomInt(0, locations.length - 1);
+        return locations[randomIndex];
+    }
+
     public static int getRandomNumber(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
@@ -67,7 +73,7 @@ public class TextGenerator {
         Random random = new Random();
         int emailLength = getRandomNumber(min, max);
         while (email.length() < emailLength) {
-            char randomChar = (char) (random.nextInt(26) + 'a'); // Генерация случайной буквы
+            char randomChar = (char) (random.nextInt(26) + 'a');
             email.append(randomChar);
         }
         email.append("@webtest.com");
