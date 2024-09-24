@@ -5,7 +5,8 @@ import static java.lang.Boolean.parseBoolean;
 public class Environment {
 
     private static final String prodUrl = "https://snoonu.com";
-    public static final String stageUrl = "https://qa.snoonu.com";
+//    public static final String stageUrl = "https://qa.snoonu.com";
+    public static final String stageUrl = "http://localhost:3000";
     public static final String environment = System.getProperty("environment", "stage");
     public static final String webPage = environment.equals("prod") ? prodUrl : stageUrl;
 

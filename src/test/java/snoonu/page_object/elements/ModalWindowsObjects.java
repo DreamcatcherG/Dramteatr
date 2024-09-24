@@ -13,4 +13,7 @@ public class ModalWindowsObjects {
     public static SelenideElement crossIconBtn() {
         return $(byDataTestId("crossIconBtn"));
     }
+    public static SelenideElement changeMyAddressButton() {
+        return $(byDataTestId("changeMyAddressBtn"));
+    }
 }

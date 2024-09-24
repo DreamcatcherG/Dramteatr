@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
 import static snoonu.page_object.elements.MerchantPageObjects.*;
+import static snoonu.page_object.elements.ModalWindowsObjects.changeMyAddressButton;
 
 public class MerchantPageScenario {
     private static SelenideElement foundProductCard;
@@ -52,5 +53,9 @@ public class MerchantPageScenario {
         if (bestSellingProductCards().isEmpty() || !bestSellingProductCards().first().is(Condition.visible)) {
             throw new AssertionError("Product Cards not found.");
         }
+    }
+
+    public static void assertChangeMyAddressBtnAppears() {
+        changeMyAddressButton().shouldBe(appear);
     }
 }

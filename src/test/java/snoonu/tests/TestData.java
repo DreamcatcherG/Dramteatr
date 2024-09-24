@@ -19,13 +19,14 @@ public class TestData {
 
             //Test  Locations
             Khasooma = "57F2+FW Khasooma",
-            AlZubara = "7HRG3WQC+PH",
+            AlZubara = "7HRG3WQC+PH ",
             AlRuwais = "532M+GG Al Ruwais",
-            RasAbu = "7HPHHJJ7+9H",
-            CenterDoha = "Al Najada, Doha",
+            RasAbu = "7HPHHJJ7+9H ",
+            CenterDoha = "Doha",
 
             //Test Payment Cards
             CreditCard = "4111 1111 1111 1111",
+            WrongCreditCard = "0000 0000 0000 0000",
             DebitCard = "4215 3755 0088 3243",
 
             //URLs for Category pages From Service Boxes

@@ -1,5 +1,6 @@
 package snoonu.page_object.scenario;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.conditions.Enabled;
 import org.openqa.selenium.Keys;
 import snoonu.utils_generate.AwtRobot;
@@ -23,15 +24,17 @@ import static snoonu.utils_generate.RandomIDSelector.getRandomID;
 public class LocationScenario {
 
     private static String lastEnteredAddress;
+    private static String wrongEnteredAddress;
 
     public static void clickToSelectAddressButton() {
-        selectLocationButton().click();
+        selectLocationButton().shouldBe(appear).click();
     }
 
     public static void inputRandomTestAddressScenario() throws InterruptedException, IOException {
         loaderInButtons().shouldBe(disappear);
         crossIconX().shouldBe(visible).click();
         lastEnteredAddress = AwtRobot.entLoc();
+        sleep(2000);
         addressInputField().click();
         addressPredictionField().shouldBe(appear);
         addressPredictionField().shouldHave(text(lastEnteredAddress));
@@ -46,6 +49,22 @@ public class LocationScenario {
         "https://snoonu.com/_next/data/uQARuxrLqw3lRG9VH-mpa/en.json";
         LoadPage.waitForApiResponse(apiUrl);
          */
+        loaderInButtons().shouldBe(disappear);
+        confirmBtnOnMap().shouldBe(enabled).click();
+    }
+
+    public static void inputWrongAddress() throws InterruptedException, IOException {
+        loaderInButtons().shouldBe(disappear);
+        crossIconX().shouldBe(visible).click();
+        wrongEnteredAddress = AwtRobot.entWrongLoc();
+        sleep(2000);
+        addressInputField().click();
+        addressPredictionField().shouldBe(appear);
+        addressPredictionField().shouldHave(text(wrongEnteredAddress));
+        sleep(2000);
+        addressPredictionField().shouldBe(enabled).click();
+        addressPredictionField().shouldBe(disappear);
+        sleep(2000);
         loaderInButtons().shouldBe(disappear);
         confirmBtnOnMap().shouldBe(enabled).click();
     }
@@ -152,6 +171,30 @@ public class LocationScenario {
     public static void clickSaveAddressBtn() {
         saveAddressBtn().shouldBe(enabled);
         saveAddressBtn().click();
+    }
+
+    public static void goToAddressPopup() {
+        locationPopup().shouldBe(visible).click();
+    }
+
+    public static void noConfirmLocationPopup() {
+        confirmNoAddressBtn().shouldBe(appear).click();
+    }
+
+    public static void inputAddressOfCenterOfDoha() throws InterruptedException, IOException {
+        loaderInButtons().shouldBe(disappear);
+        crossIconX().shouldBe(visible).click();
+        lastEnteredAddress = AwtRobot.entCenterOfDoha();
+        addressInputField().click();
+        addressPredictionField().shouldBe(appear);
+        addressPredictionField().shouldHave(text(lastEnteredAddress));
+        sleep(2000);
+        addressPredictionField().shouldBe(enabled).click();
+        addressPredictionField().shouldBe(disappear);
+        sleep(2000);
+        loaderInButtons().shouldBe(disappear);
+        confirmBtnOnMap().shouldBe(enabled).click();
+        Selenide.refresh();
     }
 }
 
