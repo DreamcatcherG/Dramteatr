@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Android ###
 # Gradle files
 .gradle/
@@ -40,10 +41,16 @@ gen-external-apklibs
 # with Android Studio 3.5.
 
 ### Java ###
+=======
+>>>>>>> d9607ca133b37ed3d14d2fc815f18f270b184b71
 # Compiled class file
 *.class
 
 # Log file
+<<<<<<< HEAD
+=======
+*.log
+>>>>>>> d9607ca133b37ed3d14d2fc815f18f270b184b71
 
 # BlueJ files
 *.ctxt
@@ -62,6 +69,7 @@ gen-external-apklibs
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 replay_pid*
 
 ### macOS ###
@@ -124,3 +132,13 @@ $RECYCLE.BIN/
 *.lnk
 
 Notes
+=======
+
+# Gradle and project files #
+/.gradle/
+/.idea/
+/build/
+/gradle/
+/gradlew
+/gradlew.bat
+>>>>>>> d9607ca133b37ed3d14d2fc815f18f270b184b71

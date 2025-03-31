@@ -1,0 +1,3 @@
+[submodule "external-repos/demoqa"]
+	path = external-repos/demoqa
+	url = https://github.com/RomaQA/demoqa.git
