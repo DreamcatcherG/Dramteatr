@@ -6,20 +6,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static snoonu.drivers.DriverHelper.byDataTestId;
 
 public class LogInObjects {
-
-    public static SelenideElement phoneNumberInput() {
-        return $(byDataTestId("phoneInputField"));
-    }
-
-    public static SelenideElement loginContinueBtn() {
-        return $(byDataTestId("btnContinueLogin"));
-    }
-
     public static SelenideElement pinField() {
-        return $(byDataTestId("pinInputField"));
+        return $(byDataTestId("pinInput"));
     }
 
     public static SelenideElement wrongPinText() {
-        return $(byDataTestId("wrongCodeMessage"));
+        return $(byDataTestId("wrongPinText"));
     }
-}
+} 

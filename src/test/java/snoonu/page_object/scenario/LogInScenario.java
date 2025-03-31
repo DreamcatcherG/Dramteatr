@@ -1,14 +1,13 @@
 package snoonu.page_object.scenario;
 
-import static snoonu.page_object.elements.HeaderObjects.loginBtn;
-import static snoonu.page_object.elements.LogInObjects.loginContinueBtn;
-import static snoonu.page_object.elements.LogInObjects.phoneNumberInput;
+import static snoonu.page_object.elements.MainPage.loginBtn;
+import static snoonu.page_object.elements.MainPage.loginContinueBtn;
+import static snoonu.page_object.elements.MainPage.phoneNumberInput;
 import static snoonu.utils_generate.AwtRobot.entOtp;
 
 public class LogInScenario {
 
     public static void enterNumberOtp(String phoneNumber) throws InterruptedException {
-
         if (phoneNumberInput().exists()) {
             phoneNumberInput().sendKeys(phoneNumber);
             loginContinueBtn().click();
@@ -22,22 +21,4 @@ public class LogInScenario {
         }
     }
 
-public static void negativeEnterNumberOtp(String phoneNumber) throws InterruptedException {
-
-    loginBtn().click();
-    phoneNumberInput().sendKeys(phoneNumber);
-    loginContinueBtn().click();
-    }
-
-    public static void clickLogin() {
-        loginBtn().click();
-    }
-
-    public void enterPhoneNumber(String phoneNumber) {
-        phoneNumberInput().sendKeys(phoneNumber);
-    }
-
-    public void clickLoginContinue() {
-        loginContinueBtn().click();
-    }
 }

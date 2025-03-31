@@ -2,6 +2,7 @@ package snoonu.drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,11 +10,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import javax.annotation.CheckReturnValue;
+import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -22,92 +23,83 @@ import java.util.logging.Level;
 
 import static snoonu.drivers.Environment.*;
 
-
 public class CustomWebDriver implements WebDriverProvider {
     @Override
-    public WebDriver createDriver(DesiredCapabilities capabilities) {
+    @CheckReturnValue
+    @Nonnull
+    public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         LoggingPreferences logPrefs = new LoggingPreferences();
         logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 
-        capabilities.setBrowserName(browser);
-        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", isVideoOn);
-        capabilities.setCapability("videoFrameRate", 24);
-
         switch (browser.toLowerCase()) {
             case "chrome":
-                capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
+                ChromeOptions chromeOptions = getChromeOptions();
+                chromeOptions.merge(capabilities);
+                chromeOptions.setCapability("goog:loggingPrefs", logPrefs);
+                
                 WebDriverManager.chromedriver().setup();
+                
                 if (isRemoteDriver) {
-                    return getRemoteWebDriver(capabilities);
+                    return getRemoteWebDriver(chromeOptions);
                 } else {
-                    return getLocalChromeDriver(capabilities);
+                    return getLocalChromeDriver(chromeOptions);
                 }
             case "firefox":
-                capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, getFirefoxOptions());
+                FirefoxOptions firefoxOptions = getFirefoxOptions();
+                firefoxOptions.merge(capabilities);
+                firefoxOptions.setCapability("goog:loggingPrefs", logPrefs);
+                
                 WebDriverManager.firefoxdriver().setup();
+                
                 if (isRemoteDriver) {
-                    return getRemoteWebDriver(capabilities);
+                    return getRemoteWebDriver(firefoxOptions);
                 } else {
-                    return getLocalFirefoxDriver(capabilities);
+                    return getLocalFirefoxDriver(firefoxOptions);
                 }
             default:
-                throw new IllegalArgumentException("Invalid browser name: " + browser);
+                throw new RuntimeException("Unsupported browser: " + browser);
         }
     }
 
     private ChromeOptions getChromeOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
-
-        if (isWebMobile) {
-            Map<String, Object> mobileDevice = new HashMap<>();
-            mobileDevice.put("deviceName", webMobileDevice);
-            chromeOptions.setExperimentalOption("mobileEmulation", mobileDevice);
-        }
-        chromeOptions.addArguments("--window-size=" + screenResolution);
-        chromeOptions.addArguments("--no-sandbox");
-        chromeOptions.addArguments("--disable-notifications");
-        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--remote-allow-origins=*");
+        chromeOptions.addArguments("--proxy-bypass-list=<-loopback>");
         chromeOptions.addArguments("--disable-dev-shm-usage");
-        if (isHeadless) chromeOptions.addArguments("headless");
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation", "load-extension"});
+
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.default_content_setting_values.automatic_downloads", 1);
+        prefs.put("safebrowsing.enabled", true);
+        prefs.put("plugins.always_open_pdf_externally", true);
+        chromeOptions.setExperimentalOption("prefs", prefs);
 
         return chromeOptions;
     }
 
     private FirefoxOptions getFirefoxOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-
-        firefoxOptions.addArguments("--window-size=" + screenResolution);
-        if (isHeadless) firefoxOptions.addArguments("-headless");
-
+        firefoxOptions.addArguments("--start-maximized");
         return firefoxOptions;
     }
 
-    @SuppressWarnings("deprecation")
-    private WebDriver getLocalChromeDriver(DesiredCapabilities capabilities) {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        return new ChromeDriver(capabilities);
+    private WebDriver getLocalChromeDriver(ChromeOptions options) {
+        return new ChromeDriver(options);
     }
 
-    @SuppressWarnings("deprecation")
-    private WebDriver getLocalFirefoxDriver(DesiredCapabilities capabilities) {
-        return new FirefoxDriver(capabilities);
+    private WebDriver getLocalFirefoxDriver(FirefoxOptions options) {
+        return new FirefoxDriver(options);
     }
 
-    private WebDriver getRemoteWebDriver(DesiredCapabilities capabilities) {
-        RemoteWebDriver remoteWebDriver = new RemoteWebDriver(getRemoteWebdriverUrl(), capabilities);
-        remoteWebDriver.setFileDetector(new LocalFileDetector());
-
-        return remoteWebDriver;
-    }
-
-    private URL getRemoteWebdriverUrl() {
+    private WebDriver getRemoteWebDriver(Capabilities capabilities) {
         try {
-            return new URL(remoteDriverUrl);
+            RemoteWebDriver remoteWebDriver = new RemoteWebDriver(new URL(remoteDriverUrl), capabilities);
+            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            return remoteWebDriver;
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Unable to create Remote WebDriver", e);
         }
-        return null;
     }
 }

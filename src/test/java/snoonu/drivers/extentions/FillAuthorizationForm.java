@@ -5,9 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.impl.WebElementSource;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static snoonu.drivers.DriverHelper.byTestId;
-
 
 class FillAuthorizationForm implements Command<ExtendedSelenideElement> {
     @Override

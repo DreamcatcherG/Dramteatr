@@ -4,17 +4,29 @@ plugins {
     id 'io.qameta.allure' version '2.9.6'
 }
 
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+
 group 'cloud.autotests'
 version '1.0'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-def allureVersion = "2.18.1"
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+def allureVersion = "2.24.0"
 defaultTasks 'help'
 
 ext {
-    allureVersion = "2.18.1"
-    selenideVersion = "5.18.0"
-    junitVersion = "5.7.0"
+    allureVersion = "2.24.0"
+    selenideVersion = "6.19.1"
+    junitVersion = "5.10.1"
+    seleniumVersion = "4.13.0"
 }
 
 configurations {
@@ -26,19 +38,22 @@ repositories {
 }
 
 dependencies {
-    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.2'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.checkerframework:checker:3.38.0'
 
     testImplementation(
-            "io.qameta.allure:allure-java-commons:2.18.1",
-            "io.github.bonigarcia:webdrivermanager:5.8.0",
-            "org.aspectj:aspectjweaver:1.9.5",
-            "com.codeborne:selenide:${selenideVersion}",
             "io.qameta.allure:allure-selenide:${allureVersion}",
-            "io.rest-assured:rest-assured:4.1.2",
+            "io.qameta.allure:allure-java-commons:${allureVersion}",
+            "io.github.bonigarcia:webdrivermanager:5.5.3",
+            "org.aspectj:aspectjweaver:1.9.21",
+            "com.codeborne:selenide:${selenideVersion}",
+            "org.seleniumhq.selenium:selenium-java:${seleniumVersion}",
+            "io.rest-assured:rest-assured:5.3.2",
             "io.qameta.allure:allure-rest-assured:${allureVersion}",
-            "com.fasterxml.jackson.core:jackson-annotations:2.10.3",
-            "io.appium:java-client:7.3.0",
-            "ch.qos.logback:logback-classic:1.2.3",
+            "com.fasterxml.jackson.core:jackson-annotations:2.15.3",
+            "io.appium:java-client:8.5.1",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 

@@ -2,16 +2,10 @@ package snoonu.utils_generate;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import static com.codeborne.selenide.Selectors.byAttribute;
-import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static snoonu.drivers.DriverHelper.byDataTestId;
-import static snoonu.drivers.DriverHelper.byTestId;
 import static snoonu.page_object.elements.LocationObjects.addressInputField;
 import static snoonu.page_object.elements.LogInObjects.pinField;
 import static snoonu.page_object.elements.LogInObjects.wrongPinText;
@@ -19,7 +13,7 @@ import static snoonu.tests.TestData.CenterDoha;
 
 public class AwtRobot {
 
-    public static void entOtp() throws InterruptedException { // awtRobot.entOtp();
+    public static void entOtp() throws InterruptedException {
         pinField().shouldBe(Condition.visible);
         SelenideElement pinInput = pinField();
         String pinCode = DataGenerator.otp;
@@ -49,7 +43,7 @@ public class AwtRobot {
         }
     }
 
-    public static void wrongEntOtp() throws InterruptedException { // awtRobot.entOtp();
+    public static void wrongEntOtp() throws InterruptedException {
         pinField().shouldBe(Condition.visible);
         SelenideElement pinInput = pinField();
         String pinCode = "123456";

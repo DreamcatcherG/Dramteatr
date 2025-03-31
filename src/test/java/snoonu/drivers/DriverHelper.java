@@ -16,13 +16,11 @@ import static snoonu.drivers.Environment.*;
 public class DriverHelper {
 
     public static void configureSelenide() {
-
         addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
         if (isWeb) {
             Configuration.browser = CustomWebDriver.class.getName();
             Configuration.baseUrl = webUrl;
-            Configuration.startMaximized = true;
             Configuration.browserSize = "1920x1080";
             Configuration.timeout = 40000;
             Configuration.pageLoadTimeout = 100000;

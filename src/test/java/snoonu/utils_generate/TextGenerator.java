@@ -1,9 +1,6 @@
 package snoonu.utils_generate;
 
-
 import java.util.Random;
-
-import static afu.org.checkerframework.checker.units.UnitsTools.min;
 import static snoonu.tests.TestData.*;
 import static snoonu.utils_generate.RandomUtils.getRandomInt;
 

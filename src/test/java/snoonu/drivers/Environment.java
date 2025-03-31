@@ -6,13 +6,12 @@ public class Environment {
 
     private static final String prodUrl = "https://snoonu.com";
 //    public static final String stageUrl = "https://qa.snoonu.com";
-    public static final String stageUrl = "http://localhost:3000";
+    public static final String stageUrl = "https://snoonu.com";
     public static final String environment = System.getProperty("environment", "stage");
     public static final String webPage = environment.equals("prod") ? prodUrl : stageUrl;
 
     // PLATFORM CONFIG
-    public final static String
-            platform = System.getProperty("platform", "web");
+    public final static String platform = System.getProperty("platform", "web");
 
     // WEB CONFIG
     public static final boolean isWeb = platform.equals("web");
@@ -22,12 +21,12 @@ public class Environment {
             browser = System.getProperty("browser", "chrome"),
             screenResolution = System.getProperty("screen_resolution", "1920x1080"),
             webMobileDevice = System.getProperty("web_mobile_device"),
-            remoteDriverUrl = System.getProperty("http://localhost:4444/wd/hub/"), // https://username:password@selenoid.autotests.cloud:4444/wd/hub/
+            remoteDriverUrl = System.getProperty("remote_driver_url", "http://localhost:4444/wd/hub"),
             videoStorageUrl = System.getProperty("video_storage_url"); // https://selenoid.autotests.cloud/video/
     public static final boolean
             isHeadless = parseBoolean(System.getProperty("headless", "false")),
             isWebMobile = webMobileDevice != null,
-            isRemoteDriver = remoteDriverUrl != null,
+            isRemoteDriver = System.getProperty("remote_driver", "false").equals("true"),
             isVideoOn = videoStorageUrl != null;
 
     // BROWSERSTACK CONFIG
